@@ -332,6 +332,7 @@ export function buildExecutionContext(
   typeResolver?: Maybe<GraphQLTypeResolver<unknown, unknown>>,
 ): ReadonlyArray<GraphQLError> | ExecutionContext {
 <<<<<<< HEAD
+<<<<<<< HEAD
   let operation: OperationDefinitionNode | undefined;
 =======
   rootValue: mixed,
@@ -345,6 +346,9 @@ export function buildExecutionContext(
 >>>>>>> Switch to TS syntax (#3090)
   let operation: OperationDefinitionNode | void;
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/execute.js
+=======
+  let operation: OperationDefinitionNode | undefined;
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
   const fragments: ObjMap<FragmentDefinitionNode> = Object.create(null);
   for (const definition of document.definitions) {
     switch (definition.kind) {
@@ -451,10 +455,14 @@ function executeFieldsSerially(
   parentType: GraphQLObjectType,
   sourceValue: unknown,
 <<<<<<< HEAD
+<<<<<<< HEAD
   path: Path | undefined,
 =======
   path: Path | void,
 >>>>>>> Switch to TS syntax (#3090)
+=======
+  path: Path | undefined,
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
   fields: Map<string, Array<FieldNode>>,
 ): PromiseOrValue<ObjMap<unknown>> {
   return promiseReduce(
@@ -493,10 +501,14 @@ function executeFields(
   parentType: GraphQLObjectType,
   sourceValue: unknown,
 <<<<<<< HEAD
+<<<<<<< HEAD
   path: Path | undefined,
 =======
   path: Path | void,
 >>>>>>> Switch to TS syntax (#3090)
+=======
+  path: Path | undefined,
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
   fields: Map<string, Array<FieldNode>>,
 ): PromiseOrValue<ObjMap<unknown>> {
   const results = Object.create(null);

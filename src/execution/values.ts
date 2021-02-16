@@ -302,8 +302,12 @@ export function getDirectiveValues(
 =======
   node: { readonly directives?: ReadonlyArray<DirectiveNode> },
   variableValues?: Maybe<ObjMap<unknown>>,
+<<<<<<< HEAD
 ): void | { [argument: string]: unknown } {
 >>>>>>> Switch to TS syntax (#3090)
+=======
+): undefined | { [argument: string]: unknown } {
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
   // istanbul ignore next (See: 'https://github.com/graphql/graphql-js/issues/2203')
   const directiveNode = node.directives?.find(
     (directive) => directive.name.value === directiveDef.name,

@@ -41,10 +41,14 @@ export function valueFromAST(
   type: GraphQLInputType,
   variables?: Maybe<ObjMap<unknown>>,
 <<<<<<< HEAD
+<<<<<<< HEAD
 ): unknown {
 =======
 ): unknown | void {
 >>>>>>> Switch to TS syntax (#3090)
+=======
+): unknown | undefined {
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
   if (!valueNode) {
     // When there is no node, then there is also no value.
     // Importantly, this is different from returning the value null.

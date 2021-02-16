@@ -70,10 +70,14 @@ export function KnownDirectivesRule(
 function getDirectiveLocationForASTPath(
   ancestors: ReadonlyArray<ASTNode | ReadonlyArray<ASTNode>>,
 <<<<<<< HEAD
+<<<<<<< HEAD
 ): DirectiveLocationEnum | undefined {
 =======
 ): DirectiveLocationEnum | void {
 >>>>>>> Switch to TS syntax (#3090)
+=======
+): DirectiveLocationEnum | undefined {
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
   const appliedTo = ancestors[ancestors.length - 1];
   invariant('kind' in appliedTo);
 

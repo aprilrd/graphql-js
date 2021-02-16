@@ -248,12 +248,17 @@ export class TypeInfo {
       case Kind.OBJECT_FIELD: {
         const objectType: unknown = getNamedType(this.getInputType());
 <<<<<<< HEAD
+<<<<<<< HEAD
         let inputFieldType: GraphQLInputType | undefined;
         let inputField: GraphQLInputField | undefined;
 =======
         let inputFieldType: GraphQLInputType | void;
         let inputField: GraphQLInputField | void;
 >>>>>>> Switch to TS syntax (#3090)
+=======
+        let inputFieldType: GraphQLInputType | undefined;
+        let inputField: GraphQLInputField | undefined;
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
         if (isInputObjectType(objectType)) {
           inputField = objectType.getFields()[node.name.value];
           if (inputField) {

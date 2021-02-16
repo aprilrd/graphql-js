@@ -25,10 +25,14 @@ export class GraphQLError extends Error {
    * Enumerable, and appears in the result of JSON.stringify().
    */
 <<<<<<< HEAD
+<<<<<<< HEAD
   readonly locations?: ReadonlyArray<SourceLocation>;
 =======
   readonly locations: ReadonlyArray<SourceLocation> | void;
 >>>>>>> Switch to TS syntax (#3090)
+=======
+  readonly locations: ReadonlyArray<SourceLocation> | undefined;
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
 
   /**
    * An array describing the JSON-path into the execution response which
@@ -37,19 +41,27 @@ export class GraphQLError extends Error {
    * Enumerable, and appears in the result of JSON.stringify().
    */
 <<<<<<< HEAD
+<<<<<<< HEAD
   readonly path?: ReadonlyArray<string | number>;
 =======
   readonly path: ReadonlyArray<string | number> | void;
 >>>>>>> Switch to TS syntax (#3090)
+=======
+  readonly path: ReadonlyArray<string | number> | undefined;
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
 
   /**
    * An array of GraphQL AST Nodes corresponding to this error.
    */
 <<<<<<< HEAD
+<<<<<<< HEAD
   readonly nodes?: ReadonlyArray<ASTNode>;
 =======
   readonly nodes: ReadonlyArray<ASTNode> | void;
 >>>>>>> Switch to TS syntax (#3090)
+=======
+  readonly nodes: ReadonlyArray<ASTNode> | undefined;
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
 
   /**
    * The source GraphQL document for the first location of this error.
@@ -58,20 +70,28 @@ export class GraphQLError extends Error {
    * represent nodes after the first node.
    */
 <<<<<<< HEAD
+<<<<<<< HEAD
   readonly source?: Source;
 =======
   readonly source: Source | void;
 >>>>>>> Switch to TS syntax (#3090)
+=======
+  readonly source: Source | undefined;
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
 
   /**
    * An array of character offsets within the source GraphQL document
    * which correspond to this error.
    */
 <<<<<<< HEAD
+<<<<<<< HEAD
   readonly positions?: ReadonlyArray<number>;
 =======
   readonly positions: ReadonlyArray<number> | void;
 >>>>>>> Switch to TS syntax (#3090)
+=======
+  readonly positions: ReadonlyArray<number> | undefined;
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
 
   /**
    * The original error thrown from a field resolver during execution.
@@ -81,6 +101,7 @@ export class GraphQLError extends Error {
   /**
    * Extension fields to add to the formatted error.
    */
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD:src/error/GraphQLError.ts
   readonly extensions?: { [key: string]: unknown };
@@ -107,10 +128,13 @@ export class GraphQLError extends Error {
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/error/GraphQLError.js
 =======
   readonly extensions: { [key: string]: unknown } | void;
+=======
+  readonly extensions: { [key: string]: unknown } | undefined;
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
 
   constructor(
     message: string,
-    nodes?: ReadonlyArray<ASTNode> | ASTNode | void | null,
+    nodes?: ReadonlyArray<ASTNode> | ASTNode | undefined | null,
     source?: Maybe<Source>,
     positions?: Maybe<ReadonlyArray<number>>,
     path?: Maybe<ReadonlyArray<string | number>>,

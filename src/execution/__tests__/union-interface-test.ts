@@ -17,8 +17,13 @@ import { executeSync } from '../execute';
 class Dog {
   name: string;
   barks: boolean;
+<<<<<<< HEAD
   mother?: Dog;
   father?: Dog;
+=======
+  mother: Dog | undefined;
+  father: Dog | undefined;
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
   progeny: Array<Dog>;
 
   constructor(name: string, barks: boolean) {
@@ -31,8 +36,13 @@ class Dog {
 class Cat {
   name: string;
   meows: boolean;
+<<<<<<< HEAD
   mother?: Cat;
   father?: Cat;
+=======
+  mother: Cat | undefined;
+  father: Cat | undefined;
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
   progeny: Array<Cat>;
 
   constructor(name: string, meows: boolean) {
@@ -44,13 +54,22 @@ class Cat {
 
 class Person {
   name: string;
+<<<<<<< HEAD
   pets?: Array<Dog | Cat>;
   friends?: Array<Dog | Cat | Person>;
+=======
+  pets: Array<Dog | Cat> | undefined;
+  friends: Array<Dog | Cat | Person> | undefined;
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
 
   constructor(
     name: string,
     pets?: Array<Dog | Cat>,
+<<<<<<< HEAD
     friends?: Array<Dog | Cat | Person>,
+=======
+    friends?: Array<Dog | Cat | Person> | undefined,
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
   ) {
     this.name = name;
     this.pets = pets;

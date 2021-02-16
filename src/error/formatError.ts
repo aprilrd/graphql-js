@@ -43,6 +43,7 @@ export interface GraphQLFormattedError {
    * GraphQL document, it should contain a list of locations.
    */
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:src/error/formatError.ts
   readonly locations?: ReadonlyArray<SourceLocation>;
 =======
@@ -51,12 +52,16 @@ export interface GraphQLFormattedError {
 =======
   readonly locations: ReadonlyArray<SourceLocation> | void;
 >>>>>>> Switch to TS syntax (#3090)
+=======
+  readonly locations: ReadonlyArray<SourceLocation> | undefined;
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
   /**
    * If an error can be associated to a particular field in the GraphQL result,
    * it _must_ contain an entry with the key `path` that details the path of
    * the response field which experienced the error. This allows clients to
    * identify whether a null result is intentional or caused by a runtime error.
    */
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD:src/error/formatError.ts
   readonly path?: ReadonlyArray<string | number>;
@@ -66,6 +71,9 @@ export interface GraphQLFormattedError {
 =======
   readonly path: ReadonlyArray<string | number> | void;
 >>>>>>> Switch to TS syntax (#3090)
+=======
+  readonly path: ReadonlyArray<string | number> | undefined;
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
   /**
    * Reserved for implementors to extend the protocol however they see fit,
    * and hence there are no additional restrictions on its contents.

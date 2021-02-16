@@ -13,9 +13,9 @@ import type { Maybe } from './Maybe';
 
 >>>>>>> Switch to TS syntax (#3090)
 export type Path = {
-  readonly prev: Path | void;
+  readonly prev: Path | undefined;
   readonly key: string | number;
-  readonly typename: string | void;
+  readonly typename: string | undefined;
 };
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/jsutils/Path.js
 
@@ -24,10 +24,14 @@ export type Path = {
  */
 export function addPath(
 <<<<<<< HEAD
+<<<<<<< HEAD
   prev: Readonly<Path> | undefined,
 =======
   prev: Readonly<Path> | void,
 >>>>>>> Switch to TS syntax (#3090)
+=======
+  prev: Readonly<Path> | undefined,
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
   key: string | number,
   typename: string | undefined,
 ): Path {

@@ -165,11 +165,15 @@ export class Token {
    * For non-punctuation tokens, represents the interpreted value of the token.
    */
 <<<<<<< HEAD
+<<<<<<< HEAD
   +value: string | void;
 >>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
 =======
   readonly value: string | void;
 >>>>>>> Switch to TS syntax (#3090)
+=======
+  readonly value: string | undefined;
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
 
   /**
    * Tokens exist as nodes in a double-linked-list amongst all tokens
@@ -215,10 +219,14 @@ export class Token {
   toJSON(): {
     kind: TokenKindEnum;
 <<<<<<< HEAD
+<<<<<<< HEAD
     value?: string;
 =======
     value: string | void;
 >>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
+=======
+    value: string | undefined;
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
     line: number;
     column: number;
   } {

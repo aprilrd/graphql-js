@@ -57,10 +57,14 @@ function coerceInputValueImpl(
   type: GraphQLInputType,
   onError: OnErrorCB,
 <<<<<<< HEAD
+<<<<<<< HEAD
   path: Path | undefined,
 =======
   path: Path | void,
 >>>>>>> Switch to TS syntax (#3090)
+=======
+  path: Path | undefined,
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
 ): unknown {
   if (isNonNullType(type)) {
     if (inputValue != null) {

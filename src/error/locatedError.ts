@@ -13,10 +13,14 @@ import { GraphQLError } from './GraphQLError';
 export function locatedError(
   rawOriginalError: unknown,
 <<<<<<< HEAD
+<<<<<<< HEAD
   nodes: ASTNode | ReadonlyArray<ASTNode> | undefined | null,
 =======
   nodes: ASTNode | ReadonlyArray<ASTNode> | void | null,
 >>>>>>> Switch to TS syntax (#3090)
+=======
+  nodes: ASTNode | ReadonlyArray<ASTNode> | undefined | null,
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
   path?: Maybe<ReadonlyArray<string | number>>,
 ): GraphQLError {
   // Sometimes a non-error is thrown, wrap it as an Error instance to ensure a consistent Error interface.

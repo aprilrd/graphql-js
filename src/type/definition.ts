@@ -460,6 +460,7 @@ export function assertNullableType(type: unknown): GraphQLNullableType {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export function getNullableType(type: undefined | null): void;
 export function getNullableType<T extends GraphQLNullableType>(
   type: T | GraphQLNonNull<T>,
@@ -472,14 +473,21 @@ export function getNullableType(
 ): GraphQLNullableType | undefined {
 =======
 export function getNullableType(type: void | null): void;
+=======
+export function getNullableType(type: undefined | null): void;
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
 export function getNullableType<T extends GraphQLNullableType>(type: T): T;
 export function getNullableType<T extends GraphQLNullableType>(
   type: GraphQLNonNull<T>,
 ): T;
 export function getNullableType(
   type: Maybe<GraphQLType>,
+<<<<<<< HEAD
 ): GraphQLNullableType | void {
 >>>>>>> Switch to TS syntax (#3090)
+=======
+): GraphQLNullableType | undefined {
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
   if (type) {
     return isNonNullType(type) ? type.ofType : type;
   }
@@ -521,15 +529,20 @@ export function assertNamedType(type: unknown): GraphQLNamedType {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export function getNamedType(type: undefined | null): void;
 =======
 export function getNamedType(type: void | null): void;
 >>>>>>> Switch to TS syntax (#3090)
+=======
+export function getNamedType(type: undefined | null): undefined;
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
 export function getNamedType(type: GraphQLInputType): GraphQLNamedInputType;
 export function getNamedType(type: GraphQLOutputType): GraphQLNamedOutputType;
 export function getNamedType(type: GraphQLType): GraphQLNamedType;
 export function getNamedType(
   type: Maybe<GraphQLType>,
+<<<<<<< HEAD
 <<<<<<< HEAD
 ): GraphQLNamedType | undefined;
 export function getNamedType(
@@ -538,6 +551,9 @@ export function getNamedType(
 =======
 ): GraphQLNamedType | void {
 >>>>>>> Switch to TS syntax (#3090)
+=======
+): GraphQLNamedType | undefined {
+>>>>>>> TEMPORARY: Replace `void` with `undefined`
   if (type) {
     let unwrappedType = type;
     while (isWrappingType(unwrappedType)) {
