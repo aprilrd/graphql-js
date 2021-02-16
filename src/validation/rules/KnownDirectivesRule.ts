@@ -143,8 +143,12 @@ function getDirectiveLocationForOperation(
 
   // istanbul ignore next (Not reachable. All possible types have been considered)
 <<<<<<< HEAD
+<<<<<<< HEAD
   invariant(false, 'Unexpected operation: ' + inspect(operation));
 =======
   invariant(false, 'Unexpected operation: ' + inspect(operation as never));
 >>>>>>> Switch to TS syntax (#3090)
+=======
+  invariant(false, 'Unexpected operation: ' + inspect(operation));
+>>>>>>> TEMPORARY: remove `as never`
 }

@@ -197,8 +197,12 @@ function coerceInputValueImpl(
 
   // istanbul ignore next (Not reachable. All possible input types have been considered)
 <<<<<<< HEAD
+<<<<<<< HEAD
   invariant(false, 'Unexpected input type: ' + inspect(type));
 =======
   invariant(false, 'Unexpected input type: ' + inspect(type as never));
 >>>>>>> Switch to TS syntax (#3090)
+=======
+  invariant(false, 'Unexpected input type: ' + inspect(type));
+>>>>>>> TEMPORARY: remove `as never`
 }

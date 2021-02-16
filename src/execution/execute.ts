@@ -905,11 +905,15 @@ function completeValue(
   invariant(
     false,
 <<<<<<< HEAD
+<<<<<<< HEAD
     'Cannot complete value of unexpected output type: ' + inspect(returnType),
 =======
     'Cannot complete value of unexpected output type: ' +
       inspect(returnType as never),
 >>>>>>> Switch to TS syntax (#3090)
+=======
+    'Cannot complete value of unexpected output type: ' + inspect(returnType),
+>>>>>>> TEMPORARY: remove `as never`
   );
 }
 
