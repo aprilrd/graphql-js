@@ -177,7 +177,12 @@ describe('inspect', () => {
     expect(inspect([[new Foo2()]])).to.equal('[[[Bar]]]');
 
     // eslint-disable-next-line func-names
+<<<<<<< HEAD
     const objectWithoutClassName = new (function (this: any) {
+=======
+    const objectWithoutClassName = new (function () {
+      // eslint-disable-next-line @typescript-eslint/no-invalid-this
+>>>>>>> build: rename to TS eslint rules and temporarily disable eslint rules
       this.foo = 1;
     } as any)();
     expect(inspect([[objectWithoutClassName]])).to.equal('[[[Object]]]');

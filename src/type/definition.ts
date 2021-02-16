@@ -478,6 +478,8 @@ export function getNullableType(type: undefined | null): void;
 >>>>>>> TEMPORARY: Replace `void` with `undefined`
 export function getNullableType<T extends GraphQLNullableType>(type: T): T;
 export function getNullableType<T extends GraphQLNullableType>(
+  // FIXME Disabled because of https://github.com/yaacovCR/graphql-tools-fork/issues/40#issuecomment-586671219
+  // eslint-disable-next-line @typescript-eslint/unified-signatures
   type: GraphQLNonNull<T>,
 ): T;
 export function getNullableType(
