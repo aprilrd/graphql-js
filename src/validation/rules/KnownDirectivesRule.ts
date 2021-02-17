@@ -72,6 +72,7 @@ function getDirectiveLocationForASTPath(
 <<<<<<< HEAD
 <<<<<<< HEAD
 ): DirectiveLocationEnum | undefined {
+<<<<<<< HEAD
 =======
 ): DirectiveLocationEnum | void {
 >>>>>>> Switch to TS syntax (#3090)
@@ -80,6 +81,10 @@ function getDirectiveLocationForASTPath(
 >>>>>>> TEMPORARY: Replace `void` with `undefined`
   const appliedTo = ancestors[ancestors.length - 1];
   invariant('kind' in appliedTo);
+=======
+  const appliedTo = ancestors[ancestors.length - 1] as ASTNode;
+  invariant(!Array.isArray(appliedTo));
+>>>>>>> feat: typecast to ensure type safety
 
   switch (appliedTo.kind) {
     case Kind.OPERATION_DEFINITION:
@@ -120,8 +125,12 @@ function getDirectiveLocationForASTPath(
     case Kind.INPUT_OBJECT_TYPE_EXTENSION:
       return DirectiveLocation.INPUT_OBJECT;
     case Kind.INPUT_VALUE_DEFINITION: {
+<<<<<<< HEAD
       const parentNode = ancestors[ancestors.length - 3];
       invariant('kind' in parentNode);
+=======
+      const parentNode = ancestors[ancestors.length - 3] as ASTNode;
+>>>>>>> feat: typecast to ensure type safety
       return parentNode.kind === Kind.INPUT_OBJECT_TYPE_DEFINITION
         ? DirectiveLocation.INPUT_FIELD_DEFINITION
         : DirectiveLocation.ARGUMENT_DEFINITION;

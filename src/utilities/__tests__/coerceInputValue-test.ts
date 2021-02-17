@@ -102,6 +102,10 @@ describe('coerceInputValue', () => {
     const TestScalar = new GraphQLScalarType({
       name: 'TestScalar',
       parseValue(input: any) {
+<<<<<<< HEAD
+=======
+        invariant(typeof input === 'object' && input !== null);
+>>>>>>> feat: typecast to ensure type safety
         if (input.error != null) {
           throw new Error(input.error);
         }

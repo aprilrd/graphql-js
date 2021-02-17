@@ -49,7 +49,11 @@ export function printSourceLocation(
         [`${lineNum} |`, subLines[0]],
         ...subLines
           .slice(1, subLineIndex + 1)
+<<<<<<< HEAD
           .map((subLine) => ['|', subLine] as const),
+=======
+          .map<[string, string]>((subLine) => ['|', subLine]),
+>>>>>>> feat: typecast to ensure type safety
         ['|', '^'.padStart(subLineColumnNum)],
         ['|', subLines[subLineIndex + 1]],
       ])

@@ -124,7 +124,11 @@ describe('inspect', () => {
   });
 
   it('detect circular objects', () => {
+<<<<<<< HEAD
     const obj: { [name: string]: unknown } = {};
+=======
+    const obj: any = {};
+>>>>>>> feat: typecast to ensure type safety
     obj.self = obj;
     obj.deepSelf = { self: obj };
 

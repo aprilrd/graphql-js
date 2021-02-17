@@ -250,9 +250,13 @@ export function isNode(maybeNode: any): maybeNode is ASTNode {
 export function isNode(maybeNode: mixed): boolean %checks {
 =======
 export function isNode(maybeNode: unknown): maybeNode is ASTNode {
+<<<<<<< HEAD
 >>>>>>> Switch to TS syntax (#3090)
   return maybeNode != null && typeof maybeNode.kind === 'string';
 >>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
+=======
+  return maybeNode != null && typeof (maybeNode as any).kind === 'string';
+>>>>>>> feat: typecast to ensure type safety
 }
 
 /**

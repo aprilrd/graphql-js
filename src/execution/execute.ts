@@ -394,9 +394,12 @@ export function buildExecutionContext(
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // @ts-expect-error
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
+=======
+>>>>>>> feat: typecast to ensure type safety
   return {
     schema,
     fragments,
