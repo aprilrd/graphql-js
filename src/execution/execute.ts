@@ -126,6 +126,7 @@ export type ExecutionContext = {
  *   - `data` is the result of a successful execution of the query.
  *   - `extensions` is reserved for adding non-standard properties.
  */
+<<<<<<< HEAD
 <<<<<<< HEAD:src/execution/execute.ts
 export interface ExecutionResult<
   TData = ObjMap<unknown>,
@@ -157,16 +158,27 @@ export interface ExecutionArgs {
 }
 =======
 export type ExecutionResult = {
+=======
+export interface ExecutionResult<
+  TData = { [key: string]: any },
+  TExtensions = { [key: string]: any },
+> {
+>>>>>>> match `.d.ts` definition
   errors?: ReadonlyArray<GraphQLError>;
-  data?: ObjMap<unknown> | null;
-  extensions?: ObjMap<unknown>;
-};
+  // TS_SPECIFIC: TData. Motivation: https://github.com/graphql/graphql-js/pull/2490#issuecomment-639154229
+  data?: TData | null;
+  extensions?: TExtensions;
+}
 
-export type FormattedExecutionResult = {
+export interface FormattedExecutionResult<
+  TData = { [key: string]: any },
+  TExtensions = { [key: string]: any },
+> {
   errors?: ReadonlyArray<GraphQLFormattedError>;
-  data?: ObjMap<unknown> | null;
-  extensions?: ObjMap<unknown>;
-};
+  // TS_SPECIFIC: TData. Motivation: https://github.com/graphql/graphql-js/pull/2490#issuecomment-639154229
+  data?: TData | null;
+  extensions?: TExtensions;
+}
 
 export type ExecutionArgs = {
   schema: GraphQLSchema;
