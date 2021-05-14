@@ -38,10 +38,16 @@ export function UniqueFieldDefinitionNamesRule(
   };
 
   function checkFieldUniqueness(node: {
+<<<<<<< HEAD:src/validation/rules/UniqueFieldDefinitionNamesRule.ts
     readonly name: NameNode;
     readonly fields?: ReadonlyArray<
       InputValueDefinitionNode | FieldDefinitionNode
     >;
+=======
+    +name: NameNode;
+    +fields?: $ReadOnlyArray<InputValueDefinitionNode | FieldDefinitionNode>;
+    ...
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/validation/rules/UniqueFieldDefinitionNamesRule.js
   }) {
     const typeName = node.name.value;
 

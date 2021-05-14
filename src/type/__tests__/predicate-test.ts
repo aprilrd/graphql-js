@@ -565,7 +565,11 @@ describe('Type predicates', () => {
   describe('isRequiredArgument', () => {
     function buildArg(config: {
       type: GraphQLInputType;
+<<<<<<< HEAD:src/type/__tests__/predicate-test.ts
       defaultValue?: unknown;
+=======
+      defaultValue?: mixed;
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/__tests__/predicate-test.js
     }): GraphQLArgument {
       return {
         name: 'someArg',
@@ -613,7 +617,11 @@ describe('Type predicates', () => {
   describe('isRequiredInputField', () => {
     function buildInputField(config: {
       type: GraphQLInputType;
+<<<<<<< HEAD:src/type/__tests__/predicate-test.ts
       defaultValue?: unknown;
+=======
+      defaultValue?: mixed;
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/__tests__/predicate-test.js
     }): GraphQLInputField {
       return {
         name: 'someInputField',

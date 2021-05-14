@@ -10,10 +10,21 @@ import { isNode } from './ast';
  */
 export type ASTVisitor = EnterLeaveVisitor<ASTNode> | KindVisitor;
 
+<<<<<<< HEAD:src/language/visitor.ts
 type KindVisitor = {
   readonly [K in keyof ASTKindToNode]?:
     | ASTVisitFn<ASTKindToNode[K]>
     | EnterLeaveVisitor<ASTKindToNode[K]>;
+=======
+type KindVisitor = $ObjMap<
+  ASTKindToNode,
+  <Node>(node: Node) => ASTVisitFn<Node> | EnterLeaveVisitor<Node>,
+>;
+
+type EnterLeaveVisitor<TVisitedNode: ASTNode> = {
+  +enter?: ASTVisitFn<TVisitedNode>;
+  +leave?: ASTVisitFn<TVisitedNode>;
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/language/visitor.js
 };
 
 interface EnterLeaveVisitor<TVisitedNode extends ASTNode> {

@@ -16,12 +16,20 @@ import { createSourceEventStream, subscribe } from '../subscribe';
 
 import { SimplePubSub } from './simplePubSub';
 
+<<<<<<< HEAD:src/subscription/__tests__/subscribe-test.ts
 interface Email {
+=======
+type Email = {
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/subscription/__tests__/subscribe-test.js
   from: string;
   subject: string;
   message: string;
   unread: boolean;
+<<<<<<< HEAD:src/subscription/__tests__/subscribe-test.ts
 }
+=======
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/subscription/__tests__/subscribe-test.js
 
 const EmailType = new GraphQLObjectType({
   name: 'Email',

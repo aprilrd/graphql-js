@@ -56,6 +56,7 @@ import { execute } from './execution/execute';
  *    If not provided, the default type resolver is used (which looks for a
  *    `__typename` field or alternatively calls the `isTypeOf` method).
  */
+<<<<<<< HEAD:src/graphql.ts
 export interface GraphQLArgs {
   schema: GraphQLSchema;
   source: string | Source;
@@ -66,6 +67,18 @@ export interface GraphQLArgs {
   fieldResolver?: Maybe<GraphQLFieldResolver<any, any>>;
   typeResolver?: Maybe<GraphQLTypeResolver<any, any>>;
 }
+=======
+export type GraphQLArgs = {
+  schema: GraphQLSchema;
+  source: string | Source;
+  rootValue?: mixed;
+  contextValue?: mixed;
+  variableValues?: ?{ +[variable: string]: mixed; ... };
+  operationName?: ?string;
+  fieldResolver?: ?GraphQLFieldResolver<any, any>;
+  typeResolver?: ?GraphQLTypeResolver<any, any>;
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/graphql.js
 
 export function graphql(args: GraphQLArgs): Promise<ExecutionResult> {
   // Always return a Promise for a consistent API.

@@ -122,10 +122,28 @@ export interface GraphQLSchemaExtensions {
  *
  */
 export class GraphQLSchema {
+<<<<<<< HEAD:src/type/schema.ts
   description: Maybe<string>;
   extensions: Maybe<Readonly<GraphQLSchemaExtensions>>;
   astNode: Maybe<SchemaDefinitionNode>;
   extensionASTNodes: ReadonlyArray<SchemaExtensionNode>;
+=======
+  description: ?string;
+  extensions: ?ReadOnlyObjMap<mixed>;
+  astNode: ?SchemaDefinitionNode;
+  extensionASTNodes: $ReadOnlyArray<SchemaExtensionNode>;
+
+  _queryType: ?GraphQLObjectType;
+  _mutationType: ?GraphQLObjectType;
+  _subscriptionType: ?GraphQLObjectType;
+  _directives: $ReadOnlyArray<GraphQLDirective>;
+  _typeMap: TypeMap;
+  _subTypeMap: ObjMap<ObjMap<boolean>>;
+  _implementationsMap: ObjMap<{
+    objects: Array<GraphQLObjectType>;
+    interfaces: Array<GraphQLInterfaceType>;
+  }>;
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/schema.js
 
   // Used as a cache for validateSchema().
   __validationErrors: Maybe<ReadonlyArray<GraphQLError>>;
@@ -360,6 +378,7 @@ export interface GraphQLSchemaValidationOptions {
    * Default: false
    */
   assumeValid?: boolean;
+<<<<<<< HEAD:src/type/schema.ts
 }
 
 export interface GraphQLSchemaConfig extends GraphQLSchemaValidationOptions {
@@ -373,10 +392,27 @@ export interface GraphQLSchemaConfig extends GraphQLSchemaValidationOptions {
   astNode?: Maybe<SchemaDefinitionNode>;
   extensionASTNodes?: Maybe<ReadonlyArray<SchemaExtensionNode>>;
 }
+=======
+};
+
+export type GraphQLSchemaConfig = {
+  description?: ?string;
+  query?: ?GraphQLObjectType;
+  mutation?: ?GraphQLObjectType;
+  subscription?: ?GraphQLObjectType;
+  types?: ?Array<GraphQLNamedType>;
+  directives?: ?Array<GraphQLDirective>;
+  extensions?: ?ReadOnlyObjMapLike<mixed>;
+  astNode?: ?SchemaDefinitionNode;
+  extensionASTNodes?: ?$ReadOnlyArray<SchemaExtensionNode>;
+  ...GraphQLSchemaValidationOptions;
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/schema.js
 
 /**
  * @internal
  */
+<<<<<<< HEAD:src/type/schema.ts
 export interface GraphQLSchemaNormalizedConfig extends GraphQLSchemaConfig {
   description: Maybe<string>;
   types: Array<GraphQLNamedType>;
@@ -385,6 +421,17 @@ export interface GraphQLSchemaNormalizedConfig extends GraphQLSchemaConfig {
   extensionASTNodes: ReadonlyArray<SchemaExtensionNode>;
   assumeValid: boolean;
 }
+=======
+export type GraphQLSchemaNormalizedConfig = {
+  ...GraphQLSchemaConfig;
+  description: ?string;
+  types: Array<GraphQLNamedType>;
+  directives: Array<GraphQLDirective>;
+  extensions: ?ReadOnlyObjMap<mixed>;
+  extensionASTNodes: $ReadOnlyArray<SchemaExtensionNode>;
+  assumeValid: boolean;
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/schema.js
 
 function collectReferencedTypes(
   type: GraphQLType,

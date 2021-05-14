@@ -14,14 +14,24 @@ import { specifiedDirectives } from '../type/directives';
 
 import { extendSchemaImpl } from './extendSchema';
 
+<<<<<<< HEAD:src/utilities/buildASTSchema.ts
 export interface BuildSchemaOptions extends GraphQLSchemaValidationOptions {
+=======
+export type BuildSchemaOptions = {
+  ...GraphQLSchemaValidationOptions;
+
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/buildASTSchema.js
   /**
    * Set to true to assume the SDL is valid.
    *
    * Default: false
    */
   assumeValidSDL?: boolean;
+<<<<<<< HEAD:src/utilities/buildASTSchema.ts
 }
+=======
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/buildASTSchema.js
 
 /**
  * This takes the ast of a schema document produced by the parse function in
@@ -95,7 +105,11 @@ export function buildASTSchema(
  */
 export function buildSchema(
   source: string | Source,
+<<<<<<< HEAD:src/utilities/buildASTSchema.ts
   options?: BuildSchemaOptions & ParseOptions,
+=======
+  options?: { ...BuildSchemaOptions; ...ParseOptions },
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/buildASTSchema.js
 ): GraphQLSchema {
   const document = parse(source, {
     noLocation: options?.noLocation,

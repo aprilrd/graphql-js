@@ -174,8 +174,13 @@ function sortObjMap<T, R>(
   return sortedMap;
 }
 
+<<<<<<< HEAD:src/utilities/lexicographicSortSchema.ts
 function sortByName<T extends { readonly name: string }>(
   array: ReadonlyArray<T>,
+=======
+function sortByName<T: { +name: string; ... }>(
+  array: $ReadOnlyArray<T>,
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/lexicographicSortSchema.js
 ): Array<T> {
   return sortBy(array, (obj) => obj.name);
 }

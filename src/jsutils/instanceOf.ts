@@ -37,6 +37,13 @@ spurious results.`,
         return false;
       };
 
+<<<<<<< HEAD:src/jsutils/instanceOf.ts
 interface Constructor extends Function {
   name: string;
 }
+=======
+type Constructor = {
+  name: string;
+  ...
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/jsutils/instanceOf.js

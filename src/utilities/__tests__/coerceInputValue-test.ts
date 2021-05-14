@@ -13,6 +13,7 @@ import {
 
 import { coerceInputValue } from '../coerceInputValue';
 
+<<<<<<< HEAD:src/utilities/__tests__/coerceInputValue-test.ts
 interface CoerceResult {
   value: unknown;
   errors: ReadonlyArray<CoerceError>;
@@ -29,6 +30,19 @@ function coerceValue(
   type: GraphQLInputType,
 ): CoerceResult {
   const errors: Array<CoerceError> = [];
+=======
+type CoerceResult = {
+  value: mixed;
+  errors: $ReadOnlyArray<{
+    path: $ReadOnlyArray<string | number>;
+    value: mixed;
+    error: string;
+  }>;
+};
+
+function coerceValue(inputValue: mixed, type: GraphQLInputType): CoerceResult {
+  const errors = [];
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/__tests__/coerceInputValue-test.js
   const value = coerceInputValue(
     inputValue,
     type,

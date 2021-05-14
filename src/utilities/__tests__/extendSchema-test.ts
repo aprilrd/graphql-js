@@ -37,12 +37,21 @@ import { extendSchema } from '../extendSchema';
 import { buildSchema } from '../buildASTSchema';
 
 function expectExtensionASTNodes(obj: {
+<<<<<<< HEAD:src/utilities/__tests__/extendSchema-test.ts
   readonly extensionASTNodes: ReadonlyArray<ASTNode>;
+=======
+  +extensionASTNodes: $ReadOnlyArray<ASTNode>;
+  ...
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/__tests__/extendSchema-test.js
 }) {
   return expect(obj.extensionASTNodes.map(print).join('\n\n'));
 }
 
+<<<<<<< HEAD:src/utilities/__tests__/extendSchema-test.ts
 function expectASTNode(obj: Maybe<{ readonly astNode: Maybe<ASTNode> }>) {
+=======
+function expectASTNode(obj: ?{ +astNode: ?ASTNode; ... }) {
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/__tests__/extendSchema-test.js
   invariant(obj?.astNode != null);
   return expect(print(obj.astNode));
 }

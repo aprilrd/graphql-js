@@ -96,7 +96,11 @@ export interface ParseOptions {
    *
    */
   allowLegacyFragmentVariables?: boolean;
+<<<<<<< HEAD:src/language/parser.ts
 }
+=======
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/language/parser.js
 
 /**
  * Given a GraphQL source, parses it into a Document.
@@ -1358,7 +1362,11 @@ export class Parser {
    * location object, used to identify the place in the source that created a
    * given parsed object.
    */
+<<<<<<< HEAD:src/language/parser.ts
   node<T extends { loc?: Location }>(startToken: Token, node: T): T {
+=======
+  node<T: { loc?: Location; ... }>(startToken: Token, node: T): T {
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/language/parser.js
     if (this._options?.noLocation !== true) {
       node.loc = new Location(
         startToken,

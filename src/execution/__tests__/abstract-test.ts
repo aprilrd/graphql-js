@@ -20,7 +20,11 @@ import { executeSync, execute } from '../execute';
 async function executeQuery(args: {
   schema: GraphQLSchema;
   query: string;
+<<<<<<< HEAD:src/execution/__tests__/abstract-test.ts
   rootValue?: unknown;
+=======
+  rootValue?: mixed;
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/__tests__/abstract-test.js
 }) {
   const { schema, query, rootValue } = args;
   const document = parse(query);

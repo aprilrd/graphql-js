@@ -110,6 +110,7 @@ export class GraphQLDirective {
   }
 }
 
+<<<<<<< HEAD:src/type/directives.ts
 export interface GraphQLDirectiveConfig {
   name: string;
   description?: Maybe<string>;
@@ -125,6 +126,24 @@ interface GraphQLDirectiveNormalizedConfig extends GraphQLDirectiveConfig {
   isRepeatable: boolean;
   extensions: Maybe<Readonly<GraphQLDirectiveExtensions>>;
 }
+=======
+export type GraphQLDirectiveConfig = {
+  name: string;
+  description?: ?string;
+  locations: Array<DirectiveLocationEnum>;
+  args?: ?GraphQLFieldConfigArgumentMap;
+  isRepeatable?: ?boolean;
+  extensions?: ?ReadOnlyObjMapLike<mixed>;
+  astNode?: ?DirectiveDefinitionNode;
+};
+
+type GraphQLDirectiveNormalizedConfig = {
+  ...GraphQLDirectiveConfig;
+  args: GraphQLFieldConfigArgumentMap;
+  isRepeatable: boolean;
+  extensions: ?ReadOnlyObjMap<mixed>;
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/directives.js
 
 /**
  * Used to conditionally include fields or fragments.

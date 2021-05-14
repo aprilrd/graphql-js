@@ -61,6 +61,7 @@ export class GraphQLError extends Error {
   /**
    * Extension fields to add to the formatted error.
    */
+<<<<<<< HEAD:src/error/GraphQLError.ts
   readonly extensions?: { [key: string]: unknown };
 
   constructor(
@@ -71,6 +72,18 @@ export class GraphQLError extends Error {
     path?: Maybe<ReadonlyArray<string | number>>,
     originalError?: Maybe<Error & { readonly extensions?: unknown }>,
     extensions?: Maybe<{ [key: string]: unknown }>,
+=======
+  +extensions: { [key: string]: mixed; ... } | void;
+
+  constructor(
+    message: string,
+    nodes?: $ReadOnlyArray<ASTNode> | ASTNode | void | null,
+    source?: ?Source,
+    positions?: ?$ReadOnlyArray<number>,
+    path?: ?$ReadOnlyArray<string | number>,
+    originalError?: ?(Error & { +extensions?: mixed; ... }),
+    extensions?: ?{ [key: string]: mixed; ... },
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/error/GraphQLError.js
   ) {
     super(message);
 

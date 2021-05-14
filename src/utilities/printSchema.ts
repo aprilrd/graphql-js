@@ -299,7 +299,11 @@ function printSpecifiedByURL(scalar: GraphQLScalarType): string {
 }
 
 function printDescription(
+<<<<<<< HEAD:src/utilities/printSchema.ts
   def: { readonly description: Maybe<string> },
+=======
+  def: { +description: ?string; ... },
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/printSchema.js
   indentation: string = '',
   firstInBlock: boolean = true,
 ): string {

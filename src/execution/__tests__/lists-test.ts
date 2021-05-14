@@ -65,7 +65,11 @@ describe('Execute: Accepts any iterable as list value', () => {
 });
 
 describe('Execute: Handles list nullability', () => {
+<<<<<<< HEAD:src/execution/__tests__/lists-test.ts
   async function complete(args: { listField: unknown; as: string }) {
+=======
+  async function complete(args: { listField: mixed; as: string }) {
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/__tests__/lists-test.js
     const { listField, as } = args;
     const schema = buildSchema(`type Query { listField: ${as} }`);
     const document = parse('{ listField }');

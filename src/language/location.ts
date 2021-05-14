@@ -7,10 +7,17 @@ const LineRegExp = /\r\n|[\n\r]/g;
 /**
  * Represents a location in a Source.
  */
+<<<<<<< HEAD:src/language/location.ts
 export interface SourceLocation {
   readonly line: number;
   readonly column: number;
 }
+=======
+export type SourceLocation = {
+  +line: number;
+  +column: number;
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/language/location.js
 
 /**
  * Takes a Source and a UTF-8 character offset, and returns the corresponding

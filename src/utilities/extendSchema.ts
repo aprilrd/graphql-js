@@ -82,14 +82,24 @@ import {
 
 import { valueFromAST } from './valueFromAST';
 
+<<<<<<< HEAD:src/utilities/extendSchema.ts
 interface Options extends GraphQLSchemaValidationOptions {
+=======
+type Options = {
+  ...GraphQLSchemaValidationOptions;
+
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/extendSchema.js
   /**
    * Set to true to assume the SDL is valid.
    *
    * Default: false
    */
   assumeValidSDL?: boolean;
+<<<<<<< HEAD:src/utilities/extendSchema.ts
 }
+=======
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/extendSchema.js
 
 /**
  * Produces a new schema given an existing schema and a document which may
@@ -393,9 +403,15 @@ export function extendSchemaImpl(
   function getOperationTypes(
     nodes: ReadonlyArray<SchemaDefinitionNode | SchemaExtensionNode>,
   ): {
+<<<<<<< HEAD:src/utilities/extendSchema.ts
     query?: Maybe<GraphQLObjectType>;
     mutation?: Maybe<GraphQLObjectType>;
     subscription?: Maybe<GraphQLObjectType>;
+=======
+    query: ?GraphQLObjectType;
+    mutation: ?GraphQLObjectType;
+    subscription: ?GraphQLObjectType;
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/extendSchema.js
   } {
     const opTypes = {};
     for (const node of nodes) {

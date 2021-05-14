@@ -93,6 +93,7 @@ import {
  * Namely, schema of the type system that is currently executing,
  * and the fragments defined in the query document
  */
+<<<<<<< HEAD:src/execution/execute.ts
 export interface ExecutionContext {
   schema: GraphQLSchema;
   fragments: ObjMap<FragmentDefinitionNode>;
@@ -104,6 +105,19 @@ export interface ExecutionContext {
   typeResolver: GraphQLTypeResolver<any, any>;
   errors: Array<GraphQLError>;
 }
+=======
+export type ExecutionContext = {
+  schema: GraphQLSchema;
+  fragments: ObjMap<FragmentDefinitionNode>;
+  rootValue: mixed;
+  contextValue: mixed;
+  operation: OperationDefinitionNode;
+  variableValues: { [variable: string]: mixed; ... };
+  fieldResolver: GraphQLFieldResolver<any, any>;
+  typeResolver: GraphQLTypeResolver<any, any>;
+  errors: Array<GraphQLError>;
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/execute.js
 
 /**
  * The result of GraphQL execution.
@@ -112,6 +126,7 @@ export interface ExecutionContext {
  *   - `data` is the result of a successful execution of the query.
  *   - `extensions` is reserved for adding non-standard properties.
  */
+<<<<<<< HEAD:src/execution/execute.ts
 export interface ExecutionResult<
   TData = ObjMap<unknown>,
   TExtensions = ObjMap<unknown>,
@@ -140,6 +155,30 @@ export interface ExecutionArgs {
   fieldResolver?: Maybe<GraphQLFieldResolver<any, any>>;
   typeResolver?: Maybe<GraphQLTypeResolver<any, any>>;
 }
+=======
+export type ExecutionResult = {
+  errors?: $ReadOnlyArray<GraphQLError>;
+  data?: ObjMap<mixed> | null;
+  extensions?: ObjMap<mixed>;
+};
+
+export type FormattedExecutionResult = {
+  errors?: $ReadOnlyArray<GraphQLFormattedError>;
+  data?: ObjMap<mixed> | null;
+  extensions?: ObjMap<mixed>;
+};
+
+export type ExecutionArgs = {
+  schema: GraphQLSchema;
+  document: DocumentNode;
+  rootValue?: mixed;
+  contextValue?: mixed;
+  variableValues?: ?{ +[variable: string]: mixed; ... };
+  operationName?: ?string;
+  fieldResolver?: ?GraphQLFieldResolver<any, any>;
+  typeResolver?: ?GraphQLTypeResolver<any, any>;
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/execute.js
 
 /**
  * Implements the "Evaluating requests" section of the GraphQL specification.
@@ -236,7 +275,11 @@ function buildResponse(
 export function assertValidExecutionArguments(
   schema: GraphQLSchema,
   document: DocumentNode,
+<<<<<<< HEAD:src/execution/execute.ts
   rawVariableValues: Maybe<{ readonly [variable: string]: unknown }>,
+=======
+  rawVariableValues: ?{ +[variable: string]: mixed; ... },
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/execute.js
 ): void {
   devAssert(document, 'Must provide document.');
 
@@ -261,6 +304,7 @@ export function assertValidExecutionArguments(
 export function buildExecutionContext(
   schema: GraphQLSchema,
   document: DocumentNode,
+<<<<<<< HEAD:src/execution/execute.ts
   rootValue: unknown,
   contextValue: unknown,
   rawVariableValues: Maybe<{ readonly [variable: string]: unknown }>,
@@ -269,6 +313,16 @@ export function buildExecutionContext(
   typeResolver?: Maybe<GraphQLTypeResolver<unknown, unknown>>,
 ): ReadonlyArray<GraphQLError> | ExecutionContext {
   let operation: OperationDefinitionNode | undefined;
+=======
+  rootValue: mixed,
+  contextValue: mixed,
+  rawVariableValues: ?{ +[variable: string]: mixed; ... },
+  operationName: ?string,
+  fieldResolver: ?GraphQLFieldResolver<mixed, mixed>,
+  typeResolver?: ?GraphQLTypeResolver<mixed, mixed>,
+): $ReadOnlyArray<GraphQLError> | ExecutionContext {
+  let operation: OperationDefinitionNode | void;
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/execute.js
   const fragments: ObjMap<FragmentDefinitionNode> = Object.create(null);
   for (const definition of document.definitions) {
     switch (definition.kind) {

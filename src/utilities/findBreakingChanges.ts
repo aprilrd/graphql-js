@@ -63,6 +63,7 @@ export const DangerousChangeType = Object.freeze({
   ARG_DEFAULT_VALUE_CHANGE: 'ARG_DEFAULT_VALUE_CHANGE',
 } as const);
 
+<<<<<<< HEAD:src/utilities/findBreakingChanges.ts
 export interface BreakingChange {
   type: keyof typeof BreakingChangeType;
   description: string;
@@ -72,6 +73,17 @@ export interface DangerousChange {
   type: keyof typeof DangerousChangeType;
   description: string;
 }
+=======
+export type BreakingChange = {
+  type: $Keys<typeof BreakingChangeType>;
+  description: string;
+};
+
+export type DangerousChange = {
+  type: $Keys<typeof DangerousChangeType>;
+  description: string;
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/findBreakingChanges.js
 
 /**
  * Given two schemas, returns an Array containing descriptions of all the types
@@ -553,9 +565,15 @@ function stringifyValue(value: unknown, type: GraphQLInputType): string {
   return print(sortedAST);
 }
 
+<<<<<<< HEAD:src/utilities/findBreakingChanges.ts
 function diff<T extends { name: string }>(
   oldArray: ReadonlyArray<T>,
   newArray: ReadonlyArray<T>,
+=======
+function diff<T: { name: string; ... }>(
+  oldArray: $ReadOnlyArray<T>,
+  newArray: $ReadOnlyArray<T>,
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/findBreakingChanges.js
 ): {
   added: Array<T>;
   removed: Array<T>;

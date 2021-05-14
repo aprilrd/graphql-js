@@ -114,7 +114,11 @@ const schema = new GraphQLSchema({
 
 function executeQuery(
   source: string,
+<<<<<<< HEAD:src/type/__tests__/enumType-test.ts
   variableValues?: { readonly [variable: string]: unknown },
+=======
+  variableValues?: { +[variable: string]: mixed; ... },
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/__tests__/enumType-test.js
 ) {
   return graphqlSync({ schema, source, variableValues });
 }

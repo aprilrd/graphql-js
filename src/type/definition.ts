@@ -659,6 +659,7 @@ export type GraphQLScalarValueParser<TInternal> = (
 
 export type GraphQLScalarLiteralParser<TInternal> = (
   valueNode: ValueNode,
+<<<<<<< HEAD:src/type/definition.ts
   variables?: Maybe<ObjMap<unknown>>,
 ) => Maybe<TInternal>;
 
@@ -701,6 +702,34 @@ interface GraphQLScalarTypeNormalizedConfig
 export interface GraphQLObjectTypeExtensions<_TSource = any, _TContext = any> {
   [attributeName: string]: unknown;
 }
+=======
+  variables: ?ObjMap<mixed>,
+) => ?TInternal;
+
+export type GraphQLScalarTypeConfig<TInternal, TExternal> = {
+  name: string;
+  description?: ?string;
+  specifiedByURL?: ?string;
+  // Serializes an internal value to include in a response.
+  serialize?: GraphQLScalarSerializer<TExternal>;
+  // Parses an externally provided value to use as an input.
+  parseValue?: GraphQLScalarValueParser<TInternal>;
+  // Parses an externally provided literal value to use as an input.
+  parseLiteral?: GraphQLScalarLiteralParser<TInternal>;
+  extensions?: ?ReadOnlyObjMapLike<mixed>;
+  astNode?: ?ScalarTypeDefinitionNode;
+  extensionASTNodes?: ?$ReadOnlyArray<ScalarTypeExtensionNode>;
+};
+
+type GraphQLScalarTypeNormalizedConfig = {
+  ...GraphQLScalarTypeConfig<mixed, mixed>;
+  serialize: GraphQLScalarSerializer<mixed>;
+  parseValue: GraphQLScalarValueParser<mixed>;
+  parseLiteral: GraphQLScalarLiteralParser<mixed>;
+  extensions: ?ReadOnlyObjMap<mixed>;
+  extensionASTNodes: $ReadOnlyArray<ScalarTypeExtensionNode>;
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/definition.js
 
 /**
  * Object Type Definition
@@ -917,6 +946,7 @@ export function argsToArgsConfig(
   );
 }
 
+<<<<<<< HEAD:src/type/definition.ts
 export interface GraphQLObjectTypeConfig<TSource, TContext> {
   name: string;
   description?: Maybe<string>;
@@ -935,6 +965,26 @@ interface GraphQLObjectTypeNormalizedConfig<TSource, TContext>
   extensions: Maybe<Readonly<GraphQLObjectTypeExtensions<TSource, TContext>>>;
   extensionASTNodes: ReadonlyArray<ObjectTypeExtensionNode>;
 }
+=======
+export type GraphQLObjectTypeConfig<TSource, TContext> = {
+  name: string;
+  description?: ?string;
+  interfaces?: ThunkArray<GraphQLInterfaceType>;
+  fields: ThunkObjMap<GraphQLFieldConfig<TSource, TContext>>;
+  isTypeOf?: ?GraphQLIsTypeOfFn<TSource, TContext>;
+  extensions?: ?ReadOnlyObjMapLike<mixed>;
+  astNode?: ?ObjectTypeDefinitionNode;
+  extensionASTNodes?: ?$ReadOnlyArray<ObjectTypeExtensionNode>;
+};
+
+type GraphQLObjectTypeNormalizedConfig = {
+  ...GraphQLObjectTypeConfig<any, any>;
+  interfaces: Array<GraphQLInterfaceType>;
+  fields: GraphQLFieldConfigMap<any, any>;
+  extensions: ?ReadOnlyObjMap<mixed>;
+  extensionASTNodes: $ReadOnlyArray<ObjectTypeExtensionNode>;
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/definition.js
 
 export type GraphQLTypeResolver<TSource, TContext> = (
   value: TSource,
@@ -952,12 +1002,17 @@ export type GraphQLIsTypeOfFn<TSource, TContext> = (
 export type GraphQLFieldResolver<
   TSource,
   TContext,
+<<<<<<< HEAD:src/type/definition.ts
   TArgs = { [argument: string]: any },
+=======
+  TArgs = { [argument: string]: any; ... },
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/definition.js
 > = (
   source: TSource,
   args: TArgs,
   context: TContext,
   info: GraphQLResolveInfo,
+<<<<<<< HEAD:src/type/definition.ts
 ) => unknown;
 
 export interface GraphQLResolveInfo {
@@ -999,10 +1054,34 @@ export interface GraphQLFieldConfig<
   TArgs = { [argument: string]: any },
 > {
   description?: Maybe<string>;
+=======
+) => mixed;
+
+export type GraphQLResolveInfo = {
+  +fieldName: string;
+  +fieldNodes: $ReadOnlyArray<FieldNode>;
+  +returnType: GraphQLOutputType;
+  +parentType: GraphQLObjectType;
+  +path: Path;
+  +schema: GraphQLSchema;
+  +fragments: ObjMap<FragmentDefinitionNode>;
+  +rootValue: mixed;
+  +operation: OperationDefinitionNode;
+  +variableValues: { [variable: string]: mixed; ... };
+};
+
+export type GraphQLFieldConfig<
+  TSource,
+  TContext,
+  TArgs = { [argument: string]: any; ... },
+> = {
+  description?: ?string;
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/definition.js
   type: GraphQLOutputType;
   args?: GraphQLFieldConfigArgumentMap;
   resolve?: GraphQLFieldResolver<TSource, TContext, TArgs>;
   subscribe?: GraphQLFieldResolver<TSource, TContext, TArgs>;
+<<<<<<< HEAD:src/type/definition.ts
   deprecationReason?: Maybe<string>;
   extensions?: Maybe<
     Readonly<GraphQLFieldExtensions<TSource, TContext, TArgs>>
@@ -1033,6 +1112,23 @@ export interface GraphQLArgumentConfig {
   extensions?: Maybe<Readonly<GraphQLArgumentExtensions>>;
   astNode?: Maybe<InputValueDefinitionNode>;
 }
+=======
+  deprecationReason?: ?string;
+  extensions?: ?ReadOnlyObjMapLike<mixed>;
+  astNode?: ?FieldDefinitionNode;
+};
+
+export type GraphQLFieldConfigArgumentMap = ObjMap<GraphQLArgumentConfig>;
+
+export type GraphQLArgumentConfig = {
+  description?: ?string;
+  type: GraphQLInputType;
+  defaultValue?: mixed;
+  extensions?: ?ReadOnlyObjMapLike<mixed>;
+  deprecationReason?: ?string;
+  astNode?: ?InputValueDefinitionNode;
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/definition.js
 
 export type GraphQLFieldConfigMap<TSource, TContext> = ObjMap<
   GraphQLFieldConfig<TSource, TContext>
@@ -1041,6 +1137,7 @@ export type GraphQLFieldConfigMap<TSource, TContext> = ObjMap<
 export interface GraphQLField<
   TSource,
   TContext,
+<<<<<<< HEAD:src/type/definition.ts
   TArgs = { [argument: string]: any },
 > {
   name: string;
@@ -1063,6 +1160,30 @@ export interface GraphQLArgument {
   extensions: Maybe<Readonly<GraphQLArgumentExtensions>>;
   astNode: Maybe<InputValueDefinitionNode>;
 }
+=======
+  TArgs = { [argument: string]: any; ... },
+> = {
+  name: string;
+  description: ?string;
+  type: GraphQLOutputType;
+  args: Array<GraphQLArgument>;
+  resolve?: GraphQLFieldResolver<TSource, TContext, TArgs>;
+  subscribe?: GraphQLFieldResolver<TSource, TContext, TArgs>;
+  deprecationReason: ?string;
+  extensions: ?ReadOnlyObjMap<mixed>;
+  astNode: ?FieldDefinitionNode;
+};
+
+export type GraphQLArgument = {
+  name: string;
+  description: ?string;
+  type: GraphQLInputType;
+  defaultValue: mixed;
+  deprecationReason: ?string;
+  extensions: ?ReadOnlyObjMap<mixed>;
+  astNode: ?InputValueDefinitionNode;
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/definition.js
 
 export function isRequiredArgument(arg: GraphQLArgument): boolean {
   return isNonNullType(arg.type) && arg.defaultValue === undefined;
@@ -1172,9 +1293,15 @@ export class GraphQLInterfaceType {
   }
 }
 
+<<<<<<< HEAD:src/type/definition.ts
 export interface GraphQLInterfaceTypeConfig<TSource, TContext> {
   name: string;
   description?: Maybe<string>;
+=======
+export type GraphQLInterfaceTypeConfig<TSource, TContext> = {
+  name: string;
+  description?: ?string;
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/definition.js
   interfaces?: ThunkArray<GraphQLInterfaceType>;
   fields: ThunkObjMap<GraphQLFieldConfig<TSource, TContext>>;
   /**
@@ -1182,6 +1309,7 @@ export interface GraphQLInterfaceTypeConfig<TSource, TContext> {
    * the default implementation will call `isTypeOf` on each implementing
    * Object type.
    */
+<<<<<<< HEAD:src/type/definition.ts
   resolveType?: Maybe<GraphQLTypeResolver<TSource, TContext>>;
   extensions?: Maybe<Readonly<GraphQLInterfaceTypeExtensions>>;
   astNode?: Maybe<InterfaceTypeDefinitionNode>;
@@ -1208,6 +1336,21 @@ export interface GraphQLInterfaceTypeNormalizedConfig
 export interface GraphQLUnionTypeExtensions {
   [attributeName: string]: unknown;
 }
+=======
+  resolveType?: ?GraphQLTypeResolver<TSource, TContext>;
+  extensions?: ?ReadOnlyObjMapLike<mixed>;
+  astNode?: ?InterfaceTypeDefinitionNode;
+  extensionASTNodes?: ?$ReadOnlyArray<InterfaceTypeExtensionNode>;
+};
+
+export type GraphQLInterfaceTypeNormalizedConfig = {
+  ...GraphQLInterfaceTypeConfig<any, any>;
+  interfaces: Array<GraphQLInterfaceType>;
+  fields: GraphQLFieldConfigMap<any, any>;
+  extensions: ?ReadOnlyObjMap<mixed>;
+  extensionASTNodes: $ReadOnlyArray<InterfaceTypeExtensionNode>;
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/definition.js
 
 /**
  * Union Type Definition
@@ -1302,15 +1445,22 @@ function defineTypes(
   return types;
 }
 
+<<<<<<< HEAD:src/type/definition.ts
 export interface GraphQLUnionTypeConfig<TSource, TContext> {
   name: string;
   description?: Maybe<string>;
+=======
+export type GraphQLUnionTypeConfig<TSource, TContext> = {
+  name: string;
+  description?: ?string;
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/definition.js
   types: ThunkArray<GraphQLObjectType>;
   /**
    * Optionally provide a custom type resolver function. If one is not provided,
    * the default implementation will call `isTypeOf` on each implementing
    * Object type.
    */
+<<<<<<< HEAD:src/type/definition.ts
   resolveType?: Maybe<GraphQLTypeResolver<TSource, TContext>>;
   extensions?: Maybe<Readonly<GraphQLUnionTypeExtensions>>;
   astNode?: Maybe<UnionTypeDefinitionNode>;
@@ -1336,6 +1486,20 @@ interface GraphQLUnionTypeNormalizedConfig
 export interface GraphQLEnumTypeExtensions {
   [attributeName: string]: unknown;
 }
+=======
+  resolveType?: ?GraphQLTypeResolver<TSource, TContext>;
+  extensions?: ?ReadOnlyObjMapLike<mixed>;
+  astNode?: ?UnionTypeDefinitionNode;
+  extensionASTNodes?: ?$ReadOnlyArray<UnionTypeExtensionNode>;
+};
+
+type GraphQLUnionTypeNormalizedConfig = {
+  ...GraphQLUnionTypeConfig<any, any>;
+  types: Array<GraphQLObjectType>;
+  extensions: ?ReadOnlyObjMap<mixed>;
+  extensionASTNodes: $ReadOnlyArray<UnionTypeExtensionNode>;
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/definition.js
 
 /**
  * Enum Type Definition
@@ -1519,6 +1683,7 @@ function defineEnumValues(
   });
 }
 
+<<<<<<< HEAD:src/type/definition.ts
 export interface GraphQLEnumTypeConfig {
   name: string;
   description?: Maybe<string>;
@@ -1532,10 +1697,27 @@ interface GraphQLEnumTypeNormalizedConfig extends GraphQLEnumTypeConfig {
   extensions: Maybe<Readonly<GraphQLEnumTypeExtensions>>;
   extensionASTNodes: ReadonlyArray<EnumTypeExtensionNode>;
 }
+=======
+export type GraphQLEnumTypeConfig /* <T> */ = {
+  name: string;
+  description?: ?string;
+  values: GraphQLEnumValueConfigMap /* <T> */;
+  extensions?: ?ReadOnlyObjMapLike<mixed>;
+  astNode?: ?EnumTypeDefinitionNode;
+  extensionASTNodes?: ?$ReadOnlyArray<EnumTypeExtensionNode>;
+};
+
+type GraphQLEnumTypeNormalizedConfig = {
+  ...GraphQLEnumTypeConfig;
+  extensions: ?ReadOnlyObjMap<mixed>;
+  extensionASTNodes: $ReadOnlyArray<EnumTypeExtensionNode>;
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/definition.js
 
 export type GraphQLEnumValueConfigMap /* <T> */ =
   ObjMap<GraphQLEnumValueConfig /* <T> */>;
 
+<<<<<<< HEAD:src/type/definition.ts
 /**
  * Custom extensions
  *
@@ -1578,6 +1760,24 @@ export interface GraphQLEnumValue {
 export interface GraphQLInputObjectTypeExtensions {
   [attributeName: string]: unknown;
 }
+=======
+export type GraphQLEnumValueConfig /* <T> */ = {
+  description?: ?string;
+  value?: any /* T */;
+  deprecationReason?: ?string;
+  extensions?: ?ReadOnlyObjMapLike<mixed>;
+  astNode?: ?EnumValueDefinitionNode;
+};
+
+export type GraphQLEnumValue /* <T> */ = {
+  name: string;
+  description: ?string;
+  value: any /* T */;
+  deprecationReason: ?string;
+  extensions: ?ReadOnlyObjMap<mixed>;
+  astNode: ?EnumValueDefinitionNode;
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/definition.js
 
 /**
  * Input Object Type Definition
@@ -1684,6 +1884,7 @@ function defineInputFieldMap(
   });
 }
 
+<<<<<<< HEAD:src/type/definition.ts
 export interface GraphQLInputObjectTypeConfig {
   name: string;
   description?: Maybe<string>;
@@ -1733,6 +1934,44 @@ export interface GraphQLInputField {
   extensions: Maybe<Readonly<GraphQLInputFieldExtensions>>;
   astNode: Maybe<InputValueDefinitionNode>;
 }
+=======
+export type GraphQLInputObjectTypeConfig = {
+  name: string;
+  description?: ?string;
+  fields: ThunkObjMap<GraphQLInputFieldConfig>;
+  extensions?: ?ReadOnlyObjMapLike<mixed>;
+  astNode?: ?InputObjectTypeDefinitionNode;
+  extensionASTNodes?: ?$ReadOnlyArray<InputObjectTypeExtensionNode>;
+};
+
+type GraphQLInputObjectTypeNormalizedConfig = {
+  ...GraphQLInputObjectTypeConfig;
+  fields: GraphQLInputFieldConfigMap;
+  extensions: ?ReadOnlyObjMap<mixed>;
+  extensionASTNodes: $ReadOnlyArray<InputObjectTypeExtensionNode>;
+};
+
+export type GraphQLInputFieldConfig = {
+  description?: ?string;
+  type: GraphQLInputType;
+  defaultValue?: mixed;
+  deprecationReason?: ?string;
+  extensions?: ?ReadOnlyObjMapLike<mixed>;
+  astNode?: ?InputValueDefinitionNode;
+};
+
+export type GraphQLInputFieldConfigMap = ObjMap<GraphQLInputFieldConfig>;
+
+export type GraphQLInputField = {
+  name: string;
+  description: ?string;
+  type: GraphQLInputType;
+  defaultValue: mixed;
+  deprecationReason: ?string;
+  extensions: ?ReadOnlyObjMap<mixed>;
+  astNode: ?InputValueDefinitionNode;
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/definition.js
 
 export function isRequiredInputField(field: GraphQLInputField): boolean {
   return isNonNullType(field.type) && field.defaultValue === undefined;

@@ -51,13 +51,22 @@ function cycleSDL(sdl: string): string {
   return printSchema(buildSchema(sdl));
 }
 
+<<<<<<< HEAD:src/utilities/__tests__/buildASTSchema-test.ts
 function expectASTNode(obj: Maybe<{ readonly astNode: Maybe<ASTNode> }>) {
+=======
+function expectASTNode(obj: ?{ +astNode: ?ASTNode; ... }) {
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/__tests__/buildASTSchema-test.js
   invariant(obj?.astNode != null);
   return expect(print(obj.astNode));
 }
 
 function expectExtensionASTNodes(obj: {
+<<<<<<< HEAD:src/utilities/__tests__/buildASTSchema-test.ts
   readonly extensionASTNodes: ReadonlyArray<ASTNode>;
+=======
+  +extensionASTNodes: $ReadOnlyArray<ASTNode>;
+  ...
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/__tests__/buildASTSchema-test.js
 }) {
   return expect(obj.extensionASTNodes.map(print).join('\n\n'));
 }

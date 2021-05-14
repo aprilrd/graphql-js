@@ -30,11 +30,19 @@ import type {
 import { TypeInfo, visitWithTypeInfo } from '../utilities/TypeInfo';
 
 type NodeWithSelectionSet = OperationDefinitionNode | FragmentDefinitionNode;
+<<<<<<< HEAD:src/validation/ValidationContext.ts
 interface VariableUsage {
   readonly node: VariableNode;
   readonly type: Maybe<GraphQLInputType>;
   readonly defaultValue: Maybe<unknown>;
 }
+=======
+type VariableUsage = {
+  +node: VariableNode;
+  +type: ?GraphQLInputType;
+  +defaultValue: ?mixed;
+};
+>>>>>>> Flow: use semicolon as separate inside types (#3089):src/validation/ValidationContext.js
 
 /**
  * An instance of this class is passed as the "this" context to all validators,
