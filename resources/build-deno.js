@@ -22,7 +22,11 @@ if (require.main === module) {
     const destPath = path.join('./denoDist', filepath);
 
     fs.mkdirSync(path.dirname(destPath), { recursive: true });
+<<<<<<< HEAD
     if (filepath.endsWith('.ts')) {
+=======
+    if (filepath.endsWith('.ts') && !filepath.endsWith('.d.ts')) {
+>>>>>>> TS Migration: enable tests and remove flow infra (#3091)
       const options = { babelrc: false, configFile: './.babelrc-deno.json' };
       const output = babel.transformFileSync(srcPath, options).code + '\n';
       writeGeneratedFile(destPath, output);

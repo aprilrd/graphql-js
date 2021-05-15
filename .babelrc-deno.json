@@ -1,6 +1,10 @@
 {
   "plugins": [
+<<<<<<< HEAD
     "@babel/plugin-syntax-typescript",
+=======
+    "@babel/plugin-transform-typescript",
+>>>>>>> TS Migration: enable tests and remove flow infra (#3091)
     ["./resources/add-extension-to-import-paths", { "extension": "ts" }],
     "./resources/inline-invariant"
   ]

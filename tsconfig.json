@@ -4,7 +4,14 @@
     "module": "commonjs",
     "lib": ["es2019", "es2020.promise", "es2020.bigint", "es2020.string"],
     "target": "es2019",
+<<<<<<< HEAD
     "strict": true,
+=======
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+>>>>>>> TS Migration: enable tests and remove flow infra (#3091)
     "noEmit": true,
     "forceConsistentCasingInFileNames": true
   }
