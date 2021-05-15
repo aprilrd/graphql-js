@@ -183,8 +183,13 @@ export function parseType(
  * @internal
  */
 export class Parser {
+<<<<<<< HEAD
   private _options: Maybe<ParseOptions>;
   private _lexer: Lexer;
+=======
+  _options: Maybe<ParseOptions>;
+  _lexer: Lexer;
+>>>>>>> Switch to TS syntax (#3090)
 
   constructor(source: string | Source, options?: ParseOptions) {
     const sourceObj = isSource(source) ? source : new Source(source);
@@ -1362,11 +1367,15 @@ export class Parser {
    * location object, used to identify the place in the source that created a
    * given parsed object.
    */
+<<<<<<< HEAD
 <<<<<<< HEAD:src/language/parser.ts
   node<T extends { loc?: Location }>(startToken: Token, node: T): T {
 =======
   node<T: { loc?: Location; ... }>(startToken: Token, node: T): T {
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/language/parser.js
+=======
+  node<T extends { loc?: Location }>(startToken: Token, node: T): T {
+>>>>>>> Switch to TS syntax (#3090)
     if (this._options?.noLocation !== true) {
       node.loc = new Location(
         startToken,

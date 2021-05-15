@@ -109,10 +109,10 @@ export interface ExecutionContext {
 export type ExecutionContext = {
   schema: GraphQLSchema;
   fragments: ObjMap<FragmentDefinitionNode>;
-  rootValue: mixed;
-  contextValue: mixed;
+  rootValue: unknown;
+  contextValue: unknown;
   operation: OperationDefinitionNode;
-  variableValues: { [variable: string]: mixed; ... };
+  variableValues: { [variable: string]: unknown };
   fieldResolver: GraphQLFieldResolver<any, any>;
   typeResolver: GraphQLTypeResolver<any, any>;
   errors: Array<GraphQLError>;
@@ -157,26 +157,26 @@ export interface ExecutionArgs {
 }
 =======
 export type ExecutionResult = {
-  errors?: $ReadOnlyArray<GraphQLError>;
-  data?: ObjMap<mixed> | null;
-  extensions?: ObjMap<mixed>;
+  errors?: ReadonlyArray<GraphQLError>;
+  data?: ObjMap<unknown> | null;
+  extensions?: ObjMap<unknown>;
 };
 
 export type FormattedExecutionResult = {
-  errors?: $ReadOnlyArray<GraphQLFormattedError>;
-  data?: ObjMap<mixed> | null;
-  extensions?: ObjMap<mixed>;
+  errors?: ReadonlyArray<GraphQLFormattedError>;
+  data?: ObjMap<unknown> | null;
+  extensions?: ObjMap<unknown>;
 };
 
 export type ExecutionArgs = {
   schema: GraphQLSchema;
   document: DocumentNode;
-  rootValue?: mixed;
-  contextValue?: mixed;
-  variableValues?: ?{ +[variable: string]: mixed; ... };
-  operationName?: ?string;
-  fieldResolver?: ?GraphQLFieldResolver<any, any>;
-  typeResolver?: ?GraphQLTypeResolver<any, any>;
+  rootValue?: unknown;
+  contextValue?: unknown;
+  variableValues?: Maybe<{ readonly [variable: string]: unknown }>;
+  operationName?: Maybe<string>;
+  fieldResolver?: Maybe<GraphQLFieldResolver<any, any>>;
+  typeResolver?: Maybe<GraphQLTypeResolver<any, any>>;
 };
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/execute.js
 
@@ -275,11 +275,15 @@ function buildResponse(
 export function assertValidExecutionArguments(
   schema: GraphQLSchema,
   document: DocumentNode,
+<<<<<<< HEAD
 <<<<<<< HEAD:src/execution/execute.ts
   rawVariableValues: Maybe<{ readonly [variable: string]: unknown }>,
 =======
   rawVariableValues: ?{ +[variable: string]: mixed; ... },
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/execute.js
+=======
+  rawVariableValues: Maybe<{ readonly [variable: string]: unknown }>,
+>>>>>>> Switch to TS syntax (#3090)
 ): void {
   devAssert(document, 'Must provide document.');
 
@@ -304,7 +308,10 @@ export function assertValidExecutionArguments(
 export function buildExecutionContext(
   schema: GraphQLSchema,
   document: DocumentNode,
+<<<<<<< HEAD
 <<<<<<< HEAD:src/execution/execute.ts
+=======
+>>>>>>> Switch to TS syntax (#3090)
   rootValue: unknown,
   contextValue: unknown,
   rawVariableValues: Maybe<{ readonly [variable: string]: unknown }>,
@@ -312,6 +319,7 @@ export function buildExecutionContext(
   fieldResolver: Maybe<GraphQLFieldResolver<unknown, unknown>>,
   typeResolver?: Maybe<GraphQLTypeResolver<unknown, unknown>>,
 ): ReadonlyArray<GraphQLError> | ExecutionContext {
+<<<<<<< HEAD
   let operation: OperationDefinitionNode | undefined;
 =======
   rootValue: mixed,
@@ -321,6 +329,8 @@ export function buildExecutionContext(
   fieldResolver: ?GraphQLFieldResolver<mixed, mixed>,
   typeResolver?: ?GraphQLTypeResolver<mixed, mixed>,
 ): $ReadOnlyArray<GraphQLError> | ExecutionContext {
+=======
+>>>>>>> Switch to TS syntax (#3090)
   let operation: OperationDefinitionNode | void;
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/execute.js
   const fragments: ObjMap<FragmentDefinitionNode> = Object.create(null);
@@ -428,7 +438,11 @@ function executeFieldsSerially(
   exeContext: ExecutionContext,
   parentType: GraphQLObjectType,
   sourceValue: unknown,
+<<<<<<< HEAD
   path: Path | undefined,
+=======
+  path: Path | void,
+>>>>>>> Switch to TS syntax (#3090)
   fields: Map<string, Array<FieldNode>>,
 ): PromiseOrValue<ObjMap<unknown>> {
   return promiseReduce(
@@ -466,7 +480,11 @@ function executeFields(
   exeContext: ExecutionContext,
   parentType: GraphQLObjectType,
   sourceValue: unknown,
+<<<<<<< HEAD
   path: Path | undefined,
+=======
+  path: Path | void,
+>>>>>>> Switch to TS syntax (#3090)
   fields: Map<string, Array<FieldNode>>,
 ): PromiseOrValue<ObjMap<unknown>> {
   const results = Object.create(null);
@@ -862,7 +880,12 @@ function completeValue(
   // istanbul ignore next (Not reachable. All possible output types have been considered)
   invariant(
     false,
+<<<<<<< HEAD
     'Cannot complete value of unexpected output type: ' + inspect(returnType),
+=======
+    'Cannot complete value of unexpected output type: ' +
+      inspect(returnType as never),
+>>>>>>> Switch to TS syntax (#3090)
   );
 }
 

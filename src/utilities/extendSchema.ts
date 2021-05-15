@@ -82,6 +82,7 @@ import {
 
 import { valueFromAST } from './valueFromAST';
 
+<<<<<<< HEAD
 <<<<<<< HEAD:src/utilities/extendSchema.ts
 interface Options extends GraphQLSchemaValidationOptions {
 =======
@@ -89,17 +90,24 @@ type Options = {
   ...GraphQLSchemaValidationOptions;
 
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/extendSchema.js
+=======
+interface Options extends GraphQLSchemaValidationOptions {
+>>>>>>> Switch to TS syntax (#3090)
   /**
    * Set to true to assume the SDL is valid.
    *
    * Default: false
    */
   assumeValidSDL?: boolean;
+<<<<<<< HEAD
 <<<<<<< HEAD:src/utilities/extendSchema.ts
 }
 =======
 };
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/extendSchema.js
+=======
+}
+>>>>>>> Switch to TS syntax (#3090)
 
 /**
  * Produces a new schema given an existing schema and a document which may
@@ -279,7 +287,11 @@ export function extendSchemaImpl(
     }
 
     // istanbul ignore next (Not reachable. All possible types have been considered)
+<<<<<<< HEAD
     invariant(false, 'Unexpected type: ' + inspect(type));
+=======
+    invariant(false, 'Unexpected type: ' + inspect(type as never));
+>>>>>>> Switch to TS syntax (#3090)
   }
 
   function extendInputObjectType(
@@ -403,6 +415,7 @@ export function extendSchemaImpl(
   function getOperationTypes(
     nodes: ReadonlyArray<SchemaDefinitionNode | SchemaExtensionNode>,
   ): {
+<<<<<<< HEAD
 <<<<<<< HEAD:src/utilities/extendSchema.ts
     query?: Maybe<GraphQLObjectType>;
     mutation?: Maybe<GraphQLObjectType>;
@@ -412,6 +425,11 @@ export function extendSchemaImpl(
     mutation: ?GraphQLObjectType;
     subscription: ?GraphQLObjectType;
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/extendSchema.js
+=======
+    query: Maybe<GraphQLObjectType>;
+    mutation: Maybe<GraphQLObjectType>;
+    subscription: Maybe<GraphQLObjectType>;
+>>>>>>> Switch to TS syntax (#3090)
   } {
     const opTypes = {};
     for (const node of nodes) {
@@ -667,7 +685,14 @@ export function extendSchemaImpl(
     }
 
     // istanbul ignore next (Not reachable. All possible type definition nodes have been considered)
+<<<<<<< HEAD
     invariant(false, 'Unexpected type definition node: ' + inspect(astNode));
+=======
+    invariant(
+      false,
+      'Unexpected type definition node: ' + inspect(astNode as never),
+    );
+>>>>>>> Switch to TS syntax (#3090)
   }
 }
 

@@ -124,11 +124,15 @@ const schema = new GraphQLSchema({ query: TestType });
 
 function executeQuery(
   query: string,
+<<<<<<< HEAD
 <<<<<<< HEAD:src/execution/__tests__/variables-test.ts
   variableValues?: { [variable: string]: unknown },
 =======
   variableValues?: { [variable: string]: mixed; ... },
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/__tests__/variables-test.js
+=======
+  variableValues?: { [variable: string]: unknown },
+>>>>>>> Switch to TS syntax (#3090)
 ) {
   const document = parse(query);
   return executeSync({ schema, document, variableValues });

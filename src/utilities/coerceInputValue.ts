@@ -32,7 +32,11 @@ export function coerceInputValue(
   type: GraphQLInputType,
   onError: OnErrorCB = defaultOnError,
 ): unknown {
+<<<<<<< HEAD
   return coerceInputValueImpl(inputValue, type, onError, undefined);
+=======
+  return coerceInputValueImpl(inputValue, type, onError);
+>>>>>>> Switch to TS syntax (#3090)
 }
 
 function defaultOnError(
@@ -52,7 +56,11 @@ function coerceInputValueImpl(
   inputValue: unknown,
   type: GraphQLInputType,
   onError: OnErrorCB,
+<<<<<<< HEAD
   path: Path | undefined,
+=======
+  path: Path | void,
+>>>>>>> Switch to TS syntax (#3090)
 ): unknown {
   if (isNonNullType(type)) {
     if (inputValue != null) {
@@ -184,5 +192,9 @@ function coerceInputValueImpl(
   }
 
   // istanbul ignore next (Not reachable. All possible input types have been considered)
+<<<<<<< HEAD
   invariant(false, 'Unexpected input type: ' + inspect(type));
+=======
+  invariant(false, 'Unexpected input type: ' + inspect(type as never));
+>>>>>>> Switch to TS syntax (#3090)
 }

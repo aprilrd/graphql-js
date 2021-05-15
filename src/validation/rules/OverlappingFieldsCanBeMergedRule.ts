@@ -678,7 +678,11 @@ function doTypesConflict(
 // referenced via fragment spreads.
 function getFieldsAndFragmentNames(
   context: ValidationContext,
+<<<<<<< HEAD
   cachedFieldsAndFragmentNames: Map<SelectionSetNode, FieldsAndFragmentNames>,
+=======
+  cachedFieldsAndFragmentNames,
+>>>>>>> Switch to TS syntax (#3090)
   parentType: Maybe<GraphQLNamedType>,
   selectionSet: SelectionSetNode,
 ): FieldsAndFragmentNames {

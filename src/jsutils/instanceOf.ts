@@ -44,6 +44,5 @@ interface Constructor extends Function {
 =======
 type Constructor = {
   name: string;
-  ...
 };
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/jsutils/instanceOf.js

@@ -1,4 +1,9 @@
 import type { Maybe } from '../jsutils/Maybe';
+<<<<<<< HEAD
+=======
+
+import type { ASTNode } from './ast';
+>>>>>>> Switch to TS syntax (#3090)
 
 import type { ASTNode } from './ast';
 import type { ASTReducer } from './visitor';
@@ -308,10 +313,14 @@ const printDocASTReducer: ASTReducer<string> = {
  * Given maybeArray, print an empty string if it is null or empty, otherwise
  * print all items together separated by separator if provided
  */
+<<<<<<< HEAD
 function join(
   maybeArray: Maybe<ReadonlyArray<string | undefined>>,
   separator = '',
 ): string {
+=======
+function join(maybeArray: Maybe<Array<string>>, separator = ''): string {
+>>>>>>> Switch to TS syntax (#3090)
   return maybeArray?.filter((x) => x).join(separator) ?? '';
 }
 
@@ -319,7 +328,11 @@ function join(
  * Given array, print each item on its own line, wrapped in an
  * indented "{ }" block.
  */
+<<<<<<< HEAD
 function block(array: Maybe<ReadonlyArray<string | undefined>>): string {
+=======
+function block(array: Maybe<Array<string>>): string {
+>>>>>>> Switch to TS syntax (#3090)
   return wrap('{\n', indent(join(array, '\n')), '\n}');
 }
 
@@ -340,7 +353,11 @@ function indent(str: string): string {
   return wrap('  ', str.replace(/\n/g, '\n  '));
 }
 
+<<<<<<< HEAD
 function hasMultilineItems(maybeArray: Maybe<ReadonlyArray<string>>): boolean {
+=======
+function hasMultilineItems(maybeArray: Maybe<Array<string>>): boolean {
+>>>>>>> Switch to TS syntax (#3090)
   // istanbul ignore next (See: 'https://github.com/graphql/graphql-js/issues/2203')
   return maybeArray?.some((str) => str.includes('\n')) ?? false;
 }

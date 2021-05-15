@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< HEAD:src/jsutils/Path.ts
 import type { Maybe } from './Maybe';
 
@@ -7,10 +8,14 @@ export interface Path {
   readonly typename: string | undefined;
 }
 =======
+=======
+import type { Maybe } from './Maybe';
+
+>>>>>>> Switch to TS syntax (#3090)
 export type Path = {
-  +prev: Path | void;
-  +key: string | number;
-  +typename: string | void;
+  readonly prev: Path | void;
+  readonly key: string | number;
+  readonly typename: string | void;
 };
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/jsutils/Path.js
 
@@ -18,7 +23,11 @@ export type Path = {
  * Given a Path and a key, return a new Path containing the new key.
  */
 export function addPath(
+<<<<<<< HEAD
   prev: Readonly<Path> | undefined,
+=======
+  prev: Readonly<Path> | void,
+>>>>>>> Switch to TS syntax (#3090)
   key: string | number,
   typename: string | undefined,
 ): Path {

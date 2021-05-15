@@ -41,12 +41,12 @@ export interface SubscriptionArgs {
 export type SubscriptionArgs = {
   schema: GraphQLSchema;
   document: DocumentNode;
-  rootValue?: mixed;
-  contextValue?: mixed;
-  variableValues?: ?{ +[variable: string]: mixed; ... };
-  operationName?: ?string;
-  fieldResolver?: ?GraphQLFieldResolver<any, any>;
-  subscribeFieldResolver?: ?GraphQLFieldResolver<any, any>;
+  rootValue?: unknown;
+  contextValue?: unknown;
+  variableValues?: Maybe<{ readonly [variable: string]: unknown }>;
+  operationName?: Maybe<string>;
+  fieldResolver?: Maybe<GraphQLFieldResolver<any, any>>;
+  subscribeFieldResolver?: Maybe<GraphQLFieldResolver<any, any>>;
 };
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/subscription/subscribe.js
 
@@ -151,13 +151,17 @@ export async function subscribe(
 export async function createSourceEventStream(
   schema: GraphQLSchema,
   document: DocumentNode,
+<<<<<<< HEAD
 <<<<<<< HEAD:src/subscription/subscribe.ts
+=======
+>>>>>>> Switch to TS syntax (#3090)
   rootValue?: unknown,
   contextValue?: unknown,
   variableValues?: Maybe<{ readonly [variable: string]: unknown }>,
   operationName?: Maybe<string>,
   fieldResolver?: Maybe<GraphQLFieldResolver<any, any>>,
 ): Promise<AsyncIterable<unknown> | ExecutionResult> {
+<<<<<<< HEAD
 =======
   rootValue?: mixed,
   contextValue?: mixed,
@@ -166,6 +170,8 @@ export async function createSourceEventStream(
   fieldResolver?: ?GraphQLFieldResolver<any, any>,
 ): Promise<AsyncIterable<mixed> | ExecutionResult> {
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/subscription/subscribe.js
+=======
+>>>>>>> Switch to TS syntax (#3090)
   // If arguments are missing or incorrectly typed, this is an internal
   // developer mistake which should throw an early error.
   assertValidExecutionArguments(schema, document, variableValues);

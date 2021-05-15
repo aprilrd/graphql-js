@@ -8,13 +8,19 @@ import { isNode } from './ast';
  * A visitor is provided to visit, it contains the collection of
  * relevant functions to be called during the visitor's traversal.
  */
+<<<<<<< HEAD
 export type ASTVisitor = EnterLeaveVisitor<ASTNode> | KindVisitor;
 
 <<<<<<< HEAD:src/language/visitor.ts
+=======
+export type ASTVisitor = Partial<EnterLeaveVisitor<ASTNode> & KindVisitor>;
+
+>>>>>>> Switch to TS syntax (#3090)
 type KindVisitor = {
   readonly [K in keyof ASTKindToNode]?:
     | ASTVisitFn<ASTKindToNode[K]>
     | EnterLeaveVisitor<ASTKindToNode[K]>;
+<<<<<<< HEAD
 =======
 type KindVisitor = $ObjMap<
   ASTKindToNode,
@@ -25,6 +31,13 @@ type EnterLeaveVisitor<TVisitedNode: ASTNode> = {
   +enter?: ASTVisitFn<TVisitedNode>;
   +leave?: ASTVisitFn<TVisitedNode>;
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/language/visitor.js
+=======
+};
+
+type EnterLeaveVisitor<TVisitedNode extends ASTNode> = {
+  readonly enter?: ASTVisitFn<TVisitedNode>;
+  readonly leave?: ASTVisitFn<TVisitedNode>;
+>>>>>>> Switch to TS syntax (#3090)
 };
 
 interface EnterLeaveVisitor<TVisitedNode extends ASTNode> {
@@ -37,6 +50,7 @@ interface EnterLeaveVisitor<TVisitedNode extends ASTNode> {
  * during the visitor's traversal.
  */
 export type ASTVisitFn<TVisitedNode extends ASTNode> = (
+<<<<<<< HEAD
   /** The current node being visiting. */
   node: TVisitedNode,
   /** The index or key to this node from the parent node or Array. */
@@ -50,6 +64,19 @@ export type ASTVisitFn<TVisitedNode extends ASTNode> = (
    * These correspond to array indices in `path`.
    * Note: ancestors includes arrays which contain the parent of visited node.
    */
+=======
+  // The current node being visiting.
+  node: TVisitedNode,
+  // The index or key to this node from the parent node or Array.
+  key: string | number | void,
+  // The parent immediately above this node, which may be an Array.
+  parent: ASTNode | ReadonlyArray<ASTNode> | void,
+  // The key path to get to this node from the root node.
+  path: ReadonlyArray<string | number>,
+  // All nodes and Arrays visited before reaching parent of this node.
+  // These correspond to array indices in `path`.
+  // Note: ancestors includes arrays which contain the parent of visited node.
+>>>>>>> Switch to TS syntax (#3090)
   ancestors: ReadonlyArray<ASTNode | ReadonlyArray<ASTNode>>,
 ) => any;
 
@@ -173,7 +200,11 @@ const QueryDocumentKeys = {
   InputObjectTypeExtension: ['name', 'directives', 'fields'],
 };
 
+<<<<<<< HEAD
 export const BREAK: unknown = Object.freeze({});
+=======
+export const BREAK = Object.freeze({});
+>>>>>>> Switch to TS syntax (#3090)
 
 /**
  * visit() will walk through an AST using a depth-first traversal, calling
@@ -427,10 +458,14 @@ export function getVisitFn(
   kind: keyof ASTKindToNode,
   isLeaving: boolean,
 ): Maybe<ASTVisitFn<ASTNode>> {
+<<<<<<< HEAD
   const kindVisitor:
     | ASTVisitFn<ASTNode>
     | EnterLeaveVisitor<ASTNode>
     | undefined = (visitor as any)[kind];
+=======
+  const kindVisitor = visitor[kind];
+>>>>>>> Switch to TS syntax (#3090)
   if (kindVisitor) {
     if (typeof kindVisitor === 'function') {
       // { Kind() {} }

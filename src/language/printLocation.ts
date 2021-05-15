@@ -68,9 +68,13 @@ export function printSourceLocation(
   );
 }
 
+<<<<<<< HEAD
 function printPrefixedLines(
   lines: ReadonlyArray<readonly [string, string]>,
 ): string {
+=======
+function printPrefixedLines(lines: ReadonlyArray<[string, string]>): string {
+>>>>>>> Switch to TS syntax (#3090)
   const existingLines = lines.filter(([_, line]) => line !== undefined);
 
   const padLen = Math.max(...existingLines.map(([prefix]) => prefix.length));

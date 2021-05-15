@@ -71,12 +71,12 @@ export interface GraphQLArgs {
 export type GraphQLArgs = {
   schema: GraphQLSchema;
   source: string | Source;
-  rootValue?: mixed;
-  contextValue?: mixed;
-  variableValues?: ?{ +[variable: string]: mixed; ... };
-  operationName?: ?string;
-  fieldResolver?: ?GraphQLFieldResolver<any, any>;
-  typeResolver?: ?GraphQLTypeResolver<any, any>;
+  rootValue?: unknown;
+  contextValue?: unknown;
+  variableValues?: Maybe<{ readonly [variable: string]: unknown }>;
+  operationName?: Maybe<string>;
+  fieldResolver?: Maybe<GraphQLFieldResolver<any, any>>;
+  typeResolver?: Maybe<GraphQLTypeResolver<any, any>>;
 };
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/graphql.js
 

@@ -69,7 +69,11 @@ export function KnownDirectivesRule(
 
 function getDirectiveLocationForASTPath(
   ancestors: ReadonlyArray<ASTNode | ReadonlyArray<ASTNode>>,
+<<<<<<< HEAD
 ): DirectiveLocationEnum | undefined {
+=======
+): DirectiveLocationEnum | void {
+>>>>>>> Switch to TS syntax (#3090)
   const appliedTo = ancestors[ancestors.length - 1];
   invariant('kind' in appliedTo);
 
@@ -134,5 +138,9 @@ function getDirectiveLocationForOperation(
   }
 
   // istanbul ignore next (Not reachable. All possible types have been considered)
+<<<<<<< HEAD
   invariant(false, 'Unexpected operation: ' + inspect(operation));
+=======
+  invariant(false, 'Unexpected operation: ' + inspect(operation as never));
+>>>>>>> Switch to TS syntax (#3090)
 }

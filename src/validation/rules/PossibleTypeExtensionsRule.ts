@@ -121,7 +121,11 @@ function typeToExtKind(type: GraphQLNamedType): KindEnum {
   }
 
   // istanbul ignore next (Not reachable. All possible types have been considered)
+<<<<<<< HEAD
   invariant(false, 'Unexpected type: ' + inspect(type));
+=======
+  invariant(false, 'Unexpected type: ' + inspect(type as never));
+>>>>>>> Switch to TS syntax (#3090)
 }
 
 function extensionKindToTypeName(kind: KindEnum): string {

@@ -59,7 +59,11 @@ export class GraphQLDirective {
   locations: Array<DirectiveLocationEnum>;
   args: ReadonlyArray<GraphQLArgument>;
   isRepeatable: boolean;
+<<<<<<< HEAD
   extensions: Maybe<Readonly<GraphQLDirectiveExtensions>>;
+=======
+  extensions: Maybe<ReadOnlyObjMap<unknown>>;
+>>>>>>> Switch to TS syntax (#3090)
   astNode: Maybe<DirectiveDefinitionNode>;
 
   constructor(config: Readonly<GraphQLDirectiveConfig>) {
@@ -129,21 +133,25 @@ interface GraphQLDirectiveNormalizedConfig extends GraphQLDirectiveConfig {
 =======
 export type GraphQLDirectiveConfig = {
   name: string;
-  description?: ?string;
+  description?: Maybe<string>;
   locations: Array<DirectiveLocationEnum>;
-  args?: ?GraphQLFieldConfigArgumentMap;
-  isRepeatable?: ?boolean;
-  extensions?: ?ReadOnlyObjMapLike<mixed>;
-  astNode?: ?DirectiveDefinitionNode;
+  args?: Maybe<GraphQLFieldConfigArgumentMap>;
+  isRepeatable?: Maybe<boolean>;
+  extensions?: Maybe<ReadOnlyObjMapLike<unknown>>;
+  astNode?: Maybe<DirectiveDefinitionNode>;
 };
 
-type GraphQLDirectiveNormalizedConfig = {
-  ...GraphQLDirectiveConfig;
+interface GraphQLDirectiveNormalizedConfig extends GraphQLDirectiveConfig {
   args: GraphQLFieldConfigArgumentMap;
   isRepeatable: boolean;
+<<<<<<< HEAD
   extensions: ?ReadOnlyObjMap<mixed>;
 };
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/directives.js
+=======
+  extensions: Maybe<ReadOnlyObjMap<unknown>>;
+}
+>>>>>>> Switch to TS syntax (#3090)
 
 /**
  * Used to conditionally include fields or fragments.

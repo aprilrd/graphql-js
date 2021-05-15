@@ -14,8 +14,8 @@ export interface SourceLocation {
 }
 =======
 export type SourceLocation = {
-  +line: number;
-  +column: number;
+  readonly line: number;
+  readonly column: number;
 };
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/language/location.js
 

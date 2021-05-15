@@ -147,7 +147,11 @@ export function printType(type: GraphQLNamedType): string {
   }
 
   // istanbul ignore next (Not reachable. All possible types have been considered)
+<<<<<<< HEAD
   invariant(false, 'Unexpected type: ' + inspect(type));
+=======
+  invariant(false, 'Unexpected type: ' + inspect(type as never));
+>>>>>>> Switch to TS syntax (#3090)
 }
 
 function printScalar(type: GraphQLScalarType): string {
@@ -299,11 +303,15 @@ function printSpecifiedByURL(scalar: GraphQLScalarType): string {
 }
 
 function printDescription(
+<<<<<<< HEAD
 <<<<<<< HEAD:src/utilities/printSchema.ts
   def: { readonly description: Maybe<string> },
 =======
   def: { +description: ?string; ... },
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/printSchema.js
+=======
+  def: { readonly description: Maybe<string> },
+>>>>>>> Switch to TS syntax (#3090)
   indentation: string = '',
   firstInBlock: boolean = true,
 ): string {

@@ -22,7 +22,11 @@ function formatValue(value: unknown, seenValues: Array<unknown>): string {
 }
 
 function formatObjectValue(
+<<<<<<< HEAD
   value: object | null,
+=======
+  value: Object,
+>>>>>>> Switch to TS syntax (#3090)
   previouslySeenValues: Array<unknown>,
 ): string {
   if (value === null) {
@@ -35,8 +39,13 @@ function formatObjectValue(
 
   const seenValues = [...previouslySeenValues, value];
 
+<<<<<<< HEAD
   if (isJSONable(value)) {
     const jsonValue = value.toJSON();
+=======
+  if (typeof value.toJSON === 'function') {
+    const jsonValue = (value.toJSON as () => unknown)();
+>>>>>>> Switch to TS syntax (#3090)
 
     // check for infinite recursion
     if (jsonValue !== value) {
@@ -51,11 +60,15 @@ function formatObjectValue(
   return formatObject(value, seenValues);
 }
 
+<<<<<<< HEAD
 function isJSONable(value: any): value is { toJSON: () => unknown } {
   return typeof value.toJSON === 'function';
 }
 
 function formatObject(object: object, seenValues: Array<unknown>): string {
+=======
+function formatObject(object: Object, seenValues: Array<unknown>): string {
+>>>>>>> Switch to TS syntax (#3090)
   const entries = Object.entries(object);
   if (entries.length === 0) {
     return '{}';

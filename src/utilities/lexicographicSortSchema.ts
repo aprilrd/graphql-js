@@ -68,12 +68,22 @@ export function lexicographicSortSchema(schema: GraphQLSchema): GraphQLSchema {
   }
 
   function replaceNamedType<T extends GraphQLNamedType>(type: T): T {
+<<<<<<< HEAD
     return typeMap[type.name] as T;
   }
 
   function replaceMaybeType<T extends GraphQLNamedType>(
     maybeType: Maybe<T>,
   ): Maybe<T> {
+=======
+    // $FlowFixMe[incompatible-return]
+    return typeMap[type.name];
+  }
+
+  function replaceMaybeType<T extends Maybe<GraphQLNamedType>>(
+    maybeType: T,
+  ): T {
+>>>>>>> Switch to TS syntax (#3090)
     return maybeType && replaceNamedType(maybeType);
   }
 
@@ -158,7 +168,11 @@ export function lexicographicSortSchema(schema: GraphQLSchema): GraphQLSchema {
     }
 
     // istanbul ignore next (Not reachable. All possible types have been considered)
+<<<<<<< HEAD
     invariant(false, 'Unexpected type: ' + inspect(type));
+=======
+    invariant(false, 'Unexpected type: ' + inspect(type as never));
+>>>>>>> Switch to TS syntax (#3090)
   }
 }
 
@@ -174,6 +188,7 @@ function sortObjMap<T, R>(
   return sortedMap;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD:src/utilities/lexicographicSortSchema.ts
 function sortByName<T extends { readonly name: string }>(
   array: ReadonlyArray<T>,
@@ -181,6 +196,10 @@ function sortByName<T extends { readonly name: string }>(
 function sortByName<T: { +name: string; ... }>(
   array: $ReadOnlyArray<T>,
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/lexicographicSortSchema.js
+=======
+function sortByName<T extends { readonly name: string }>(
+  array: ReadonlyArray<T>,
+>>>>>>> Switch to TS syntax (#3090)
 ): Array<T> {
   return sortBy(array, (obj) => obj.name);
 }

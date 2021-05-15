@@ -32,15 +32,18 @@ function coerceValue(
   const errors: Array<CoerceError> = [];
 =======
 type CoerceResult = {
-  value: mixed;
-  errors: $ReadOnlyArray<{
-    path: $ReadOnlyArray<string | number>;
-    value: mixed;
+  value: unknown;
+  errors: ReadonlyArray<{
+    path: ReadonlyArray<string | number>;
+    value: unknown;
     error: string;
   }>;
 };
 
-function coerceValue(inputValue: mixed, type: GraphQLInputType): CoerceResult {
+function coerceValue(
+  inputValue: unknown,
+  type: GraphQLInputType,
+): CoerceResult {
   const errors = [];
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/__tests__/coerceInputValue-test.js
   const value = coerceInputValue(

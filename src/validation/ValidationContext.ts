@@ -38,9 +38,9 @@ interface VariableUsage {
 }
 =======
 type VariableUsage = {
-  +node: VariableNode;
-  +type: ?GraphQLInputType;
-  +defaultValue: ?mixed;
+  readonly node: VariableNode;
+  readonly type: Maybe<GraphQLInputType>;
+  readonly defaultValue: Maybe<unknown>;
 };
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/validation/ValidationContext.js
 
@@ -50,6 +50,7 @@ type VariableUsage = {
  * validation rule.
  */
 export class ASTValidationContext {
+<<<<<<< HEAD
   private _ast: DocumentNode;
   private _onError: (error: GraphQLError) => void;
   private _fragments: ObjMap<FragmentDefinitionNode> | undefined;
@@ -57,6 +58,15 @@ export class ASTValidationContext {
   private _recursivelyReferencedFragments: Map<
     OperationDefinitionNode,
     Array<FragmentDefinitionNode>
+=======
+  _ast: DocumentNode;
+  _onError: (error: GraphQLError) => void;
+  _fragments: Maybe<ObjMap<FragmentDefinitionNode>>;
+  _fragmentSpreads: Map<SelectionSetNode, ReadonlyArray<FragmentSpreadNode>>;
+  _recursivelyReferencedFragments: Map<
+    OperationDefinitionNode,
+    ReadonlyArray<FragmentDefinitionNode>
+>>>>>>> Switch to TS syntax (#3090)
   >;
 
   constructor(ast: DocumentNode, onError: (error: GraphQLError) => void) {
@@ -76,11 +86,16 @@ export class ASTValidationContext {
   }
 
   getFragment(name: string): Maybe<FragmentDefinitionNode> {
+<<<<<<< HEAD
     let fragments: ObjMap<FragmentDefinitionNode>;
     if (this._fragments) {
       fragments = this._fragments;
     } else {
       fragments = Object.create(null);
+=======
+    if (!this._fragments) {
+      const fragments = (this._fragments = Object.create(null));
+>>>>>>> Switch to TS syntax (#3090)
       for (const defNode of this.getDocument().definitions) {
         if (defNode.kind === Kind.FRAGMENT_DEFINITION) {
           fragments[defNode.name.value] = defNode;
@@ -144,7 +159,11 @@ export class ASTValidationContext {
 export type ASTValidationRule = (context: ASTValidationContext) => ASTVisitor;
 
 export class SDLValidationContext extends ASTValidationContext {
+<<<<<<< HEAD
   private _schema: Maybe<GraphQLSchema>;
+=======
+  _schema: Maybe<GraphQLSchema>;
+>>>>>>> Switch to TS syntax (#3090)
 
   constructor(
     ast: DocumentNode,
@@ -163,6 +182,7 @@ export class SDLValidationContext extends ASTValidationContext {
 export type SDLValidationRule = (context: SDLValidationContext) => ASTVisitor;
 
 export class ValidationContext extends ASTValidationContext {
+<<<<<<< HEAD
   private _schema: GraphQLSchema;
   private _typeInfo: TypeInfo;
   private _variableUsages: Map<
@@ -171,6 +191,12 @@ export class ValidationContext extends ASTValidationContext {
   >;
 
   private _recursiveVariableUsages: Map<
+=======
+  _schema: GraphQLSchema;
+  _typeInfo: TypeInfo;
+  _variableUsages: Map<NodeWithSelectionSet, ReadonlyArray<VariableUsage>>;
+  _recursiveVariableUsages: Map<
+>>>>>>> Switch to TS syntax (#3090)
     OperationDefinitionNode,
     ReadonlyArray<VariableUsage>
   >;

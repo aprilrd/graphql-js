@@ -15,7 +15,11 @@
  * isIterableObject({ length: 1, 0: 'Alpha' }) // false
  */
 export function isIterableObject(
+<<<<<<< HEAD
   maybeIterable: any,
+=======
+  maybeIterable: unknown,
+>>>>>>> Switch to TS syntax (#3090)
 ): maybeIterable is Iterable<unknown> {
   return (
     typeof maybeIterable === 'object' &&

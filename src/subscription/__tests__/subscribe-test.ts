@@ -131,7 +131,11 @@ function createSubscription(pubsub: SimplePubSub<Email>) {
 }
 
 async function expectPromise(promise: Promise<unknown>) {
+<<<<<<< HEAD
   let caughtError: Error;
+=======
+  let caughtError;
+>>>>>>> Switch to TS syntax (#3090)
 
   try {
     await promise;

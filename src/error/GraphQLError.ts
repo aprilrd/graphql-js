@@ -24,7 +24,11 @@ export class GraphQLError extends Error {
    *
    * Enumerable, and appears in the result of JSON.stringify().
    */
+<<<<<<< HEAD
   readonly locations?: ReadonlyArray<SourceLocation>;
+=======
+  readonly locations: ReadonlyArray<SourceLocation> | void;
+>>>>>>> Switch to TS syntax (#3090)
 
   /**
    * An array describing the JSON-path into the execution response which
@@ -32,12 +36,20 @@ export class GraphQLError extends Error {
    *
    * Enumerable, and appears in the result of JSON.stringify().
    */
+<<<<<<< HEAD
   readonly path?: ReadonlyArray<string | number>;
+=======
+  readonly path: ReadonlyArray<string | number> | void;
+>>>>>>> Switch to TS syntax (#3090)
 
   /**
    * An array of GraphQL AST Nodes corresponding to this error.
    */
+<<<<<<< HEAD
   readonly nodes?: ReadonlyArray<ASTNode>;
+=======
+  readonly nodes: ReadonlyArray<ASTNode> | void;
+>>>>>>> Switch to TS syntax (#3090)
 
   /**
    * The source GraphQL document for the first location of this error.
@@ -45,13 +57,21 @@ export class GraphQLError extends Error {
    * Note that if this Error represents more than one node, the source may not
    * represent nodes after the first node.
    */
+<<<<<<< HEAD
   readonly source?: Source;
+=======
+  readonly source: Source | void;
+>>>>>>> Switch to TS syntax (#3090)
 
   /**
    * An array of character offsets within the source GraphQL document
    * which correspond to this error.
    */
+<<<<<<< HEAD
   readonly positions?: ReadonlyArray<number>;
+=======
+  readonly positions: ReadonlyArray<number> | void;
+>>>>>>> Switch to TS syntax (#3090)
 
   /**
    * The original error thrown from a field resolver during execution.
@@ -61,6 +81,7 @@ export class GraphQLError extends Error {
   /**
    * Extension fields to add to the formatted error.
    */
+<<<<<<< HEAD
 <<<<<<< HEAD:src/error/GraphQLError.ts
   readonly extensions?: { [key: string]: unknown };
 
@@ -84,6 +105,18 @@ export class GraphQLError extends Error {
     originalError?: ?(Error & { +extensions?: mixed; ... }),
     extensions?: ?{ [key: string]: mixed; ... },
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/error/GraphQLError.js
+=======
+  readonly extensions: { [key: string]: unknown } | void;
+
+  constructor(
+    message: string,
+    nodes?: ReadonlyArray<ASTNode> | ASTNode | void | null,
+    source?: Maybe<Source>,
+    positions?: Maybe<ReadonlyArray<number>>,
+    path?: Maybe<ReadonlyArray<string | number>>,
+    originalError?: Maybe<Error & { readonly extensions?: unknown }>,
+    extensions?: Maybe<{ [key: string]: unknown }>,
+>>>>>>> Switch to TS syntax (#3090)
   ) {
     super(message);
 

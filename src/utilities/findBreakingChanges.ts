@@ -75,12 +75,12 @@ export interface DangerousChange {
 }
 =======
 export type BreakingChange = {
-  type: $Keys<typeof BreakingChangeType>;
+  type: keyof typeof BreakingChangeType;
   description: string;
 };
 
 export type DangerousChange = {
-  type: $Keys<typeof DangerousChangeType>;
+  type: keyof typeof DangerousChangeType;
   description: string;
 };
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/findBreakingChanges.js
@@ -543,7 +543,11 @@ function typeKindName(type: GraphQLNamedType): string {
   }
 
   // istanbul ignore next (Not reachable. All possible named types have been considered)
+<<<<<<< HEAD
   invariant(false, 'Unexpected type: ' + inspect(type));
+=======
+  invariant(false, 'Unexpected type: ' + inspect(type as never));
+>>>>>>> Switch to TS syntax (#3090)
 }
 
 function stringifyValue(value: unknown, type: GraphQLInputType): string {
@@ -565,6 +569,7 @@ function stringifyValue(value: unknown, type: GraphQLInputType): string {
   return print(sortedAST);
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD:src/utilities/findBreakingChanges.ts
 function diff<T extends { name: string }>(
   oldArray: ReadonlyArray<T>,
@@ -574,6 +579,11 @@ function diff<T: { name: string; ... }>(
   oldArray: $ReadOnlyArray<T>,
   newArray: $ReadOnlyArray<T>,
 >>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/findBreakingChanges.js
+=======
+function diff<T extends { name: string }>(
+  oldArray: ReadonlyArray<T>,
+  newArray: ReadonlyArray<T>,
+>>>>>>> Switch to TS syntax (#3090)
 ): {
   added: Array<T>;
   removed: Array<T>;

@@ -11,12 +11,15 @@ export type Character = {
   name: string;
   friends: Array<string>;
   appearsIn: Array<number>;
+<<<<<<< HEAD
 <<<<<<< HEAD:src/__tests__/starWarsData.ts
 }
 
 export interface Human {
 =======
   ...
+=======
+>>>>>>> Switch to TS syntax (#3090)
 };
 
 export type Human = {
