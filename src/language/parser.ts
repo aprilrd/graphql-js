@@ -203,12 +203,19 @@ export class Parser {
    */
   parseName(): NameNode {
     const token = this.expectToken(TokenKind.NAME);
+<<<<<<< HEAD
     return this.node<NameNode>(token, {
       kind: Kind.NAME,
 <<<<<<< HEAD
 =======
       // @ts-expect-error FIXME
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
+=======
+    // @ts-expect-error FIXME
+    return this.node(token, {
+      // @ts-expect-error FIXME
+      kind: Kind.NAME,
+>>>>>>> add more `@ts-expect-error`
       value: token.value,
     });
   }
@@ -219,7 +226,13 @@ export class Parser {
    * Document : Definition+
    */
   parseDocument(): DocumentNode {
+<<<<<<< HEAD
     return this.node<DocumentNode>(this._lexer.token, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(this._lexer.token, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.DOCUMENT,
       definitions: this.many(
         TokenKind.SOF,
@@ -279,7 +292,13 @@ export class Parser {
   parseOperationDefinition(): OperationDefinitionNode {
     const start = this._lexer.token;
     if (this.peek(TokenKind.BRACE_L)) {
+<<<<<<< HEAD
       return this.node<OperationDefinitionNode>(start, {
+=======
+      // @ts-expect-error FIXME
+      return this.node(start, {
+        // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
         kind: Kind.OPERATION_DEFINITION,
         operation: 'query',
         name: undefined,
@@ -293,7 +312,13 @@ export class Parser {
     if (this.peek(TokenKind.NAME)) {
       name = this.parseName();
     }
+<<<<<<< HEAD
     return this.node<OperationDefinitionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.OPERATION_DEFINITION,
       operation,
       name,
@@ -335,7 +360,13 @@ export class Parser {
    * VariableDefinition : Variable : Type DefaultValue? Directives[Const]?
    */
   parseVariableDefinition(): VariableDefinitionNode {
+<<<<<<< HEAD
     return this.node<VariableDefinitionNode>(this._lexer.token, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(this._lexer.token, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.VARIABLE_DEFINITION,
       variable: this.parseVariable(),
       type: (this.expectToken(TokenKind.COLON), this.parseTypeReference()),
@@ -352,7 +383,13 @@ export class Parser {
   parseVariable(): VariableNode {
     const start = this._lexer.token;
     this.expectToken(TokenKind.DOLLAR);
+<<<<<<< HEAD
     return this.node<VariableNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.VARIABLE,
       name: this.parseName(),
     });
@@ -362,7 +399,13 @@ export class Parser {
    * SelectionSet : { Selection+ }
    */
   parseSelectionSet(): SelectionSetNode {
+<<<<<<< HEAD
     return this.node<SelectionSetNode>(this._lexer.token, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(this._lexer.token, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.SELECTION_SET,
       selections: this.many(
         TokenKind.BRACE_L,
@@ -402,7 +445,13 @@ export class Parser {
       name = nameOrAlias;
     }
 
+<<<<<<< HEAD
     return this.node<FieldNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.FIELD,
       alias,
       name,
@@ -434,7 +483,13 @@ export class Parser {
     const name = this.parseName();
 
     this.expectToken(TokenKind.COLON);
+<<<<<<< HEAD
     return this.node<ArgumentNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.ARGUMENT,
       name,
       value: this.parseValueLiteral(isConst),
@@ -464,13 +519,25 @@ export class Parser {
 
     const hasTypeCondition = this.expectOptionalKeyword('on');
     if (!hasTypeCondition && this.peek(TokenKind.NAME)) {
+<<<<<<< HEAD
       return this.node<FragmentSpreadNode>(start, {
+=======
+      // @ts-expect-error FIXME
+      return this.node(start, {
+        // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
         kind: Kind.FRAGMENT_SPREAD,
         name: this.parseFragmentName(),
         directives: this.parseDirectives(false),
       });
     }
+<<<<<<< HEAD
     return this.node<InlineFragmentNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.INLINE_FRAGMENT,
       typeCondition: hasTypeCondition ? this.parseNamedType() : undefined,
       directives: this.parseDirectives(false),
@@ -491,7 +558,13 @@ export class Parser {
     // the grammar of FragmentDefinition:
     //   - fragment FragmentName VariableDefinitions? on TypeCondition Directives? SelectionSet
     if (this._options?.allowLegacyFragmentVariables === true) {
+<<<<<<< HEAD
       return this.node<FragmentDefinitionNode>(start, {
+=======
+      // @ts-expect-error FIXME
+      return this.node(start, {
+        // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
         kind: Kind.FRAGMENT_DEFINITION,
         name: this.parseFragmentName(),
         variableDefinitions: this.parseVariableDefinitions(),
@@ -500,7 +573,13 @@ export class Parser {
         selectionSet: this.parseSelectionSet(),
       });
     }
+<<<<<<< HEAD
     return this.node<FragmentDefinitionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.FRAGMENT_DEFINITION,
       name: this.parseFragmentName(),
       typeCondition: (this.expectKeyword('on'), this.parseNamedType()),
@@ -550,22 +629,36 @@ export class Parser {
         return this.parseObject(isConst);
       case TokenKind.INT:
         this._lexer.advance();
+<<<<<<< HEAD
         return this.node<IntValueNode>(token, {
           kind: Kind.INT,
 <<<<<<< HEAD
 =======
           // @ts-expect-error FIXME
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
+=======
+        // @ts-expect-error FIXME
+        return this.node(token, {
+          // @ts-expect-error FIXME
+          kind: Kind.INT,
+>>>>>>> add more `@ts-expect-error`
           value: token.value,
         });
       case TokenKind.FLOAT:
         this._lexer.advance();
+<<<<<<< HEAD
         return this.node<FloatValueNode>(token, {
           kind: Kind.FLOAT,
 <<<<<<< HEAD
 =======
           // @ts-expect-error FIXME
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
+=======
+        // @ts-expect-error FIXME
+        return this.node(token, {
+          // @ts-expect-error FIXME
+          kind: Kind.FLOAT,
+>>>>>>> add more `@ts-expect-error`
           value: token.value,
         });
       case TokenKind.STRING:
@@ -575,6 +668,7 @@ export class Parser {
         this._lexer.advance();
         switch (token.value) {
           case 'true':
+<<<<<<< HEAD
             return this.node<BooleanValueNode>(token, {
               kind: Kind.BOOLEAN,
               value: true,
@@ -593,6 +687,21 @@ export class Parser {
 =======
               // @ts-expect-error FIXME
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
+=======
+            // @ts-expect-error FIXME
+            return this.node(token, { kind: Kind.BOOLEAN, value: true });
+          case 'false':
+            // @ts-expect-error FIXME
+            return this.node(token, { kind: Kind.BOOLEAN, value: false });
+          case 'null':
+            // @ts-expect-error FIXME
+            return this.node(token, { kind: Kind.NULL });
+          default:
+            // @ts-expect-error FIXME
+            return this.node(token, {
+              // @ts-expect-error FIXME
+              kind: Kind.ENUM,
+>>>>>>> add more `@ts-expect-error`
               value: token.value,
             });
         }
@@ -626,12 +735,19 @@ export class Parser {
   parseStringLiteral(): StringValueNode {
     const token = this._lexer.token;
     this._lexer.advance();
+<<<<<<< HEAD
     return this.node<StringValueNode>(token, {
       kind: Kind.STRING,
 <<<<<<< HEAD
 =======
       // @ts-expect-error FIXME
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
+=======
+    // @ts-expect-error FIXME
+    return this.node(token, {
+      // @ts-expect-error FIXME
+      kind: Kind.STRING,
+>>>>>>> add more `@ts-expect-error`
       value: token.value,
       block: token.kind === TokenKind.BLOCK_STRING,
     });
@@ -646,7 +762,13 @@ export class Parser {
   parseList(isConst: boolean): ListValueNode;
   parseList(isConst: boolean): ListValueNode {
     const item = () => this.parseValueLiteral(isConst);
+<<<<<<< HEAD
     return this.node<ListValueNode>(this._lexer.token, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(this._lexer.token, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.LIST,
       values: this.any(TokenKind.BRACKET_L, item, TokenKind.BRACKET_R),
     });
@@ -661,7 +783,13 @@ export class Parser {
   parseObject(isConst: boolean): ObjectValueNode;
   parseObject(isConst: boolean): ObjectValueNode {
     const item = () => this.parseObjectField(isConst);
+<<<<<<< HEAD
     return this.node<ObjectValueNode>(this._lexer.token, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(this._lexer.token, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.OBJECT,
       fields: this.any(TokenKind.BRACE_L, item, TokenKind.BRACE_R),
     });
@@ -676,7 +804,14 @@ export class Parser {
     const start = this._lexer.token;
     const name = this.parseName();
     this.expectToken(TokenKind.COLON);
+<<<<<<< HEAD
     return this.node<ObjectFieldNode>(start, {
+=======
+
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.OBJECT_FIELD,
       name,
       value: this.parseValueLiteral(isConst),
@@ -714,7 +849,13 @@ export class Parser {
   parseDirective(isConst: boolean): DirectiveNode {
     const start = this._lexer.token;
     this.expectToken(TokenKind.AT);
+<<<<<<< HEAD
     return this.node<DirectiveNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.DIRECTIVE,
       name: this.parseName(),
       arguments: this.parseArguments(isConst),
@@ -735,7 +876,12 @@ export class Parser {
     if (this.expectOptionalToken(TokenKind.BRACKET_L)) {
       const innerType = this.parseTypeReference();
       this.expectToken(TokenKind.BRACKET_R);
+<<<<<<< HEAD
       type = this.node<ListTypeNode>(start, {
+=======
+      type = this.node(start, {
+        // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
         kind: Kind.LIST_TYPE,
         type: innerType,
       });
@@ -744,7 +890,13 @@ export class Parser {
     }
 
     if (this.expectOptionalToken(TokenKind.BANG)) {
+<<<<<<< HEAD
       return this.node<NonNullTypeNode>(start, {
+=======
+      // @ts-expect-error FIXME
+      return this.node(start, {
+        // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
         kind: Kind.NON_NULL_TYPE,
         type,
       });
@@ -757,7 +909,13 @@ export class Parser {
    * NamedType : Name
    */
   parseNamedType(): NamedTypeNode {
+<<<<<<< HEAD
     return this.node<NamedTypeNode>(this._lexer.token, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(this._lexer.token, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.NAMED_TYPE,
       name: this.parseName(),
     });
@@ -835,7 +993,13 @@ export class Parser {
       this.parseOperationTypeDefinition,
       TokenKind.BRACE_R,
     );
+<<<<<<< HEAD
     return this.node<SchemaDefinitionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.SCHEMA_DEFINITION,
       description,
       directives,
@@ -851,7 +1015,13 @@ export class Parser {
     const operation = this.parseOperationType();
     this.expectToken(TokenKind.COLON);
     const type = this.parseNamedType();
+<<<<<<< HEAD
     return this.node<OperationTypeDefinitionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.OPERATION_TYPE_DEFINITION,
       operation,
       type,
@@ -867,7 +1037,13 @@ export class Parser {
     this.expectKeyword('scalar');
     const name = this.parseName();
     const directives = this.parseConstDirectives();
+<<<<<<< HEAD
     return this.node<ScalarTypeDefinitionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.SCALAR_TYPE_DEFINITION,
       description,
       name,
@@ -888,7 +1064,13 @@ export class Parser {
     const interfaces = this.parseImplementsInterfaces();
     const directives = this.parseConstDirectives();
     const fields = this.parseFieldsDefinition();
+<<<<<<< HEAD
     return this.node<ObjectTypeDefinitionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.OBJECT_TYPE_DEFINITION,
       description,
       name,
@@ -932,7 +1114,13 @@ export class Parser {
     this.expectToken(TokenKind.COLON);
     const type = this.parseTypeReference();
     const directives = this.parseConstDirectives();
+<<<<<<< HEAD
     return this.node<FieldDefinitionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.FIELD_DEFINITION,
       description,
       name,
@@ -968,7 +1156,13 @@ export class Parser {
       defaultValue = this.parseConstValueLiteral();
     }
     const directives = this.parseConstDirectives();
+<<<<<<< HEAD
     return this.node<InputValueDefinitionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.INPUT_VALUE_DEFINITION,
       description,
       name,
@@ -990,7 +1184,13 @@ export class Parser {
     const interfaces = this.parseImplementsInterfaces();
     const directives = this.parseConstDirectives();
     const fields = this.parseFieldsDefinition();
+<<<<<<< HEAD
     return this.node<InterfaceTypeDefinitionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.INTERFACE_TYPE_DEFINITION,
       description,
       name,
@@ -1011,7 +1211,13 @@ export class Parser {
     const name = this.parseName();
     const directives = this.parseConstDirectives();
     const types = this.parseUnionMemberTypes();
+<<<<<<< HEAD
     return this.node<UnionTypeDefinitionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.UNION_TYPE_DEFINITION,
       description,
       name,
@@ -1042,7 +1248,13 @@ export class Parser {
     const name = this.parseName();
     const directives = this.parseConstDirectives();
     const values = this.parseEnumValuesDefinition();
+<<<<<<< HEAD
     return this.node<EnumTypeDefinitionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.ENUM_TYPE_DEFINITION,
       description,
       name,
@@ -1072,7 +1284,13 @@ export class Parser {
     const description = this.parseDescription();
     const name = this.parseName();
     const directives = this.parseConstDirectives();
+<<<<<<< HEAD
     return this.node<EnumValueDefinitionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.ENUM_VALUE_DEFINITION,
       description,
       name,
@@ -1091,7 +1309,13 @@ export class Parser {
     const name = this.parseName();
     const directives = this.parseConstDirectives();
     const fields = this.parseInputFieldsDefinition();
+<<<<<<< HEAD
     return this.node<InputObjectTypeDefinitionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.INPUT_OBJECT_TYPE_DEFINITION,
       description,
       name,
@@ -1167,7 +1391,13 @@ export class Parser {
     if (directives.length === 0 && operationTypes.length === 0) {
       throw this.unexpected();
     }
+<<<<<<< HEAD
     return this.node<SchemaExtensionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.SCHEMA_EXTENSION,
       directives,
       operationTypes,
@@ -1187,7 +1417,13 @@ export class Parser {
     if (directives.length === 0) {
       throw this.unexpected();
     }
+<<<<<<< HEAD
     return this.node<ScalarTypeExtensionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.SCALAR_TYPE_EXTENSION,
       name,
       directives,
@@ -1215,7 +1451,13 @@ export class Parser {
     ) {
       throw this.unexpected();
     }
+<<<<<<< HEAD
     return this.node<ObjectTypeExtensionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.OBJECT_TYPE_EXTENSION,
       name,
       interfaces,
@@ -1245,7 +1487,13 @@ export class Parser {
     ) {
       throw this.unexpected();
     }
+<<<<<<< HEAD
     return this.node<InterfaceTypeExtensionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.INTERFACE_TYPE_EXTENSION,
       name,
       interfaces,
@@ -1269,7 +1517,13 @@ export class Parser {
     if (directives.length === 0 && types.length === 0) {
       throw this.unexpected();
     }
+<<<<<<< HEAD
     return this.node<UnionTypeExtensionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.UNION_TYPE_EXTENSION,
       name,
       directives,
@@ -1292,7 +1546,13 @@ export class Parser {
     if (directives.length === 0 && values.length === 0) {
       throw this.unexpected();
     }
+<<<<<<< HEAD
     return this.node<EnumTypeExtensionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.ENUM_TYPE_EXTENSION,
       name,
       directives,
@@ -1315,7 +1575,13 @@ export class Parser {
     if (directives.length === 0 && fields.length === 0) {
       throw this.unexpected();
     }
+<<<<<<< HEAD
     return this.node<InputObjectTypeExtensionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.INPUT_OBJECT_TYPE_EXTENSION,
       name,
       directives,
@@ -1337,7 +1603,13 @@ export class Parser {
     const repeatable = this.expectOptionalKeyword('repeatable');
     this.expectKeyword('on');
     const locations = this.parseDirectiveLocations();
+<<<<<<< HEAD
     return this.node<DirectiveDefinitionNode>(start, {
+=======
+    // @ts-expect-error FIXME
+    return this.node(start, {
+      // @ts-expect-error FIXME
+>>>>>>> add more `@ts-expect-error`
       kind: Kind.DIRECTIVE_DEFINITION,
       description,
       name,

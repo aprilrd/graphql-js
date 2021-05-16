@@ -117,6 +117,7 @@ export class ASTValidationContext {
       while ((set = setsToVisit.pop())) {
         for (const selection of set.selections) {
           if (selection.kind === Kind.FRAGMENT_SPREAD) {
+            // @ts-expect-error
             spreads.push(selection);
           } else if (selection.selectionSet) {
             setsToVisit.push(selection.selectionSet);
@@ -144,6 +145,7 @@ export class ASTValidationContext {
             collectedNames[fragName] = true;
             const fragment = this.getFragment(fragName);
             if (fragment) {
+              // @ts-expect-error FIXME
               fragments.push(fragment);
               nodesToVisit.push(fragment.selectionSet);
             }

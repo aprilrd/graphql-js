@@ -83,9 +83,11 @@ describe('Type System: Scalars', () => {
       },
     });
 
+    // @ts-expect-error
     expect(scalar.parseLiteral(parseValue('null'))).to.equal(
       'parseValue: null',
     );
+    // @ts-expect-error
     expect(scalar.parseLiteral(parseValue('{ foo: "bar" }'))).to.equal(
       'parseValue: { foo: "bar" }',
     );
@@ -363,12 +365,17 @@ describe('Type System: Objects', () => {
   it('rejects an Object type with a field function that returns incorrect type', () => {
     const objType = new GraphQLObjectType({
       name: 'SomeObject',
+<<<<<<< HEAD
       // @ts-expect-error (Wrong type of return)
       fields() {
 <<<<<<< HEAD
 =======
         // @ts-expect-error
 >>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
+=======
+      // @ts-expect-error
+      fields() {
+>>>>>>> add more `@ts-expect-error`
         return [{ field: ScalarType }];
       },
     });
@@ -407,12 +414,17 @@ describe('Type System: Objects', () => {
     const objType = new GraphQLObjectType({
       name: 'SomeObject',
       fields: {},
+<<<<<<< HEAD
       // @ts-expect-error (Expected interfaces to return array)
       interfaces() {
 <<<<<<< HEAD
 =======
         // @ts-expect-error
 >>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
+=======
+      // @ts-expect-error
+      interfaces() {
+>>>>>>> add more `@ts-expect-error`
         return {};
       },
     });
@@ -425,11 +437,16 @@ describe('Type System: Objects', () => {
     const objType = new GraphQLObjectType({
       name: 'SomeObject',
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       // @ts-expect-error
 >>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
       fields: {
         // @ts-expect-error (Expected resolve to be a function)
+=======
+      fields: {
+        // @ts-expect-error
+>>>>>>> add more `@ts-expect-error`
         field: { type: ScalarType, resolve: {} },
       },
     });
@@ -443,11 +460,16 @@ describe('Type System: Objects', () => {
     const objType = new GraphQLObjectType({
       name: 'SomeObject',
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       // @ts-expect-error
 >>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
       fields: {
         // @ts-expect-error (Expected resolve to be a function)
+=======
+      fields: {
+        // @ts-expect-error
+>>>>>>> add more `@ts-expect-error`
         field: { type: ScalarType, resolve: 0 },
       },
     });
@@ -522,12 +544,17 @@ describe('Type System: Interfaces', () => {
     const objType = new GraphQLInterfaceType({
       name: 'AnotherInterface',
       fields: {},
+<<<<<<< HEAD
       // @ts-expect-error (Expected Array return)
       interfaces() {
 <<<<<<< HEAD
 =======
         // @ts-expect-error
 >>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
+=======
+      // @ts-expect-error
+      interfaces() {
+>>>>>>> add more `@ts-expect-error`
         return {};
       },
     });
@@ -830,11 +857,16 @@ describe('Type System: Input Objects', () => {
       const inputObjType = new GraphQLInputObjectType({
         name: 'SomeInputObject',
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         // @ts-expect-error
 >>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
         fields: {
           // @ts-expect-error (Input fields cannot have resolvers)
+=======
+        fields: {
+          // @ts-expect-error
+>>>>>>> add more `@ts-expect-error`
           f: { type: ScalarType, resolve: dummyFunc },
         },
       });
@@ -847,11 +879,16 @@ describe('Type System: Input Objects', () => {
       const inputObjType = new GraphQLInputObjectType({
         name: 'SomeInputObject',
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         // @ts-expect-error
 >>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
         fields: {
           // @ts-expect-error (Input fields cannot have resolvers)
+=======
+        fields: {
+          // @ts-expect-error
+>>>>>>> add more `@ts-expect-error`
           f: { type: ScalarType, resolve: {} },
         },
       });
