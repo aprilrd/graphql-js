@@ -33,10 +33,14 @@ export function coerceInputValue(
   onError: OnErrorCB = defaultOnError,
 ): unknown {
 <<<<<<< HEAD
+<<<<<<< HEAD
   return coerceInputValueImpl(inputValue, type, onError, undefined);
 =======
   return coerceInputValueImpl(inputValue, type, onError);
 >>>>>>> Switch to TS syntax (#3090)
+=======
+  return coerceInputValueImpl(inputValue, type, onError, undefined);
+>>>>>>> provide missing argument
 }
 
 function defaultOnError(
