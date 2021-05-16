@@ -11,6 +11,10 @@ export function toJSONDeep(value: unknown): unknown {
   }
 
   if (typeof value.toJSON === 'function') {
+<<<<<<< HEAD
+=======
+    // @ts-expect-error
+>>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
     return value.toJSON();
   }
 

@@ -205,6 +205,10 @@ export class Parser {
     const token = this.expectToken(TokenKind.NAME);
     return this.node<NameNode>(token, {
       kind: Kind.NAME,
+<<<<<<< HEAD
+=======
+      // @ts-expect-error FIXME
+>>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
       value: token.value,
     });
   }
@@ -438,6 +442,10 @@ export class Parser {
   }
 
   parseConstArgument(): ConstArgumentNode {
+<<<<<<< HEAD
+=======
+    // @ts-expect-error FIXME during TS conversion
+>>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
     return this.parseArgument(true);
   }
 
@@ -544,12 +552,20 @@ export class Parser {
         this._lexer.advance();
         return this.node<IntValueNode>(token, {
           kind: Kind.INT,
+<<<<<<< HEAD
+=======
+          // @ts-expect-error FIXME
+>>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
           value: token.value,
         });
       case TokenKind.FLOAT:
         this._lexer.advance();
         return this.node<FloatValueNode>(token, {
           kind: Kind.FLOAT,
+<<<<<<< HEAD
+=======
+          // @ts-expect-error FIXME
+>>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
           value: token.value,
         });
       case TokenKind.STRING:
@@ -573,6 +589,10 @@ export class Parser {
           default:
             return this.node<EnumValueNode>(token, {
               kind: Kind.ENUM,
+<<<<<<< HEAD
+=======
+              // @ts-expect-error FIXME
+>>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
               value: token.value,
             });
         }
@@ -596,6 +616,10 @@ export class Parser {
   }
 
   parseConstValueLiteral(): ConstValueNode {
+<<<<<<< HEAD
+=======
+    // @ts-expect-error FIXME during TS conversion
+>>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
     return this.parseValueLiteral(true);
   }
 
@@ -604,6 +628,10 @@ export class Parser {
     this._lexer.advance();
     return this.node<StringValueNode>(token, {
       kind: Kind.STRING,
+<<<<<<< HEAD
+=======
+      // @ts-expect-error FIXME
+>>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
       value: token.value,
       block: token.kind === TokenKind.BLOCK_STRING,
     });
@@ -671,6 +699,10 @@ export class Parser {
   }
 
   parseConstDirectives(): Array<ConstDirectiveNode> {
+<<<<<<< HEAD
+=======
+    // @ts-expect-error FIXME during TS conversion
+>>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
     return this.parseDirectives(true);
   }
 

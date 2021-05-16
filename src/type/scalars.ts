@@ -139,6 +139,10 @@ function serializeObject(outputValue: unknown): unknown {
       }
     }
     if (typeof outputValue.toJSON === 'function') {
+<<<<<<< HEAD
+=======
+      // @ts-expect-error
+>>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
       return outputValue.toJSON();
     }
   }

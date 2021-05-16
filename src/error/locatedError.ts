@@ -36,9 +36,18 @@ export function locatedError(
 
   return new GraphQLError(
     originalError.message,
+<<<<<<< HEAD
     (originalError as GraphQLError).nodes ?? nodes,
     (originalError as GraphQLError).source,
     (originalError as GraphQLError).positions,
+=======
+    // @ts-expect-error FIXME
+    originalError.nodes ?? nodes,
+    // @ts-expect-error FIXME
+    originalError.source,
+    // @ts-expect-error FIXME
+    originalError.positions,
+>>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
     path,
     originalError,
   );

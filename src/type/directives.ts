@@ -109,6 +109,10 @@ export class GraphQLDirective {
     return this.toString();
   }
 
+<<<<<<< HEAD
+=======
+  // @ts-expect-error Flow doesn't support computed properties yet
+>>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
   get [Symbol.toStringTag]() {
     return 'GraphQLDirective';
   }

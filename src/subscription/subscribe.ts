@@ -85,6 +85,10 @@ export async function subscribe(
     subscribeFieldResolver,
   } = args;
 
+<<<<<<< HEAD
+=======
+  // @ts-expect-error
+>>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
   const resultOrStream = await createSourceEventStream(
     schema,
     document,

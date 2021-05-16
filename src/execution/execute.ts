@@ -393,6 +393,10 @@ export function buildExecutionContext(
     return coercedVariableValues.errors;
   }
 
+<<<<<<< HEAD
+=======
+  // @ts-expect-error
+>>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
   return {
     schema,
     fragments,
