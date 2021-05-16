@@ -382,9 +382,12 @@ export class GraphQLSchema {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // @ts-expect-error Flow doesn't support computed properties yet
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
   get [Symbol.toStringTag]() {
     return 'GraphQLSchema';
   }

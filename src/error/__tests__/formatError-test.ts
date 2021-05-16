@@ -46,19 +46,25 @@ describe('formatError: default error formatter', () => {
 
   it('rejects null and undefined errors', () => {
 <<<<<<< HEAD
-    // @ts-expect-error (formatError expects a value)
-=======
-    // @ts-expect-error
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
-    expect(() => formatError(undefined)).to.throw(
-      'Received null or undefined error.',
-    );
-
 <<<<<<< HEAD
     // @ts-expect-error (formatError expects a value)
 =======
     // @ts-expect-error
 >>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
+    expect(() => formatError(undefined)).to.throw(
+      'Received null or undefined error.',
+    );
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+    // @ts-expect-error (formatError expects a value)
+=======
+    // @ts-expect-error
+>>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
     expect(() => formatError(null)).to.throw(
       'Received null or undefined error.',
     );

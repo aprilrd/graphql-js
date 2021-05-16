@@ -406,9 +406,12 @@ export function extendSchemaImpl(
       ...field,
       type: replaceType(field.type),
 <<<<<<< HEAD
+<<<<<<< HEAD
       args: field.args && mapValue(field.args, extendArg),
 =======
       // @ts-expect-error
+=======
+>>>>>>> remove unused `@ts-expect-error`
       args: mapValue(field.args, extendArg),
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
     };
@@ -460,8 +463,11 @@ export function extendSchemaImpl(
     // typed values below, that would throw immediately while type system
     // validation with validateSchema() will produce more actionable results.
     // @ts-expect-error
+<<<<<<< HEAD
     // @ts-expect-error
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
     return opTypes;
   }
 
@@ -481,9 +487,12 @@ export function extendSchemaImpl(
     }
     if (node.kind === Kind.NON_NULL_TYPE) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       // @ts-expect-error
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
       return new GraphQLNonNull(getWrappedType(node.type));
     }
     return getNamedType(node);
@@ -493,7 +502,6 @@ export function extendSchemaImpl(
     return new GraphQLDirective({
       name: node.name.value,
       description: node.description?.value,
-      // @ts-expect-error
       locations: node.locations.map(({ value }) => value),
       isRepeatable: node.repeatable,
       args: buildArgumentMap(node.arguments),

@@ -368,9 +368,12 @@ export class GraphQLList<T extends GraphQLType> {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // @ts-expect-error Flow doesn't support computed properties yet
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
   get [Symbol.toStringTag]() {
     return 'GraphQLList';
   }
@@ -417,9 +420,12 @@ export class GraphQLNonNull<T extends GraphQLNullableType> {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // @ts-expect-error Flow doesn't support computed properties yet
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
   get [Symbol.toStringTag]() {
     return 'GraphQLNonNull';
   }
@@ -700,9 +706,12 @@ export class GraphQLScalarType {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // @ts-expect-error Flow doesn't support computed properties yet
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
   get [Symbol.toStringTag]() {
     return 'GraphQLScalarType';
   }
@@ -917,9 +926,12 @@ export class GraphQLObjectType<TSource = any, TContext = any> {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // @ts-expect-error Flow doesn't support computed properties yet
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
   get [Symbol.toStringTag]() {
     return 'GraphQLObjectType';
   }
@@ -1420,9 +1432,12 @@ export class GraphQLInterfaceType {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // @ts-expect-error Flow doesn't support computed properties yet
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
   get [Symbol.toStringTag]() {
     return 'GraphQLInterfaceType';
   }
@@ -1586,9 +1601,12 @@ export class GraphQLUnionType {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // @ts-expect-error Flow doesn't support computed properties yet
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
   get [Symbol.toStringTag]() {
     return 'GraphQLUnionType';
   }
@@ -1825,9 +1843,12 @@ export class GraphQLEnumType /* <T> */ {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // @ts-expect-error Flow doesn't support computed properties yet
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
   get [Symbol.toStringTag]() {
     return 'GraphQLEnumType';
   }
@@ -2050,9 +2071,12 @@ export class GraphQLInputObjectType {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // @ts-expect-error Flow doesn't support computed properties yet
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
   get [Symbol.toStringTag]() {
     return 'GraphQLInputObjectType';
   }

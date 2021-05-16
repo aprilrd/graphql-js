@@ -1037,10 +1037,13 @@ describe('Type System: Object fields must have output types', () => {
 
   it('rejects an empty Object field type', () => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // @ts-expect-error (type field must not be undefined)
 =======
     // @ts-expect-error
 >>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
     const schema = schemaWithObjectField({ type: undefined });
     expect(validateSchema(schema)).to.deep.equal([
       {
@@ -1103,10 +1106,13 @@ describe('Type System: Objects can only implement unique interfaces', () => {
       query: new GraphQLObjectType({
         name: 'BadObject',
 <<<<<<< HEAD
+<<<<<<< HEAD
         // @ts-expect-error (interfaces must not contain undefined)
 =======
         // @ts-expect-error
 >>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
         interfaces: [undefined],
         fields: { f: { type: GraphQLString } },
       }),
@@ -1366,10 +1372,13 @@ describe('Type System: Interface fields must have output types', () => {
 
   it('rejects an empty Interface field type', () => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // @ts-expect-error (type field must not be undefined)
 =======
     // @ts-expect-error
 >>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
     const schema = schemaWithInterfaceField({ type: undefined });
     expect(validateSchema(schema)).to.deep.equal([
       {
@@ -1506,10 +1515,13 @@ describe('Type System: Arguments must have input types', () => {
 
   it('rejects an empty field arg type', () => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // @ts-expect-error (type field must not be undefined)
 =======
     // @ts-expect-error
 >>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
     const schema = schemaWithArg({ type: undefined });
     expect(validateSchema(schema)).to.deep.equal([
       {
@@ -1648,10 +1660,13 @@ describe('Type System: Input Object fields must have input types', () => {
 
   it('rejects an empty input field type', () => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // @ts-expect-error (type field must not be undefined)
 =======
     // @ts-expect-error
 >>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
     const schema = schemaWithInputField({ type: undefined });
     expect(validateSchema(schema)).to.deep.equal([
       {

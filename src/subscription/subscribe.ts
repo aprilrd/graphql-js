@@ -86,9 +86,12 @@ export async function subscribe(
   } = args;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // @ts-expect-error
 >>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
   const resultOrStream = await createSourceEventStream(
     schema,
     document,

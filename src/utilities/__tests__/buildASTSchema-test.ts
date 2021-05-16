@@ -1113,10 +1113,13 @@ describe('Schema Builder', () => {
 
   it('Rejects invalid AST', () => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // @ts-expect-error (First parameter expected to be DocumentNode)
 =======
     // @ts-expect-error
 >>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
+=======
+>>>>>>> remove unused `@ts-expect-error`
     expect(() => buildASTSchema(null)).to.throw(
       'Must provide valid Document AST',
     );
