@@ -242,7 +242,9 @@ export function execute(args: ExecutionArgs): PromiseOrValue<ExecutionResult> {
   // field and its descendants will be omitted, and sibling fields will still
   // be executed. An execution which encounters errors will still result in a
   // resolved Promise.
+  // @ts-expect-error FIXME: TS Conversion
   const data = executeOperation(exeContext, exeContext.operation, rootValue);
+  // @ts-expect-error FIXME: TS Conversion
   return buildResponse(exeContext, data);
 }
 
@@ -389,7 +391,9 @@ export function buildExecutionContext(
     { maxErrors: 50 },
   );
 
+  // @ts-expect-error FIXME: TS Conversion
   if (coercedVariableValues.errors) {
+    // @ts-expect-error FIXME: TS Conversion
     return coercedVariableValues.errors;
   }
 
@@ -406,6 +410,7 @@ export function buildExecutionContext(
     rootValue,
     contextValue,
     operation,
+    // @ts-expect-error FIXME: TS Conversion
     variableValues: coercedVariableValues.coerced,
     fieldResolver: fieldResolver ?? defaultFieldResolver,
     typeResolver: typeResolver ?? defaultTypeResolver,
@@ -1217,7 +1222,9 @@ function _collectSubfields(
 export const defaultTypeResolver: GraphQLTypeResolver<unknown, unknown> =
   function (value, contextValue, info, abstractType) {
     // First, look for `__typename`.
+    // @ts-expect-error FIXME: TS Conversion
     if (isObjectLike(value) && typeof value.__typename === 'string') {
+      // @ts-expect-error FIXME: TS Conversion
       return value.__typename;
     }
 

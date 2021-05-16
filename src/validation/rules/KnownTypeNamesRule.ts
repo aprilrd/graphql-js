@@ -74,7 +74,12 @@ const standardTypeNames = [...specifiedScalarTypes, ...introspectionTypes].map(
 
 function isSDLNode(value: ASTNode | ReadonlyArray<ASTNode>): boolean {
   return (
+<<<<<<< HEAD
     'kind' in value &&
+=======
+    !Array.isArray(value) &&
+    // @ts-expect-error FIXME
+>>>>>>> add fixme and type assertions
     (isTypeSystemDefinitionNode(value) || isTypeSystemExtensionNode(value))
   );
 }

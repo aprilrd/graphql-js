@@ -51,7 +51,12 @@ function checkVisitorFnArgs(ast: any, args: any, isEdited: boolean = false) {
 }
 
 function getValue(node: ASTNode) {
+<<<<<<< HEAD
   return 'value' in node ? node.value : undefined;
+=======
+  // @ts-expect-error FIXME
+  return node.value != null ? node.value : undefined;
+>>>>>>> add fixme and type assertions
 }
 
 describe('Visitor', () => {
@@ -264,7 +269,12 @@ describe('Visitor', () => {
         if (node.kind === 'Field' && node.name.value === 'a') {
           return {
             kind: 'Field',
+<<<<<<< HEAD
             selectionSet: [addedField, node.selectionSet],
+=======
+            // @ts-expect-error FIXME
+            selectionSet: [addedField].concat(node.selectionSet),
+>>>>>>> add fixme and type assertions
           };
         }
         if (node === addedField) {

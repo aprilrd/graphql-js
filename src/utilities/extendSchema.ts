@@ -726,7 +726,12 @@ export function extendSchemaImpl(
 }
 
 const stdTypeMap = keyMap(
+<<<<<<< HEAD
   [...specifiedScalarTypes, ...introspectionTypes],
+=======
+  // @ts-expect-error FIXME
+  specifiedScalarTypes.concat(introspectionTypes),
+>>>>>>> add fixme and type assertions
   (type) => type.name,
 );
 

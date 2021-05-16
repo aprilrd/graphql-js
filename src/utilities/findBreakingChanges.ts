@@ -483,6 +483,7 @@ function isChangeSafeForObjectOrInterfaceField(
 
   return (
     // if they're both named types, see if their names are equivalent
+    // @ts-expect-error FIXME
     (isNamedType(newType) && oldType.name === newType.name) ||
     // moving from nullable to non-null of the same underlying type is safe
     (isNonNullType(newType) &&
@@ -518,6 +519,7 @@ function isChangeSafeForInputObjectFieldOrFieldArg(
   }
 
   // if they're both named types, see if their names are equivalent
+  // @ts-expect-error FIXME
   return isNamedType(newType) && oldType.name === newType.name;
 }
 

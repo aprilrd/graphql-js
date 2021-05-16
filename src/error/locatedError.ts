@@ -31,8 +31,12 @@ export function locatedError(
 
   // Note: this uses a brand-check to support GraphQL errors originating from other contexts.
 <<<<<<< HEAD
+<<<<<<< HEAD
   if (isLocatedGraphQLError(originalError)) {
 =======
+=======
+  // @ts-expect-error FIXME: TS Conversion
+>>>>>>> add fixme and type assertions
   if (Array.isArray(originalError.path)) {
     // @ts-expect-error
 >>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`

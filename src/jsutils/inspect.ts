@@ -40,10 +40,15 @@ function formatObjectValue(
   const seenValues = [...previouslySeenValues, value];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   if (isJSONable(value)) {
     const jsonValue = value.toJSON();
 =======
+=======
+  // @ts-expect-error FIXME: TS Conversion
+>>>>>>> add fixme and type assertions
   if (typeof value.toJSON === 'function') {
+    // @ts-expect-error FIXME: TS Conversion
     const jsonValue = (value.toJSON as () => unknown)();
 >>>>>>> Switch to TS syntax (#3090)
 

@@ -37,12 +37,18 @@ export function typeFromAST(
   schema: GraphQLSchema,
   typeNode: TypeNode,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> add fixme and type assertions
 ): GraphQLType | undefined;
 export function typeFromAST(
   schema: GraphQLSchema,
   typeNode: TypeNode,
+<<<<<<< HEAD
 =======
 >>>>>>> Switch to TS syntax (#3090)
+=======
+>>>>>>> add fixme and type assertions
 ): GraphQLType | undefined {
   let innerType;
   if (typeNode.kind === Kind.LIST_TYPE) {

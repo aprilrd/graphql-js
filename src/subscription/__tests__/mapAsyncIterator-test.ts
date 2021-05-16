@@ -107,7 +107,12 @@ describe('mapAsyncIterator', () => {
     expect(await doubles.next()).to.deep.equal({ value: 4, done: false });
 
     // Early return
+<<<<<<< HEAD
     expect(await doubles.return('')).to.deep.equal({
+=======
+    // @ts-expect-error FIXME: TS Conversion
+    expect(await doubles.return()).to.deep.equal({
+>>>>>>> add fixme and type assertions
       value: 'The End',
       done: true,
     });
@@ -146,7 +151,12 @@ describe('mapAsyncIterator', () => {
     expect(await doubles.next()).to.deep.equal({ value: 4, done: false });
 
     // Early return
+<<<<<<< HEAD
     expect(await doubles.return(0)).to.deep.equal({
+=======
+    // @ts-expect-error FIXME: TS Conversion
+    expect(await doubles.return()).to.deep.equal({
+>>>>>>> add fixme and type assertions
       value: undefined,
       done: true,
     });

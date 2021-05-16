@@ -163,6 +163,9 @@ export function assertInputObjectType(type: unknown): GraphQLInputObjectType {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> add fixme and type assertions
 export function isListType(
   type: GraphQLInputType,
 ): type is GraphQLList<GraphQLInputType>;
@@ -170,8 +173,11 @@ export function isListType(
   type: GraphQLOutputType,
 ): type is GraphQLList<GraphQLOutputType>;
 export function isListType(type: unknown): type is GraphQLList<GraphQLType>;
+<<<<<<< HEAD
 =======
 >>>>>>> Switch to TS syntax (#3090)
+=======
+>>>>>>> add fixme and type assertions
 export function isListType(type: unknown): type is GraphQLList<GraphQLType> {
   return instanceOf(type, GraphQLList);
 }
@@ -185,6 +191,9 @@ export function assertListType(type: unknown): GraphQLList<GraphQLType> {
 
 export function isNonNullType(
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> add fixme and type assertions
   type: GraphQLInputType,
 ): type is GraphQLNonNull<GraphQLInputType>;
 export function isNonNullType(
@@ -194,8 +203,11 @@ export function isNonNullType(
   type: unknown,
 ): type is GraphQLNonNull<GraphQLType>;
 export function isNonNullType(
+<<<<<<< HEAD
 =======
 >>>>>>> Switch to TS syntax (#3090)
+=======
+>>>>>>> add fixme and type assertions
   type: unknown,
 ): type is GraphQLNonNull<GraphQLType> {
   return instanceOf(type, GraphQLNonNull);
@@ -967,6 +979,7 @@ function defineFieldMap<TSource, TContext>(
     `${config.name} fields must be an object with field names as keys or a function which returns such an object.`,
   );
 
+  // @ts-expect-error FIXME: TS Conversion
   return mapValue(fieldMap, (fieldConfig, fieldName) => {
     devAssert(
       isPlainObj(fieldConfig),
