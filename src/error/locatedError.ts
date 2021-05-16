@@ -30,7 +30,12 @@ export function locatedError(
       : new Error('Unexpected error value: ' + inspect(rawOriginalError));
 
   // Note: this uses a brand-check to support GraphQL errors originating from other contexts.
+<<<<<<< HEAD
   if (isLocatedGraphQLError(originalError)) {
+=======
+  if (Array.isArray(originalError.path)) {
+    // @ts-expect-error
+>>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
     return originalError;
   }
 

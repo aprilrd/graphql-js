@@ -1160,7 +1160,11 @@ describe('extendSchema', () => {
   it('Rejects invalid AST', () => {
     const schema = new GraphQLSchema({});
 
+<<<<<<< HEAD
     // @ts-expect-error (Second argument expects DocumentNode)
+=======
+    // @ts-expect-error
+>>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
     expect(() => extendSchema(schema, null)).to.throw(
       'Must provide valid Document AST',
     );

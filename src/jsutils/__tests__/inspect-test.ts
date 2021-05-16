@@ -169,6 +169,7 @@ describe('inspect', () => {
 
     expect(inspect([[new Foo()]])).to.equal('[[[Foo]]]');
 
+<<<<<<< HEAD
     class Foo2 {
       foo: string;
 
@@ -179,6 +180,11 @@ describe('inspect', () => {
       }
     }
     expect(inspect([[new Foo2()]])).to.equal('[[[Bar]]]');
+=======
+    // @ts-expect-error
+    Foo.prototype[Symbol.toStringTag] = 'Bar';
+    expect(inspect([[new Foo()]])).to.equal('[[[Bar]]]');
+>>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
 
     // eslint-disable-next-line func-names
 <<<<<<< HEAD

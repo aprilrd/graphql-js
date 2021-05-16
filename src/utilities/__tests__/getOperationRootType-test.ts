@@ -169,6 +169,10 @@ describe('getOperationRootType', () => {
 >>>>>>> feat: typecast to ensure type safety
     };
 
+<<<<<<< HEAD
+=======
+    // @ts-expect-error
+>>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
     expect(() => getOperationRootType(testSchema, operationNode)).to.throw(
       'Can only have query, mutation and subscription operations.',
     );
