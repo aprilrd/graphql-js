@@ -538,6 +538,7 @@ export type FieldNode = {
   readonly arguments?: ReadonlyArray<ArgumentNode>;
   readonly directives?: ReadonlyArray<DirectiveNode>;
   readonly selectionSet?: SelectionSetNode;
+  readonly required?: boolean;
 };
 
 export type ArgumentNode = {
