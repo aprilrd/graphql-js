@@ -530,6 +530,8 @@ export type SelectionSetNode = {
 
 export type SelectionNode = FieldNode | FragmentSpreadNode | InlineFragmentNode;
 
+type RequiredStatus = 'required' | 'optional' | 'unset';
+
 export type FieldNode = {
   readonly kind: 'Field';
   readonly loc?: Location;
@@ -538,7 +540,7 @@ export type FieldNode = {
   readonly arguments?: ReadonlyArray<ArgumentNode>;
   readonly directives?: ReadonlyArray<DirectiveNode>;
   readonly selectionSet?: SelectionSetNode;
-  readonly required?: boolean;
+  readonly required?: RequiredStatus;
 };
 
 export type ArgumentNode = {
