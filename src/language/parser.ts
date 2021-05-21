@@ -465,9 +465,15 @@ export class Parser {
     } else {
       name = nameOrAlias;
     }
-    const required = this.expectOptionalToken(TokenKind.BANG)
-      ? 'required'
-      : 'unset';
+
+    let required;
+    if (this.expectOptionalToken(TokenKind.BANG)) {
+      required = 'required'
+    } else if (this.expectOptionalToken(TokenKind.QUESTION_MARK)) {
+      required = 'optional'
+    } else {
+      required = 'unset'
+    }
 
 <<<<<<< HEAD
     return this.node<FieldNode>(start, {
