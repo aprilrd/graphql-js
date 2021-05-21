@@ -104,5 +104,9 @@ export {
 } from './findBreakingChanges';
 export type { BreakingChange, DangerousChange } from './findBreakingChanges';
 
+<<<<<<< HEAD
 /** Wrapper type that contains DocumentNode and types that can be deduced from it. */
 export { TypedQueryDocumentNode } from './typedQueryDocumentNode';
+=======
+export { modifiedOutputType } from './applyRequiredStatus'
+>>>>>>> Export utility method for third party codegen
