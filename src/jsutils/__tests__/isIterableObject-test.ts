@@ -60,11 +60,7 @@ describe('isIterableObject', () => {
     };
     expect(isIterableObject(invalidIterable)).to.equal(false);
 
-<<<<<<< HEAD
     const arrayLike: { [key: string]: unknown } = {};
-=======
-    const arrayLike: Record<string, any> = {};
->>>>>>> feat: typecast to ensure type safety
     arrayLike[0] = 'Alpha';
     arrayLike[1] = 'Bravo';
     arrayLike[2] = 'Charlie';

@@ -2,17 +2,10 @@ import { inspect } from '../jsutils/inspect';
 import { devAssert } from '../jsutils/devAssert';
 import { instanceOf } from '../jsutils/instanceOf';
 
-<<<<<<< HEAD:src/language/source.ts
 interface Location {
   line: number;
   column: number;
 }
-=======
-type Location = {
-  line: number;
-  column: number;
-};
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/language/source.js
 
 /**
  * A representation of source input to GraphQL. The `name` and `locationOffset` parameters are
@@ -49,13 +42,6 @@ export class Source {
     );
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  // @ts-expect-error Flow doesn't support computed properties yet
->>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
-=======
->>>>>>> remove unused `@ts-expect-error`
   get [Symbol.toStringTag]() {
     return 'Source';
   }

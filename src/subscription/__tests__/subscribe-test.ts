@@ -16,20 +16,12 @@ import { createSourceEventStream, subscribe } from '../subscribe';
 
 import { SimplePubSub } from './simplePubSub';
 
-<<<<<<< HEAD:src/subscription/__tests__/subscribe-test.ts
 interface Email {
-=======
-type Email = {
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/subscription/__tests__/subscribe-test.js
   from: string;
   subject: string;
   message: string;
   unread: boolean;
-<<<<<<< HEAD:src/subscription/__tests__/subscribe-test.ts
 }
-=======
-};
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/subscription/__tests__/subscribe-test.js
 
 const EmailType = new GraphQLObjectType({
   name: 'Email',
@@ -131,11 +123,7 @@ function createSubscription(pubsub: SimplePubSub<Email>) {
 }
 
 async function expectPromise(promise: Promise<unknown>) {
-<<<<<<< HEAD
   let caughtError: Error;
-=======
-  let caughtError;
->>>>>>> Switch to TS syntax (#3090)
 
   try {
     await promise;
@@ -325,14 +313,7 @@ describe('Subscription Initialization Phase', () => {
       }),
     });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     // @ts-expect-error (schema must not be null)
-=======
-    // @ts-expect-error
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
-=======
->>>>>>> remove unused `@ts-expect-error`
     (await expectPromise(subscribe({ schema: null, document }))).toRejectWith(
       'Expected null to be a GraphQL schema.',
     );
@@ -342,14 +323,7 @@ describe('Subscription Initialization Phase', () => {
       'Expected undefined to be a GraphQL schema.',
     );
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     // @ts-expect-error (document must not be null)
-=======
-    // @ts-expect-error
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
-=======
->>>>>>> remove unused `@ts-expect-error`
     (await expectPromise(subscribe({ schema, document: null }))).toRejectWith(
       'Must provide document.',
     );

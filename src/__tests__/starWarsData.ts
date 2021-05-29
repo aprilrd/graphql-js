@@ -2,54 +2,30 @@
  * These are types which correspond to the schema.
  * They represent the shape of the data visited during field resolution.
  */
-<<<<<<< HEAD:src/__tests__/starWarsData.ts
 export interface Character {
-=======
-export type Character = {
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/__tests__/starWarsData.js
   id: string;
   name: string;
   friends: Array<string>;
   appearsIn: Array<number>;
-<<<<<<< HEAD
-<<<<<<< HEAD:src/__tests__/starWarsData.ts
 }
 
 export interface Human {
-=======
-  ...
-=======
->>>>>>> Switch to TS syntax (#3090)
-};
-
-export type Human = {
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/__tests__/starWarsData.js
   type: 'Human';
   id: string;
   name: string;
   friends: Array<string>;
   appearsIn: Array<number>;
   homePlanet?: string;
-<<<<<<< HEAD:src/__tests__/starWarsData.ts
 }
 
 export interface Droid {
-=======
-};
-
-export type Droid = {
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/__tests__/starWarsData.js
   type: 'Droid';
   id: string;
   name: string;
   friends: Array<string>;
   appearsIn: Array<number>;
   primaryFunction: string;
-<<<<<<< HEAD:src/__tests__/starWarsData.ts
 }
-=======
-};
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/__tests__/starWarsData.js
 
 /**
  * This defines a basic set of data for our Star Wars Schema.

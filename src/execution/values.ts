@@ -24,18 +24,8 @@ import { valueFromAST } from '../utilities/valueFromAST';
 import { coerceInputValue } from '../utilities/coerceInputValue';
 
 type CoercedVariableValues =
-<<<<<<< HEAD
-<<<<<<< HEAD:src/execution/values.ts
   | { errors: ReadonlyArray<GraphQLError>; coerced?: never }
   | { coerced: { [variable: string]: unknown }; errors?: never };
-=======
-  | { errors: $ReadOnlyArray<GraphQLError> }
-  | { coerced: { [variable: string]: mixed; ... } };
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/values.js
-=======
-  | { errors: ReadonlyArray<GraphQLError> }
-  | { coerced: { [variable: string]: unknown } };
->>>>>>> Switch to TS syntax (#3090)
 
 /**
  * Prepares an object map of variableValues of the correct type based on the
@@ -50,18 +40,8 @@ type CoercedVariableValues =
  */
 export function getVariableValues(
   schema: GraphQLSchema,
-<<<<<<< HEAD
-<<<<<<< HEAD:src/execution/values.ts
   varDefNodes: ReadonlyArray<VariableDefinitionNode>,
   inputs: { readonly [variable: string]: unknown },
-=======
-  varDefNodes: $ReadOnlyArray<VariableDefinitionNode>,
-  inputs: { +[variable: string]: mixed; ... },
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/values.js
-=======
-  varDefNodes: ReadonlyArray<VariableDefinitionNode>,
-  inputs: { readonly [variable: string]: unknown },
->>>>>>> Switch to TS syntax (#3090)
   options?: { maxErrors?: number },
 ): CoercedVariableValues {
   const errors = [];
@@ -93,24 +73,11 @@ export function getVariableValues(
 
 function coerceVariableValues(
   schema: GraphQLSchema,
-<<<<<<< HEAD
-<<<<<<< HEAD:src/execution/values.ts
   varDefNodes: ReadonlyArray<VariableDefinitionNode>,
   inputs: { readonly [variable: string]: unknown },
   onError: (error: GraphQLError) => void,
 ): { [variable: string]: unknown } {
   const coercedValues: { [variable: string]: unknown } = {};
-=======
-  varDefNodes: $ReadOnlyArray<VariableDefinitionNode>,
-  inputs: { +[variable: string]: mixed; ... },
-=======
-  varDefNodes: ReadonlyArray<VariableDefinitionNode>,
-  inputs: { readonly [variable: string]: unknown },
->>>>>>> Switch to TS syntax (#3090)
-  onError: (error: GraphQLError) => void,
-): { [variable: string]: unknown } {
-  const coercedValues = {};
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/values.js
   for (const varDefNode of varDefNodes) {
     const varName = varDefNode.variable.name.value;
     const varType = typeFromAST(schema, varDefNode.type);
@@ -193,20 +160,9 @@ function coerceVariableValues(
 export function getArgumentValues(
   def: GraphQLField<unknown, unknown> | GraphQLDirective,
   node: FieldNode | DirectiveNode,
-<<<<<<< HEAD
-<<<<<<< HEAD:src/execution/values.ts
   variableValues?: Maybe<ObjMap<unknown>>,
 ): { [argument: string]: unknown } {
   const coercedValues: { [argument: string]: unknown } = {};
-=======
-  variableValues?: ?ObjMap<mixed>,
-): { [argument: string]: mixed; ... } {
-=======
-  variableValues?: Maybe<ObjMap<unknown>>,
-): { [argument: string]: unknown } {
->>>>>>> Switch to TS syntax (#3090)
-  const coercedValues = {};
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/values.js
 
   // istanbul ignore next (See: 'https://github.com/graphql/graphql-js/issues/2203')
   const argumentNodes = node.arguments ?? [];
@@ -289,25 +245,9 @@ export function getArgumentValues(
  */
 export function getDirectiveValues(
   directiveDef: GraphQLDirective,
-<<<<<<< HEAD
-<<<<<<< HEAD:src/execution/values.ts
   node: { readonly directives?: ReadonlyArray<DirectiveNode> },
   variableValues?: Maybe<ObjMap<unknown>>,
 ): undefined | { [argument: string]: unknown } {
-=======
-  node: { +directives?: $ReadOnlyArray<DirectiveNode>; ... },
-  variableValues?: ?ObjMap<mixed>,
-): void | { [argument: string]: mixed; ... } {
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/values.js
-=======
-  node: { readonly directives?: ReadonlyArray<DirectiveNode> },
-  variableValues?: Maybe<ObjMap<unknown>>,
-<<<<<<< HEAD
-): void | { [argument: string]: unknown } {
->>>>>>> Switch to TS syntax (#3090)
-=======
-): undefined | { [argument: string]: unknown } {
->>>>>>> TEMPORARY: Replace `void` with `undefined`
   // istanbul ignore next (See: 'https://github.com/graphql/graphql-js/issues/2203')
   const directiveNode = node.directives?.find(
     (directive) => directive.name.value === directiveDef.name,

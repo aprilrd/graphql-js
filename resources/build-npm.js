@@ -24,21 +24,12 @@ if (require.main === module) {
     const destPath = path.join('./npmDist', filepath);
 
     fs.mkdirSync(path.dirname(destPath), { recursive: true });
-<<<<<<< HEAD
     if (filepath.endsWith('.ts')) {
-=======
-    if (filepath.endsWith('.ts') && !filepath.endsWith('.d.ts')) {
->>>>>>> TS Migration: enable tests and remove flow infra (#3091)
       const cjs = babelBuild(srcPath, { envName: 'cjs' });
       writeGeneratedFile(destPath.replace(/\.ts$/, '.js'), cjs);
 
       const mjs = babelBuild(srcPath, { envName: 'mjs' });
       writeGeneratedFile(destPath.replace(/\.ts$/, '.mjs'), mjs);
-<<<<<<< HEAD
-=======
-    } else if (filepath.endsWith('.d.ts')) {
-      fs.copyFileSync(srcPath, destPath);
->>>>>>> TS Migration: enable tests and remove flow infra (#3091)
     }
   }
 

@@ -83,11 +83,9 @@ describe('Type System: Scalars', () => {
       },
     });
 
-    // @ts-expect-error
     expect(scalar.parseLiteral(parseValue('null'))).to.equal(
       'parseValue: null',
     );
-    // @ts-expect-error
     expect(scalar.parseLiteral(parseValue('{ foo: "bar" }'))).to.equal(
       'parseValue: { foo: "bar" }',
     );
@@ -335,14 +333,7 @@ describe('Type System: Objects', () => {
     const objType = new GraphQLObjectType({
       name: 'SomeObject',
       fields: {
-<<<<<<< HEAD
-<<<<<<< HEAD
         // @ts-expect-error (must not be undefined)
-=======
-        // @ts-expect-error
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
-=======
->>>>>>> remove unused `@ts-expect-error`
         f: undefined,
       },
     });
@@ -365,17 +356,8 @@ describe('Type System: Objects', () => {
   it('rejects an Object type with a field function that returns incorrect type', () => {
     const objType = new GraphQLObjectType({
       name: 'SomeObject',
-<<<<<<< HEAD
       // @ts-expect-error (Wrong type of return)
       fields() {
-<<<<<<< HEAD
-=======
-        // @ts-expect-error
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
-=======
-      // @ts-expect-error
-      fields() {
->>>>>>> add more `@ts-expect-error`
         return [{ field: ScalarType }];
       },
     });
@@ -414,17 +396,8 @@ describe('Type System: Objects', () => {
     const objType = new GraphQLObjectType({
       name: 'SomeObject',
       fields: {},
-<<<<<<< HEAD
       // @ts-expect-error (Expected interfaces to return array)
       interfaces() {
-<<<<<<< HEAD
-=======
-        // @ts-expect-error
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
-=======
-      // @ts-expect-error
-      interfaces() {
->>>>>>> add more `@ts-expect-error`
         return {};
       },
     });
@@ -436,17 +409,8 @@ describe('Type System: Objects', () => {
   it('rejects an empty Object field resolver', () => {
     const objType = new GraphQLObjectType({
       name: 'SomeObject',
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-      // @ts-expect-error
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
       fields: {
         // @ts-expect-error (Expected resolve to be a function)
-=======
-      fields: {
-        // @ts-expect-error
->>>>>>> add more `@ts-expect-error`
         field: { type: ScalarType, resolve: {} },
       },
     });
@@ -459,17 +423,8 @@ describe('Type System: Objects', () => {
   it('rejects a constant scalar value resolver', () => {
     const objType = new GraphQLObjectType({
       name: 'SomeObject',
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-      // @ts-expect-error
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
       fields: {
         // @ts-expect-error (Expected resolve to be a function)
-=======
-      fields: {
-        // @ts-expect-error
->>>>>>> add more `@ts-expect-error`
         field: { type: ScalarType, resolve: 0 },
       },
     });
@@ -544,17 +499,8 @@ describe('Type System: Interfaces', () => {
     const objType = new GraphQLInterfaceType({
       name: 'AnotherInterface',
       fields: {},
-<<<<<<< HEAD
       // @ts-expect-error (Expected Array return)
       interfaces() {
-<<<<<<< HEAD
-=======
-        // @ts-expect-error
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
-=======
-      // @ts-expect-error
-      interfaces() {
->>>>>>> add more `@ts-expect-error`
         return {};
       },
     });
@@ -751,14 +697,7 @@ describe('Type System: Enums', () => {
       () =>
         new GraphQLEnumType({
           name: 'SomeEnum',
-<<<<<<< HEAD
-<<<<<<< HEAD
           // @ts-expect-error (must not be null)
-=======
-          // @ts-expect-error
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
-=======
->>>>>>> remove unused `@ts-expect-error`
           values: { FOO: null },
         }),
     ).to.throw(
@@ -856,17 +795,8 @@ describe('Type System: Input Objects', () => {
     it('rejects an Input Object type with resolvers', () => {
       const inputObjType = new GraphQLInputObjectType({
         name: 'SomeInputObject',
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-        // @ts-expect-error
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
         fields: {
           // @ts-expect-error (Input fields cannot have resolvers)
-=======
-        fields: {
-          // @ts-expect-error
->>>>>>> add more `@ts-expect-error`
           f: { type: ScalarType, resolve: dummyFunc },
         },
       });
@@ -878,17 +808,8 @@ describe('Type System: Input Objects', () => {
     it('rejects an Input Object type with resolver constant', () => {
       const inputObjType = new GraphQLInputObjectType({
         name: 'SomeInputObject',
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-        // @ts-expect-error
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
         fields: {
           // @ts-expect-error (Input fields cannot have resolvers)
-=======
-        fields: {
-          // @ts-expect-error
->>>>>>> add more `@ts-expect-error`
           f: { type: ScalarType, resolve: {} },
         },
       });
@@ -922,19 +843,9 @@ describe('Type System: List', () => {
     expectList(String).to.throw(
       'Expected [function String] to be a GraphQL type.',
     );
-<<<<<<< HEAD
-<<<<<<< HEAD
     // @ts-expect-error (must provide type)
     expectList(null).to.throw('Expected null to be a GraphQL type.');
     // @ts-expect-error (must provide type)
-=======
-    // @ts-expect-error
-    expectList(null).to.throw('Expected null to be a GraphQL type.');
-    // @ts-expect-error
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
-=======
-    expectList(null).to.throw('Expected null to be a GraphQL type.');
->>>>>>> remove unused `@ts-expect-error`
     expectList(undefined).to.throw('Expected undefined to be a GraphQL type.');
   });
 });
@@ -956,13 +867,6 @@ describe('Type System: Non-Null', () => {
   });
 
   it('rejects a non-type as nullable type of non-null', () => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    // @ts-expect-error
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
-=======
->>>>>>> remove unused `@ts-expect-error`
     expectNonNull(NonNullScalarType).to.throw(
       'Expected Scalar! to be a GraphQL nullable type.',
     );
@@ -972,25 +876,11 @@ describe('Type System: Non-Null', () => {
     expectNonNull(String).to.throw(
       'Expected [function String] to be a GraphQL nullable type.',
     );
-<<<<<<< HEAD
-<<<<<<< HEAD
     // @ts-expect-error (must provide type)
     expectNonNull(null).to.throw(
       'Expected null to be a GraphQL nullable type.',
     );
     // @ts-expect-error (must provide type)
-=======
-    // @ts-expect-error
-    expectNonNull(null).to.throw(
-      'Expected null to be a GraphQL nullable type.',
-    );
-    // @ts-expect-error
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
-=======
-    expectNonNull(null).to.throw(
-      'Expected null to be a GraphQL nullable type.',
-    );
->>>>>>> remove unused `@ts-expect-error`
     expectNonNull(undefined).to.throw(
       'Expected undefined to be a GraphQL nullable type.',
     );

@@ -63,7 +63,6 @@ export const DangerousChangeType = Object.freeze({
   ARG_DEFAULT_VALUE_CHANGE: 'ARG_DEFAULT_VALUE_CHANGE',
 } as const);
 
-<<<<<<< HEAD:src/utilities/findBreakingChanges.ts
 export interface BreakingChange {
   type: keyof typeof BreakingChangeType;
   description: string;
@@ -73,17 +72,6 @@ export interface DangerousChange {
   type: keyof typeof DangerousChangeType;
   description: string;
 }
-=======
-export type BreakingChange = {
-  type: keyof typeof BreakingChangeType;
-  description: string;
-};
-
-export type DangerousChange = {
-  type: keyof typeof DangerousChangeType;
-  description: string;
-};
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/findBreakingChanges.js
 
 /**
  * Given two schemas, returns an Array containing descriptions of all the types
@@ -483,7 +471,6 @@ function isChangeSafeForObjectOrInterfaceField(
 
   return (
     // if they're both named types, see if their names are equivalent
-    // @ts-expect-error FIXME
     (isNamedType(newType) && oldType.name === newType.name) ||
     // moving from nullable to non-null of the same underlying type is safe
     (isNonNullType(newType) &&
@@ -519,7 +506,6 @@ function isChangeSafeForInputObjectFieldOrFieldArg(
   }
 
   // if they're both named types, see if their names are equivalent
-  // @ts-expect-error FIXME
   return isNamedType(newType) && oldType.name === newType.name;
 }
 
@@ -545,15 +531,7 @@ function typeKindName(type: GraphQLNamedType): string {
   }
 
   // istanbul ignore next (Not reachable. All possible named types have been considered)
-<<<<<<< HEAD
-<<<<<<< HEAD
   invariant(false, 'Unexpected type: ' + inspect(type));
-=======
-  invariant(false, 'Unexpected type: ' + inspect(type as never));
->>>>>>> Switch to TS syntax (#3090)
-=======
-  invariant(false, 'Unexpected type: ' + inspect(type));
->>>>>>> TEMPORARY: remove `as never`
 }
 
 function stringifyValue(value: unknown, type: GraphQLInputType): string {
@@ -575,21 +553,9 @@ function stringifyValue(value: unknown, type: GraphQLInputType): string {
   return print(sortedAST);
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD:src/utilities/findBreakingChanges.ts
 function diff<T extends { name: string }>(
   oldArray: ReadonlyArray<T>,
   newArray: ReadonlyArray<T>,
-=======
-function diff<T: { name: string; ... }>(
-  oldArray: $ReadOnlyArray<T>,
-  newArray: $ReadOnlyArray<T>,
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/findBreakingChanges.js
-=======
-function diff<T extends { name: string }>(
-  oldArray: ReadonlyArray<T>,
-  newArray: ReadonlyArray<T>,
->>>>>>> Switch to TS syntax (#3090)
 ): {
   added: Array<T>;
   removed: Array<T>;

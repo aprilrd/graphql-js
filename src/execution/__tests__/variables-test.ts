@@ -6,7 +6,6 @@ import { invariant } from '../../jsutils/invariant';
 
 import { Kind } from '../../language/kinds';
 import { parse } from '../../language/parser';
-import type { OperationDefinitionNode } from '../../language/ast';
 
 import type {
   GraphQLFieldConfig,
@@ -125,15 +124,7 @@ const schema = new GraphQLSchema({ query: TestType });
 
 function executeQuery(
   query: string,
-<<<<<<< HEAD
-<<<<<<< HEAD:src/execution/__tests__/variables-test.ts
   variableValues?: { [variable: string]: unknown },
-=======
-  variableValues?: { [variable: string]: mixed; ... },
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/__tests__/variables-test.js
-=======
-  variableValues?: { [variable: string]: unknown },
->>>>>>> Switch to TS syntax (#3090)
 ) {
   const document = parse(query);
   return executeSync({ schema, document, variableValues });
@@ -1021,7 +1012,7 @@ describe('Execute: Handles inputs', () => {
       }
     `);
 
-    const operation = doc.definitions[0] as OperationDefinitionNode;
+    const operation = doc.definitions[0];
     invariant(operation.kind === Kind.OPERATION_DEFINITION);
     const { variableDefinitions } = operation;
     invariant(variableDefinitions != null);

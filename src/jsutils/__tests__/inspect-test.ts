@@ -124,11 +124,7 @@ describe('inspect', () => {
   });
 
   it('detect circular objects', () => {
-<<<<<<< HEAD
     const obj: { [name: string]: unknown } = {};
-=======
-    const obj: any = {};
->>>>>>> feat: typecast to ensure type safety
     obj.self = obj;
     obj.deepSelf = { self: obj };
 
@@ -169,8 +165,6 @@ describe('inspect', () => {
 
     expect(inspect([[new Foo()]])).to.equal('[[[Foo]]]');
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     class Foo2 {
       foo: string;
 
@@ -181,21 +175,9 @@ describe('inspect', () => {
       }
     }
     expect(inspect([[new Foo2()]])).to.equal('[[[Bar]]]');
-=======
-    // @ts-expect-error
-=======
->>>>>>> remove unused `@ts-expect-error`
-    Foo.prototype[Symbol.toStringTag] = 'Bar';
-    expect(inspect([[new Foo()]])).to.equal('[[[Bar]]]');
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
 
     // eslint-disable-next-line func-names
-<<<<<<< HEAD
     const objectWithoutClassName = new (function (this: any) {
-=======
-    const objectWithoutClassName = new (function () {
-      // eslint-disable-next-line @typescript-eslint/no-invalid-this
->>>>>>> build: rename to TS eslint rules and temporarily disable eslint rules
       this.foo = 1;
     } as any)();
     expect(inspect([[objectWithoutClassName]])).to.equal('[[[Object]]]');

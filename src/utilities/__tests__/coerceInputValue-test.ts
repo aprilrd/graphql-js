@@ -13,7 +13,6 @@ import {
 
 import { coerceInputValue } from '../coerceInputValue';
 
-<<<<<<< HEAD:src/utilities/__tests__/coerceInputValue-test.ts
 interface CoerceResult {
   value: unknown;
   errors: ReadonlyArray<CoerceError>;
@@ -30,22 +29,6 @@ function coerceValue(
   type: GraphQLInputType,
 ): CoerceResult {
   const errors: Array<CoerceError> = [];
-=======
-type CoerceResult = {
-  value: unknown;
-  errors: ReadonlyArray<{
-    path: ReadonlyArray<string | number>;
-    value: unknown;
-    error: string;
-  }>;
-};
-
-function coerceValue(
-  inputValue: unknown,
-  type: GraphQLInputType,
-): CoerceResult {
-  const errors = [];
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/__tests__/coerceInputValue-test.js
   const value = coerceInputValue(
     inputValue,
     type,
@@ -102,10 +85,6 @@ describe('coerceInputValue', () => {
     const TestScalar = new GraphQLScalarType({
       name: 'TestScalar',
       parseValue(input: any) {
-<<<<<<< HEAD
-=======
-        invariant(typeof input === 'object' && input !== null);
->>>>>>> feat: typecast to ensure type safety
         if (input.error != null) {
           throw new Error(input.error);
         }

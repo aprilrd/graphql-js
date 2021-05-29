@@ -229,42 +229,23 @@ export const __Type: GraphQLObjectType = new GraphQLObjectType({
           }
 
           // istanbul ignore next (Not reachable. All possible types have been considered)
-<<<<<<< HEAD
           invariant(false, `Unexpected type: "${inspect(type)}".`);
-=======
-          invariant(false, `Unexpected type: "${inspect(type as never)}".`);
->>>>>>> Switch to TS syntax (#3090)
         },
       },
       name: {
         type: GraphQLString,
-<<<<<<< HEAD
         resolve: (type) => ('name' in type ? type.name : undefined),
-=======
-        // @ts-expect-error FIXME: TS Conversion
-        resolve: (type) => (type.name !== undefined ? type.name : undefined),
->>>>>>> add fixme and type assertions
       },
       description: {
         type: GraphQLString,
         resolve: (type) =>
-<<<<<<< HEAD
           // istanbul ignore next (FIXME: add test case)
           'description' in type ? type.description : undefined,
-=======
-          // @ts-expect-error FIXME: TS Conversion
-          type.description !== undefined ? type.description : undefined,
->>>>>>> add fixme and type assertions
       },
       specifiedByURL: {
         type: GraphQLString,
         resolve: (obj) =>
-<<<<<<< HEAD
           'specifiedByURL' in obj ? obj.specifiedByURL : undefined,
-=======
-          // @ts-expect-error FIXME: TS Conversion
-          obj.specifiedByURL !== undefined ? obj.specifiedByURL : undefined,
->>>>>>> add fixme and type assertions
       },
       fields: {
         type: new GraphQLList(new GraphQLNonNull(__Field)),
@@ -329,13 +310,7 @@ export const __Type: GraphQLObjectType = new GraphQLObjectType({
       },
       ofType: {
         type: __Type,
-<<<<<<< HEAD
         resolve: (type) => ('ofType' in type ? type.ofType : undefined),
-=======
-        resolve: (type) =>
-          // @ts-expect-error FIXME: TS Conversion
-          type.ofType !== undefined ? type.ofType : undefined,
->>>>>>> add fixme and type assertions
       },
     } as GraphQLFieldConfigMap<GraphQLType, unknown>),
 });

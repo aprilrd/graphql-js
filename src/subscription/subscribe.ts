@@ -26,7 +26,6 @@ import { getOperationRootType } from '../utilities/getOperationRootType';
 
 import { mapAsyncIterator } from './mapAsyncIterator';
 
-<<<<<<< HEAD:src/subscription/subscribe.ts
 export interface SubscriptionArgs {
   schema: GraphQLSchema;
   document: DocumentNode;
@@ -37,18 +36,6 @@ export interface SubscriptionArgs {
   fieldResolver?: Maybe<GraphQLFieldResolver<any, any>>;
   subscribeFieldResolver?: Maybe<GraphQLFieldResolver<any, any>>;
 }
-=======
-export type SubscriptionArgs = {
-  schema: GraphQLSchema;
-  document: DocumentNode;
-  rootValue?: unknown;
-  contextValue?: unknown;
-  variableValues?: Maybe<{ readonly [variable: string]: unknown }>;
-  operationName?: Maybe<string>;
-  fieldResolver?: Maybe<GraphQLFieldResolver<any, any>>;
-  subscribeFieldResolver?: Maybe<GraphQLFieldResolver<any, any>>;
-};
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/subscription/subscribe.js
 
 /**
  * Implements the "Subscribe" algorithm described in the GraphQL specification.
@@ -85,13 +72,6 @@ export async function subscribe(
     subscribeFieldResolver,
   } = args;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  // @ts-expect-error
->>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
-=======
->>>>>>> remove unused `@ts-expect-error`
   const resultOrStream = await createSourceEventStream(
     schema,
     document,
@@ -158,27 +138,12 @@ export async function subscribe(
 export async function createSourceEventStream(
   schema: GraphQLSchema,
   document: DocumentNode,
-<<<<<<< HEAD
-<<<<<<< HEAD:src/subscription/subscribe.ts
-=======
->>>>>>> Switch to TS syntax (#3090)
   rootValue?: unknown,
   contextValue?: unknown,
   variableValues?: Maybe<{ readonly [variable: string]: unknown }>,
   operationName?: Maybe<string>,
   fieldResolver?: Maybe<GraphQLFieldResolver<any, any>>,
 ): Promise<AsyncIterable<unknown> | ExecutionResult> {
-<<<<<<< HEAD
-=======
-  rootValue?: mixed,
-  contextValue?: mixed,
-  variableValues?: ?{ +[variable: string]: mixed; ... },
-  operationName?: ?string,
-  fieldResolver?: ?GraphQLFieldResolver<any, any>,
-): Promise<AsyncIterable<mixed> | ExecutionResult> {
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/subscription/subscribe.js
-=======
->>>>>>> Switch to TS syntax (#3090)
   // If arguments are missing or incorrectly typed, this is an internal
   // developer mistake which should throw an early error.
   assertValidExecutionArguments(schema, document, variableValues);
@@ -200,7 +165,6 @@ export async function createSourceEventStream(
       return { errors: exeContext };
     }
 
-    // @ts-expect-error FIXME
     const eventStream = await executeSubscription(exeContext);
 
     // Assert field returned an event stream, otherwise yield an error.

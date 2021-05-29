@@ -10,12 +10,11 @@ import type {
   FieldNode,
   ArgumentNode,
   FragmentDefinitionNode,
-  RequiredStatus,
 } from '../../language/ast';
 import { Kind } from '../../language/kinds';
 import { print } from '../../language/printer';
 
-import {
+import type {
   GraphQLNamedType,
   GraphQLOutputType,
   GraphQLField,
@@ -36,6 +35,7 @@ import { typeFromAST } from '../../utilities/typeFromAST';
 import type { Maybe } from '../../jsutils/Maybe';
 
 import type { ValidationContext } from '../ValidationContext';
+
 import { modifiedOutputType } from '../../utilities/applyRequiredStatus';
 
 function reasonMessage(reason: ConflictReasonMessage): string {
@@ -687,11 +687,7 @@ function doTypesConflict(
 // referenced via fragment spreads.
 function getFieldsAndFragmentNames(
   context: ValidationContext,
-<<<<<<< HEAD
   cachedFieldsAndFragmentNames: Map<SelectionSetNode, FieldsAndFragmentNames>,
-=======
-  cachedFieldsAndFragmentNames,
->>>>>>> Switch to TS syntax (#3090)
   parentType: Maybe<GraphQLNamedType>,
   selectionSet: SelectionSetNode,
 ): FieldsAndFragmentNames {

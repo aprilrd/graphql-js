@@ -36,19 +36,10 @@ export function typeFromAST(
 export function typeFromAST(
   schema: GraphQLSchema,
   typeNode: TypeNode,
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> add fixme and type assertions
 ): GraphQLType | undefined;
 export function typeFromAST(
   schema: GraphQLSchema,
   typeNode: TypeNode,
-<<<<<<< HEAD
-=======
->>>>>>> Switch to TS syntax (#3090)
-=======
->>>>>>> add fixme and type assertions
 ): GraphQLType | undefined {
   let innerType;
   if (typeNode.kind === Kind.LIST_TYPE) {
@@ -65,9 +56,5 @@ export function typeFromAST(
   }
 
   // istanbul ignore next (Not reachable. All possible type nodes have been considered)
-<<<<<<< HEAD
   invariant(false, 'Unexpected type node: ' + inspect(typeNode));
-=======
-  invariant(false, 'Unexpected type node: ' + inspect(typeNode as never));
->>>>>>> Switch to TS syntax (#3090)
 }

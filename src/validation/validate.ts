@@ -87,11 +87,7 @@ export function validateSDL(
   schemaToExtend?: Maybe<GraphQLSchema>,
   rules: ReadonlyArray<SDLValidationRule> = specifiedSDLRules,
 ): ReadonlyArray<GraphQLError> {
-<<<<<<< HEAD
   const errors: Array<GraphQLError> = [];
-=======
-  const errors = [];
->>>>>>> Switch to TS syntax (#3090)
   const context = new SDLValidationContext(
     documentAST,
     schemaToExtend,

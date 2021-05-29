@@ -59,11 +59,7 @@ export class GraphQLDirective {
   locations: Array<DirectiveLocationEnum>;
   args: ReadonlyArray<GraphQLArgument>;
   isRepeatable: boolean;
-<<<<<<< HEAD
   extensions: Maybe<Readonly<GraphQLDirectiveExtensions>>;
-=======
-  extensions: Maybe<ReadOnlyObjMap<unknown>>;
->>>>>>> Switch to TS syntax (#3090)
   astNode: Maybe<DirectiveDefinitionNode>;
 
   constructor(config: Readonly<GraphQLDirectiveConfig>) {
@@ -109,19 +105,11 @@ export class GraphQLDirective {
     return this.toString();
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  // @ts-expect-error Flow doesn't support computed properties yet
->>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
-=======
->>>>>>> remove unused `@ts-expect-error`
   get [Symbol.toStringTag]() {
     return 'GraphQLDirective';
   }
 }
 
-<<<<<<< HEAD:src/type/directives.ts
 export interface GraphQLDirectiveConfig {
   name: string;
   description?: Maybe<string>;
@@ -137,28 +125,6 @@ interface GraphQLDirectiveNormalizedConfig extends GraphQLDirectiveConfig {
   isRepeatable: boolean;
   extensions: Maybe<Readonly<GraphQLDirectiveExtensions>>;
 }
-=======
-export type GraphQLDirectiveConfig = {
-  name: string;
-  description?: Maybe<string>;
-  locations: Array<DirectiveLocationEnum>;
-  args?: Maybe<GraphQLFieldConfigArgumentMap>;
-  isRepeatable?: Maybe<boolean>;
-  extensions?: Maybe<ReadOnlyObjMapLike<unknown>>;
-  astNode?: Maybe<DirectiveDefinitionNode>;
-};
-
-interface GraphQLDirectiveNormalizedConfig extends GraphQLDirectiveConfig {
-  args: GraphQLFieldConfigArgumentMap;
-  isRepeatable: boolean;
-<<<<<<< HEAD
-  extensions: ?ReadOnlyObjMap<mixed>;
-};
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/directives.js
-=======
-  extensions: Maybe<ReadOnlyObjMap<unknown>>;
-}
->>>>>>> Switch to TS syntax (#3090)
 
 /**
  * Used to conditionally include fields or fragments.

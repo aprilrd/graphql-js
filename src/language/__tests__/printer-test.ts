@@ -10,17 +10,10 @@ import { print } from '../printer';
 
 describe('Printer: Query document', () => {
   it('prints minimal ast', () => {
-<<<<<<< HEAD
     const ast = {
       kind: 'Field',
       name: { kind: 'Name', value: 'foo' },
     } as const;
-=======
-    const ast: FieldNode = {
-      kind: 'Field',
-      name: { kind: 'Name', value: 'foo' },
-    };
->>>>>>> feat: typecast to ensure type safety
     expect(print(ast)).to.equal('foo');
   });
 

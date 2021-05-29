@@ -51,30 +51,13 @@ function cycleSDL(sdl: string): string {
   return printSchema(buildSchema(sdl));
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD:src/utilities/__tests__/buildASTSchema-test.ts
 function expectASTNode(obj: Maybe<{ readonly astNode: Maybe<ASTNode> }>) {
-=======
-function expectASTNode(obj: ?{ +astNode: ?ASTNode; ... }) {
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/__tests__/buildASTSchema-test.js
-=======
-function expectASTNode(obj: Maybe<{ readonly astNode: Maybe<ASTNode> }>) {
->>>>>>> Switch to TS syntax (#3090)
   invariant(obj?.astNode != null);
   return expect(print(obj.astNode));
 }
 
 function expectExtensionASTNodes(obj: {
-<<<<<<< HEAD
-<<<<<<< HEAD:src/utilities/__tests__/buildASTSchema-test.ts
   readonly extensionASTNodes: ReadonlyArray<ASTNode>;
-=======
-  +extensionASTNodes: $ReadOnlyArray<ASTNode>;
-  ...
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/__tests__/buildASTSchema-test.js
-=======
-  readonly extensionASTNodes: ReadonlyArray<ASTNode>;
->>>>>>> Switch to TS syntax (#3090)
 }) {
   return expect(obj.extensionASTNodes.map(print).join('\n\n'));
 }
@@ -1112,14 +1095,7 @@ describe('Schema Builder', () => {
   });
 
   it('Rejects invalid AST', () => {
-<<<<<<< HEAD
-<<<<<<< HEAD
     // @ts-expect-error (First parameter expected to be DocumentNode)
-=======
-    // @ts-expect-error
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
-=======
->>>>>>> remove unused `@ts-expect-error`
     expect(() => buildASTSchema(null)).to.throw(
       'Must provide valid Document AST',
     );

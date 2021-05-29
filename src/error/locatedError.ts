@@ -12,15 +12,7 @@ import { GraphQLError } from './GraphQLError';
  */
 export function locatedError(
   rawOriginalError: unknown,
-<<<<<<< HEAD
-<<<<<<< HEAD
   nodes: ASTNode | ReadonlyArray<ASTNode> | undefined | null,
-=======
-  nodes: ASTNode | ReadonlyArray<ASTNode> | void | null,
->>>>>>> Switch to TS syntax (#3090)
-=======
-  nodes: ASTNode | ReadonlyArray<ASTNode> | undefined | null,
->>>>>>> TEMPORARY: Replace `void` with `undefined`
   path?: Maybe<ReadonlyArray<string | number>>,
 ): GraphQLError {
   // Sometimes a non-error is thrown, wrap it as an Error instance to ensure a consistent Error interface.
@@ -30,33 +22,15 @@ export function locatedError(
       : new Error('Unexpected error value: ' + inspect(rawOriginalError));
 
   // Note: this uses a brand-check to support GraphQL errors originating from other contexts.
-<<<<<<< HEAD
-<<<<<<< HEAD
   if (isLocatedGraphQLError(originalError)) {
-=======
-=======
-  // @ts-expect-error FIXME: TS Conversion
->>>>>>> add fixme and type assertions
-  if (Array.isArray(originalError.path)) {
-    // @ts-expect-error
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
     return originalError;
   }
 
   return new GraphQLError(
     originalError.message,
-<<<<<<< HEAD
     (originalError as GraphQLError).nodes ?? nodes,
     (originalError as GraphQLError).source,
     (originalError as GraphQLError).positions,
-=======
-    // @ts-expect-error FIXME
-    originalError.nodes ?? nodes,
-    // @ts-expect-error FIXME
-    originalError.source,
-    // @ts-expect-error FIXME
-    originalError.positions,
->>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
     path,
     originalError,
   );

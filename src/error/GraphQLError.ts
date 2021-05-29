@@ -1,6 +1,5 @@
 import { isObjectLike } from '../jsutils/isObjectLike';
 import type { Maybe } from '../jsutils/Maybe';
-import type { Mutable } from '../jsutils/mutable';
 
 import type { ASTNode } from '../language/ast';
 import type { Source } from '../language/source';
@@ -25,15 +24,7 @@ export class GraphQLError extends Error {
    *
    * Enumerable, and appears in the result of JSON.stringify().
    */
-<<<<<<< HEAD
-<<<<<<< HEAD
   readonly locations?: ReadonlyArray<SourceLocation>;
-=======
-  readonly locations: ReadonlyArray<SourceLocation> | void;
->>>>>>> Switch to TS syntax (#3090)
-=======
-  readonly locations: ReadonlyArray<SourceLocation> | undefined;
->>>>>>> TEMPORARY: Replace `void` with `undefined`
 
   /**
    * An array describing the JSON-path into the execution response which
@@ -41,28 +32,12 @@ export class GraphQLError extends Error {
    *
    * Enumerable, and appears in the result of JSON.stringify().
    */
-<<<<<<< HEAD
-<<<<<<< HEAD
   readonly path?: ReadonlyArray<string | number>;
-=======
-  readonly path: ReadonlyArray<string | number> | void;
->>>>>>> Switch to TS syntax (#3090)
-=======
-  readonly path: ReadonlyArray<string | number> | undefined;
->>>>>>> TEMPORARY: Replace `void` with `undefined`
 
   /**
    * An array of GraphQL AST Nodes corresponding to this error.
    */
-<<<<<<< HEAD
-<<<<<<< HEAD
   readonly nodes?: ReadonlyArray<ASTNode>;
-=======
-  readonly nodes: ReadonlyArray<ASTNode> | void;
->>>>>>> Switch to TS syntax (#3090)
-=======
-  readonly nodes: ReadonlyArray<ASTNode> | undefined;
->>>>>>> TEMPORARY: Replace `void` with `undefined`
 
   /**
    * The source GraphQL document for the first location of this error.
@@ -70,29 +45,13 @@ export class GraphQLError extends Error {
    * Note that if this Error represents more than one node, the source may not
    * represent nodes after the first node.
    */
-<<<<<<< HEAD
-<<<<<<< HEAD
   readonly source?: Source;
-=======
-  readonly source: Source | void;
->>>>>>> Switch to TS syntax (#3090)
-=======
-  readonly source: Source | undefined;
->>>>>>> TEMPORARY: Replace `void` with `undefined`
 
   /**
    * An array of character offsets within the source GraphQL document
    * which correspond to this error.
    */
-<<<<<<< HEAD
-<<<<<<< HEAD
   readonly positions?: ReadonlyArray<number>;
-=======
-  readonly positions: ReadonlyArray<number> | void;
->>>>>>> Switch to TS syntax (#3090)
-=======
-  readonly positions: ReadonlyArray<number> | undefined;
->>>>>>> TEMPORARY: Replace `void` with `undefined`
 
   /**
    * The original error thrown from a field resolver during execution.
@@ -102,9 +61,6 @@ export class GraphQLError extends Error {
   /**
    * Extension fields to add to the formatted error.
    */
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD:src/error/GraphQLError.ts
   readonly extensions?: { [key: string]: unknown };
 
   constructor(
@@ -115,33 +71,6 @@ export class GraphQLError extends Error {
     path?: Maybe<ReadonlyArray<string | number>>,
     originalError?: Maybe<Error & { readonly extensions?: unknown }>,
     extensions?: Maybe<{ [key: string]: unknown }>,
-=======
-  +extensions: { [key: string]: mixed; ... } | void;
-
-  constructor(
-    message: string,
-    nodes?: $ReadOnlyArray<ASTNode> | ASTNode | void | null,
-    source?: ?Source,
-    positions?: ?$ReadOnlyArray<number>,
-    path?: ?$ReadOnlyArray<string | number>,
-    originalError?: ?(Error & { +extensions?: mixed; ... }),
-    extensions?: ?{ [key: string]: mixed; ... },
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/error/GraphQLError.js
-=======
-  readonly extensions: { [key: string]: unknown } | void;
-=======
-  readonly extensions: { [key: string]: unknown } | undefined;
->>>>>>> TEMPORARY: Replace `void` with `undefined`
-
-  constructor(
-    message: string,
-    nodes?: ReadonlyArray<ASTNode> | ASTNode | undefined | null,
-    source?: Maybe<Source>,
-    positions?: Maybe<ReadonlyArray<number>>,
-    path?: Maybe<ReadonlyArray<string | number>>,
-    originalError?: Maybe<Error & { readonly extensions?: unknown }>,
-    extensions?: Maybe<{ [key: string]: unknown }>,
->>>>>>> Switch to TS syntax (#3090)
   ) {
     super(message);
 
@@ -160,15 +89,10 @@ export class GraphQLError extends Error {
       _source = _nodes[0].loc?.source;
     }
 
-<<<<<<< HEAD
     let _positions;
     if (positions) {
       _positions = positions;
     } else if (_nodes) {
-=======
-    let _positions = positions as Mutable<typeof positions>;
-    if (!_positions && _nodes) {
->>>>>>> feat: Mutable type utility
       _positions = [];
       for (const node of _nodes) {
         if (node.loc) {
@@ -180,7 +104,7 @@ export class GraphQLError extends Error {
       _positions = undefined;
     }
 
-    let _locations: Array<SourceLocation>;
+    let _locations;
     if (positions && source) {
       _locations = positions.map((pos) => getLocation(source, pos));
     } else if (_nodes) {
@@ -196,18 +120,10 @@ export class GraphQLError extends Error {
     if (_extensions == null && originalError != null) {
       const originalExtensions = originalError.extensions;
       if (isObjectLike(originalExtensions)) {
-        // @ts-expect-error FIXME: TS Conversion
         _extensions = originalExtensions;
       }
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    // @ts-expect-error FIXME
->>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
-=======
->>>>>>> remove unused `@ts-expect-error`
     Object.defineProperties(this, {
       name: { value: 'GraphQLError' },
       message: {
@@ -286,13 +202,6 @@ export class GraphQLError extends Error {
   }
 
   // FIXME: workaround to not break chai comparisons, should be remove in v16
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  // @ts-expect-error Flow doesn't support computed properties yet
->>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
-=======
->>>>>>> remove unused `@ts-expect-error`
   get [Symbol.toStringTag](): string {
     return 'Object';
   }

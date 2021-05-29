@@ -44,7 +44,6 @@ import { typeFromAST } from './typeFromAST';
  * AST during a recursive descent by calling `enter(node)` and `leave(node)`.
  */
 export class TypeInfo {
-<<<<<<< HEAD
   private _schema: GraphQLSchema;
   private _typeStack: Array<Maybe<GraphQLOutputType>>;
   private _parentTypeStack: Array<Maybe<GraphQLCompositeType>>;
@@ -62,23 +61,6 @@ export class TypeInfo {
      * Initial type may be provided in rare cases to facilitate traversals
      *  beginning somewhere other than documents.
      */
-=======
-  _schema: GraphQLSchema;
-  _typeStack: Array<Maybe<GraphQLOutputType>>;
-  _parentTypeStack: Array<Maybe<GraphQLCompositeType>>;
-  _inputTypeStack: Array<Maybe<GraphQLInputType>>;
-  _fieldDefStack: Array<Maybe<GraphQLField<unknown, unknown>>>;
-  _defaultValueStack: Array<Maybe<unknown>>;
-  _directive: Maybe<GraphQLDirective>;
-  _argument: Maybe<GraphQLArgument>;
-  _enumValue: Maybe<GraphQLEnumValue>;
-  _getFieldDef: typeof getFieldDef;
-
-  constructor(
-    schema: GraphQLSchema,
-    // Initial type may be provided in rare cases to facilitate traversals
-    // beginning somewhere other than documents.
->>>>>>> Switch to TS syntax (#3090)
     initialType?: Maybe<GraphQLType>,
 
     /** @deprecated will be removed in 17.0.0 */
@@ -247,18 +229,8 @@ export class TypeInfo {
       }
       case Kind.OBJECT_FIELD: {
         const objectType: unknown = getNamedType(this.getInputType());
-<<<<<<< HEAD
-<<<<<<< HEAD
         let inputFieldType: GraphQLInputType | undefined;
         let inputField: GraphQLInputField | undefined;
-=======
-        let inputFieldType: GraphQLInputType | void;
-        let inputField: GraphQLInputField | void;
->>>>>>> Switch to TS syntax (#3090)
-=======
-        let inputFieldType: GraphQLInputType | undefined;
-        let inputField: GraphQLInputField | undefined;
->>>>>>> TEMPORARY: Replace `void` with `undefined`
         if (isInputObjectType(objectType)) {
           inputField = objectType.getFields()[node.name.value];
           if (inputField) {

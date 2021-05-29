@@ -51,12 +51,7 @@ function checkVisitorFnArgs(ast: any, args: any, isEdited: boolean = false) {
 }
 
 function getValue(node: ASTNode) {
-<<<<<<< HEAD
   return 'value' in node ? node.value : undefined;
-=======
-  // @ts-expect-error FIXME
-  return node.value != null ? node.value : undefined;
->>>>>>> add fixme and type assertions
 }
 
 describe('Visitor', () => {
@@ -269,12 +264,7 @@ describe('Visitor', () => {
         if (node.kind === 'Field' && node.name.value === 'a') {
           return {
             kind: 'Field',
-<<<<<<< HEAD
             selectionSet: [addedField, node.selectionSet],
-=======
-            // @ts-expect-error FIXME
-            selectionSet: [addedField].concat(node.selectionSet),
->>>>>>> add fixme and type assertions
           };
         }
         if (node === addedField) {
@@ -671,26 +661,6 @@ describe('Visitor', () => {
       ['leave', 'Field', 1, undefined],
       ['leave', 'SelectionSet', 'selectionSet', 'Field'],
       ['leave', 'Field', 0, undefined],
-      ['enter', 'Field', 1, undefined],
-      ['enter', 'Name', 'name', 'Field'],
-      ['leave', 'Name', 'name', 'Field'],
-      ['leave', 'Field', 1, undefined],
-      ['enter', 'Field', 2, undefined],
-      ['enter', 'Name', 'alias', 'Field'],
-      ['leave', 'Name', 'alias', 'Field'],
-      ['enter', 'Name', 'name', 'Field'],
-      ['leave', 'Name', 'name', 'Field'],
-      ['leave', 'Field', 2, undefined],
-      ['enter', 'Field', 3, undefined],
-      ['enter', 'Name', 'name', 'Field'],
-      ['leave', 'Name', 'name', 'Field'],
-      ['leave', 'Field', 3, undefined],
-      ['enter', 'Field', 4, undefined],
-      ['enter', 'Name', 'alias', 'Field'],
-      ['leave', 'Name', 'alias', 'Field'],
-      ['enter', 'Name', 'name', 'Field'],
-      ['leave', 'Name', 'name', 'Field'],
-      ['leave', 'Field', 4, undefined],
       ['leave', 'SelectionSet', 'selectionSet', 'InlineFragment'],
       ['leave', 'InlineFragment', 1, undefined],
       ['enter', 'InlineFragment', 2, undefined],

@@ -49,11 +49,7 @@ export function UniqueDirectivesPerLocationRule(
     // them all, just listen for entering any node, and check to see if it
     // defines any directives.
     enter(node) {
-<<<<<<< HEAD
       if (!('directives' in node) || !node.directives) {
-=======
-      if ((node as any).directives == null) {
->>>>>>> feat: typecast to ensure type safety
         return;
       }
 

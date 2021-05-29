@@ -4,19 +4,12 @@ import type {
   ExecutableDefinitionNode,
   SelectionNode,
   ValueNode,
-<<<<<<< HEAD
   ConstValueNode,
-=======
->>>>>>> Switch to TS syntax (#3090)
   TypeNode,
   TypeSystemDefinitionNode,
   TypeDefinitionNode,
   TypeSystemExtensionNode,
   TypeExtensionNode,
-<<<<<<< HEAD
-=======
-  ConstValueNode,
->>>>>>> Switch to TS syntax (#3090)
 } from './ast';
 import { Kind } from './kinds';
 

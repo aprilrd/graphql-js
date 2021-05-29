@@ -40,15 +40,7 @@ export function valueFromAST(
   valueNode: Maybe<ValueNode>,
   type: GraphQLInputType,
   variables?: Maybe<ObjMap<unknown>>,
-<<<<<<< HEAD
-<<<<<<< HEAD
 ): unknown {
-=======
-): unknown | void {
->>>>>>> Switch to TS syntax (#3090)
-=======
-): unknown | undefined {
->>>>>>> TEMPORARY: Replace `void` with `undefined`
   if (!valueNode) {
     // When there is no node, then there is also no value.
     // Importantly, this is different from returning the value null.
@@ -155,15 +147,7 @@ export function valueFromAST(
   }
 
   // istanbul ignore next (Not reachable. All possible input types have been considered)
-<<<<<<< HEAD
-<<<<<<< HEAD
   invariant(false, 'Unexpected input type: ' + inspect(type));
-=======
-  invariant(false, 'Unexpected input type: ' + inspect(type as never));
->>>>>>> Switch to TS syntax (#3090)
-=======
-  invariant(false, 'Unexpected input type: ' + inspect(type));
->>>>>>> TEMPORARY: remove `as never`
 }
 
 // Returns true if the provided valueNode is a variable which is not defined

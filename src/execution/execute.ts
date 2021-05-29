@@ -29,7 +29,7 @@ import type {
 import { Kind } from '../language/kinds';
 
 import type { GraphQLSchema } from '../type/schema';
-import {
+import type {
   GraphQLObjectType,
   GraphQLOutputType,
   GraphQLLeafType,
@@ -39,7 +39,6 @@ import {
   GraphQLResolveInfo,
   GraphQLTypeResolver,
   GraphQLList,
-  getNullableType,
 } from '../type/definition';
 import { assertValidSchema } from '../type/validate';
 import {
@@ -52,7 +51,6 @@ import {
   GraphQLSkipDirective,
 } from '../type/directives';
 import {
-  GraphQLNonNull,
   isObjectType,
   isAbstractType,
   isLeafType,
@@ -68,7 +66,6 @@ import {
   getArgumentValues,
   getDirectiveValues,
 } from './values';
-import { modifiedOutputType } from '../utilities/applyRequiredStatus';
 
 /**
  * Terminology
@@ -96,7 +93,6 @@ import { modifiedOutputType } from '../utilities/applyRequiredStatus';
  * Namely, schema of the type system that is currently executing,
  * and the fragments defined in the query document
  */
-<<<<<<< HEAD:src/execution/execute.ts
 export interface ExecutionContext {
   schema: GraphQLSchema;
   fragments: ObjMap<FragmentDefinitionNode>;
@@ -108,19 +104,6 @@ export interface ExecutionContext {
   typeResolver: GraphQLTypeResolver<any, any>;
   errors: Array<GraphQLError>;
 }
-=======
-export type ExecutionContext = {
-  schema: GraphQLSchema;
-  fragments: ObjMap<FragmentDefinitionNode>;
-  rootValue: unknown;
-  contextValue: unknown;
-  operation: OperationDefinitionNode;
-  variableValues: { [variable: string]: unknown };
-  fieldResolver: GraphQLFieldResolver<any, any>;
-  typeResolver: GraphQLTypeResolver<any, any>;
-  errors: Array<GraphQLError>;
-};
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/execute.js
 
 /**
  * The result of GraphQL execution.
@@ -129,8 +112,6 @@ export type ExecutionContext = {
  *   - `data` is the result of a successful execution of the query.
  *   - `extensions` is reserved for adding non-standard properties.
  */
-<<<<<<< HEAD
-<<<<<<< HEAD:src/execution/execute.ts
 export interface ExecutionResult<
   TData = ObjMap<unknown>,
   TExtensions = ObjMap<unknown>,
@@ -159,41 +140,6 @@ export interface ExecutionArgs {
   fieldResolver?: Maybe<GraphQLFieldResolver<any, any>>;
   typeResolver?: Maybe<GraphQLTypeResolver<any, any>>;
 }
-=======
-export type ExecutionResult = {
-=======
-export interface ExecutionResult<
-  TData = { [key: string]: any },
-  TExtensions = { [key: string]: any },
-> {
->>>>>>> match `.d.ts` definition
-  errors?: ReadonlyArray<GraphQLError>;
-  // TS_SPECIFIC: TData. Motivation: https://github.com/graphql/graphql-js/pull/2490#issuecomment-639154229
-  data?: TData | null;
-  extensions?: TExtensions;
-}
-
-export interface FormattedExecutionResult<
-  TData = { [key: string]: any },
-  TExtensions = { [key: string]: any },
-> {
-  errors?: ReadonlyArray<GraphQLFormattedError>;
-  // TS_SPECIFIC: TData. Motivation: https://github.com/graphql/graphql-js/pull/2490#issuecomment-639154229
-  data?: TData | null;
-  extensions?: TExtensions;
-}
-
-export type ExecutionArgs = {
-  schema: GraphQLSchema;
-  document: DocumentNode;
-  rootValue?: unknown;
-  contextValue?: unknown;
-  variableValues?: Maybe<{ readonly [variable: string]: unknown }>;
-  operationName?: Maybe<string>;
-  fieldResolver?: Maybe<GraphQLFieldResolver<any, any>>;
-  typeResolver?: Maybe<GraphQLTypeResolver<any, any>>;
-};
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/execute.js
 
 /**
  * Implements the "Evaluating requests" section of the GraphQL specification.
@@ -245,9 +191,7 @@ export function execute(args: ExecutionArgs): PromiseOrValue<ExecutionResult> {
   // field and its descendants will be omitted, and sibling fields will still
   // be executed. An execution which encounters errors will still result in a
   // resolved Promise.
-  // @ts-expect-error FIXME: TS Conversion
   const data = executeOperation(exeContext, exeContext.operation, rootValue);
-  // @ts-expect-error FIXME: TS Conversion
   return buildResponse(exeContext, data);
 }
 
@@ -292,15 +236,7 @@ function buildResponse(
 export function assertValidExecutionArguments(
   schema: GraphQLSchema,
   document: DocumentNode,
-<<<<<<< HEAD
-<<<<<<< HEAD:src/execution/execute.ts
   rawVariableValues: Maybe<{ readonly [variable: string]: unknown }>,
-=======
-  rawVariableValues: ?{ +[variable: string]: mixed; ... },
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/execute.js
-=======
-  rawVariableValues: Maybe<{ readonly [variable: string]: unknown }>,
->>>>>>> Switch to TS syntax (#3090)
 ): void {
   devAssert(document, 'Must provide document.');
 
@@ -325,10 +261,6 @@ export function assertValidExecutionArguments(
 export function buildExecutionContext(
   schema: GraphQLSchema,
   document: DocumentNode,
-<<<<<<< HEAD
-<<<<<<< HEAD:src/execution/execute.ts
-=======
->>>>>>> Switch to TS syntax (#3090)
   rootValue: unknown,
   contextValue: unknown,
   rawVariableValues: Maybe<{ readonly [variable: string]: unknown }>,
@@ -336,24 +268,7 @@ export function buildExecutionContext(
   fieldResolver: Maybe<GraphQLFieldResolver<unknown, unknown>>,
   typeResolver?: Maybe<GraphQLTypeResolver<unknown, unknown>>,
 ): ReadonlyArray<GraphQLError> | ExecutionContext {
-<<<<<<< HEAD
-<<<<<<< HEAD
   let operation: OperationDefinitionNode | undefined;
-=======
-  rootValue: mixed,
-  contextValue: mixed,
-  rawVariableValues: ?{ +[variable: string]: mixed; ... },
-  operationName: ?string,
-  fieldResolver: ?GraphQLFieldResolver<mixed, mixed>,
-  typeResolver?: ?GraphQLTypeResolver<mixed, mixed>,
-): $ReadOnlyArray<GraphQLError> | ExecutionContext {
-=======
->>>>>>> Switch to TS syntax (#3090)
-  let operation: OperationDefinitionNode | void;
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/execution/execute.js
-=======
-  let operation: OperationDefinitionNode | undefined;
->>>>>>> TEMPORARY: Replace `void` with `undefined`
   const fragments: ObjMap<FragmentDefinitionNode> = Object.create(null);
   for (const definition of document.definitions) {
     switch (definition.kind) {
@@ -394,26 +309,16 @@ export function buildExecutionContext(
     { maxErrors: 50 },
   );
 
-  // @ts-expect-error FIXME: TS Conversion
   if (coercedVariableValues.errors) {
-    // @ts-expect-error FIXME: TS Conversion
     return coercedVariableValues.errors;
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  // @ts-expect-error
->>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
-=======
->>>>>>> feat: typecast to ensure type safety
   return {
     schema,
     fragments,
     rootValue,
     contextValue,
     operation,
-    // @ts-expect-error FIXME: TS Conversion
     variableValues: coercedVariableValues.coerced,
     fieldResolver: fieldResolver ?? defaultFieldResolver,
     typeResolver: typeResolver ?? defaultTypeResolver,
@@ -469,15 +374,7 @@ function executeFieldsSerially(
   exeContext: ExecutionContext,
   parentType: GraphQLObjectType,
   sourceValue: unknown,
-<<<<<<< HEAD
-<<<<<<< HEAD
   path: Path | undefined,
-=======
-  path: Path | void,
->>>>>>> Switch to TS syntax (#3090)
-=======
-  path: Path | undefined,
->>>>>>> TEMPORARY: Replace `void` with `undefined`
   fields: Map<string, Array<FieldNode>>,
 ): PromiseOrValue<ObjMap<unknown>> {
   return promiseReduce(
@@ -515,15 +412,7 @@ function executeFields(
   exeContext: ExecutionContext,
   parentType: GraphQLObjectType,
   sourceValue: unknown,
-<<<<<<< HEAD
-<<<<<<< HEAD
   path: Path | undefined,
-=======
-  path: Path | void,
->>>>>>> Switch to TS syntax (#3090)
-=======
-  path: Path | undefined,
->>>>>>> TEMPORARY: Replace `void` with `undefined`
   fields: Map<string, Array<FieldNode>>,
 ): PromiseOrValue<ObjMap<unknown>> {
   const results = Object.create(null);
@@ -711,8 +600,7 @@ function resolveField(
     return;
   }
 
-  const returnType = modifiedOutputType(fieldDef.type, fieldNodes[0].required)
-
+  const returnType = fieldDef.type;
   const resolveFn = fieldDef.resolve ?? exeContext.fieldResolver;
 
   const info = buildResolveInfo(
@@ -920,16 +808,7 @@ function completeValue(
   // istanbul ignore next (Not reachable. All possible output types have been considered)
   invariant(
     false,
-<<<<<<< HEAD
-<<<<<<< HEAD
     'Cannot complete value of unexpected output type: ' + inspect(returnType),
-=======
-    'Cannot complete value of unexpected output type: ' +
-      inspect(returnType as never),
->>>>>>> Switch to TS syntax (#3090)
-=======
-    'Cannot complete value of unexpected output type: ' + inspect(returnType),
->>>>>>> TEMPORARY: remove `as never`
   );
 }
 
@@ -1226,9 +1105,7 @@ function _collectSubfields(
 export const defaultTypeResolver: GraphQLTypeResolver<unknown, unknown> =
   function (value, contextValue, info, abstractType) {
     // First, look for `__typename`.
-    // @ts-expect-error FIXME: TS Conversion
     if (isObjectLike(value) && typeof value.__typename === 'string') {
-      // @ts-expect-error FIXME: TS Conversion
       return value.__typename;
     }
 

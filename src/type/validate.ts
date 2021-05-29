@@ -155,19 +155,9 @@ function getOperationTypeNode(
   operation: OperationTypeNode,
 ): Maybe<ASTNode> {
   // istanbul ignore next (See: 'https://github.com/graphql/graphql-js/issues/2203')
-<<<<<<< HEAD
   return [schema.astNode, ...schema.extensionASTNodes]
     .flatMap((schemaNode) => schemaNode?.operationTypes ?? [])
     .find((operationNode) => operationNode.operation === operation)?.type;
-=======
-  return (
-    [schema.astNode]
-      // @ts-expect-error FIXME: TS Conversion
-      .concat(schema.extensionASTNodes)
-      .flatMap((schemaNode) => schemaNode?.operationTypes ?? [])
-      .find((operationNode) => operationNode.operation === operation)?.type
-  );
->>>>>>> add fixme and type assertions
 }
 
 function validateDirectives(context: SchemaValidationContext): void {
@@ -212,15 +202,7 @@ function validateDirectives(context: SchemaValidationContext): void {
 
 function validateName(
   context: SchemaValidationContext,
-<<<<<<< HEAD
-<<<<<<< HEAD:src/type/validate.ts
   node: { readonly name: string; readonly astNode: Maybe<ASTNode> },
-=======
-  node: { +name: string; +astNode: ?ASTNode; ... },
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/validate.js
-=======
-  node: { readonly name: string; readonly astNode: Maybe<ASTNode> },
->>>>>>> Switch to TS syntax (#3090)
 ): void {
   // Ensure names are valid, however introspection types opt out.
   const error = isValidNameError(node.name);
@@ -654,18 +636,8 @@ function getUnionMemberTypeNodes(
 }
 
 function getDeprecatedDirectiveNode(
-<<<<<<< HEAD
-<<<<<<< HEAD:src/type/validate.ts
   definitionNode: Maybe<{ readonly directives?: ReadonlyArray<DirectiveNode> }>,
 ): Maybe<DirectiveNode> {
-=======
-  definitionNode: ?{ +directives?: $ReadOnlyArray<DirectiveNode>; ... },
-): ?DirectiveNode {
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/type/validate.js
-=======
-  definitionNode: Maybe<{ readonly directives?: ReadonlyArray<DirectiveNode> }>,
-): Maybe<DirectiveNode> {
->>>>>>> Switch to TS syntax (#3090)
   // istanbul ignore next (See: 'https://github.com/graphql/graphql-js/issues/2203')
   return definitionNode?.directives?.find(
     (node) => node.name.value === GraphQLDeprecatedDirective.name,

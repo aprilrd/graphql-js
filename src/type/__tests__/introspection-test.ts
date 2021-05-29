@@ -1568,25 +1568,17 @@ describe('Introspection', () => {
     });
 
     // istanbul ignore next (Called only to fail test)
-<<<<<<< HEAD
     function fieldResolver(
       _1: any,
       _2: any,
       _3: any,
       info: GraphQLResolveInfo,
     ): never {
-=======
-    function fieldResolver(_1, _2, _3, info): never {
->>>>>>> add fixme and type assertions
       expect.fail(`Called on ${info.parentType.name}::${info.fieldName}`);
     }
 
     // istanbul ignore next (Called only to fail test)
-<<<<<<< HEAD
     function typeResolver(_1: any, _2: any, info: GraphQLResolveInfo): never {
-=======
-    function typeResolver(_1, _2, info): never {
->>>>>>> add fixme and type assertions
       expect.fail(`Called on ${info.parentType.name}::${info.fieldName}`);
     }
 

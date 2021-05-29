@@ -3,15 +3,7 @@ import { describe, it } from 'mocha';
 
 import { invariant } from '../../jsutils/invariant';
 
-<<<<<<< HEAD
 import type { DocumentNode, OperationDefinitionNode } from '../../language/ast';
-=======
-import type {
-  DocumentNode,
-  OperationDefinitionNode,
-  SchemaDefinitionNode,
-} from '../../language/ast';
->>>>>>> feat: typecast to ensure type safety
 import { Kind } from '../../language/kinds';
 import { parse } from '../../language/parser';
 
@@ -42,13 +34,8 @@ const subscriptionType = new GraphQLObjectType({
   }),
 });
 
-<<<<<<< HEAD
 function getOperationNode(doc: DocumentNode): OperationDefinitionNode {
   const operationNode = doc.definitions[0];
-=======
-function getOperationNode(doc: DocumentNode) {
-  const operationNode = doc.definitions[0] as OperationDefinitionNode;
->>>>>>> feat: typecast to ensure type safety
   invariant(operationNode.kind === Kind.OPERATION_DEFINITION);
   return operationNode;
 }
@@ -161,21 +148,10 @@ describe('getOperationRootType', () => {
     const doc = parse('{ field }');
     const operationNode: OperationDefinitionNode = {
       ...getOperationNode(doc),
-<<<<<<< HEAD
       // @ts-expect-error
       operation: 'non_existent_operation',
-=======
-      operation: 'non_existent_operation' as any,
->>>>>>> feat: typecast to ensure type safety
     };
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    // @ts-expect-error
->>>>>>> convert `$FlowExpectedError` to `@ts-expect-error`
-=======
->>>>>>> remove unused `@ts-expect-error`
     expect(() => getOperationRootType(testSchema, operationNode)).to.throw(
       'Can only have query, mutation and subscription operations.',
     );

@@ -82,32 +82,14 @@ import {
 
 import { valueFromAST } from './valueFromAST';
 
-<<<<<<< HEAD
-<<<<<<< HEAD:src/utilities/extendSchema.ts
 interface Options extends GraphQLSchemaValidationOptions {
-=======
-type Options = {
-  ...GraphQLSchemaValidationOptions;
-
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/extendSchema.js
-=======
-interface Options extends GraphQLSchemaValidationOptions {
->>>>>>> Switch to TS syntax (#3090)
   /**
    * Set to true to assume the SDL is valid.
    *
    * Default: false
    */
   assumeValidSDL?: boolean;
-<<<<<<< HEAD
-<<<<<<< HEAD:src/utilities/extendSchema.ts
 }
-=======
-};
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/extendSchema.js
-=======
-}
->>>>>>> Switch to TS syntax (#3090)
 
 /**
  * Produces a new schema given an existing schema and a document which may
@@ -287,15 +269,7 @@ export function extendSchemaImpl(
     }
 
     // istanbul ignore next (Not reachable. All possible types have been considered)
-<<<<<<< HEAD
-<<<<<<< HEAD
     invariant(false, 'Unexpected type: ' + inspect(type));
-=======
-    invariant(false, 'Unexpected type: ' + inspect(type as never));
->>>>>>> Switch to TS syntax (#3090)
-=======
-    invariant(false, 'Unexpected type: ' + inspect(type));
->>>>>>> TEMPORARY: remove `as never`
   }
 
   function extendInputObjectType(
@@ -405,15 +379,7 @@ export function extendSchemaImpl(
     return {
       ...field,
       type: replaceType(field.type),
-<<<<<<< HEAD
-<<<<<<< HEAD
       args: field.args && mapValue(field.args, extendArg),
-=======
-      // @ts-expect-error
-=======
->>>>>>> remove unused `@ts-expect-error`
-      args: mapValue(field.args, extendArg),
->>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
     };
   }
 
@@ -427,21 +393,9 @@ export function extendSchemaImpl(
   function getOperationTypes(
     nodes: ReadonlyArray<SchemaDefinitionNode | SchemaExtensionNode>,
   ): {
-<<<<<<< HEAD
-<<<<<<< HEAD:src/utilities/extendSchema.ts
     query?: Maybe<GraphQLObjectType>;
     mutation?: Maybe<GraphQLObjectType>;
     subscription?: Maybe<GraphQLObjectType>;
-=======
-    query: ?GraphQLObjectType;
-    mutation: ?GraphQLObjectType;
-    subscription: ?GraphQLObjectType;
->>>>>>> Flow: use semicolon as separate inside types (#3089):src/utilities/extendSchema.js
-=======
-    query: Maybe<GraphQLObjectType>;
-    mutation: Maybe<GraphQLObjectType>;
-    subscription: Maybe<GraphQLObjectType>;
->>>>>>> Switch to TS syntax (#3090)
   } {
     const opTypes = {};
     for (const node of nodes) {
@@ -457,17 +411,6 @@ export function extendSchemaImpl(
       }
     }
 
-<<<<<<< HEAD
-=======
-    // Note: While this could make early assertions to get the correctly
-    // typed values below, that would throw immediately while type system
-    // validation with validateSchema() will produce more actionable results.
-    // @ts-expect-error
-<<<<<<< HEAD
-    // @ts-expect-error
->>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
-=======
->>>>>>> remove unused `@ts-expect-error`
     return opTypes;
   }
 
@@ -486,13 +429,6 @@ export function extendSchemaImpl(
       return new GraphQLList(getWrappedType(node.type));
     }
     if (node.kind === Kind.NON_NULL_TYPE) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-      // @ts-expect-error
->>>>>>> Replace `$FlowFixMe` with `@ts-expect-error`
-=======
->>>>>>> remove unused `@ts-expect-error`
       return new GraphQLNonNull(getWrappedType(node.type));
     }
     return getNamedType(node);
@@ -502,6 +438,7 @@ export function extendSchemaImpl(
     return new GraphQLDirective({
       name: node.name.value,
       description: node.description?.value,
+      // @ts-expect-error
       locations: node.locations.map(({ value }) => value),
       isRepeatable: node.repeatable,
       args: buildArgumentMap(node.arguments),
@@ -714,24 +651,12 @@ export function extendSchemaImpl(
     }
 
     // istanbul ignore next (Not reachable. All possible type definition nodes have been considered)
-<<<<<<< HEAD
     invariant(false, 'Unexpected type definition node: ' + inspect(astNode));
-=======
-    invariant(
-      false,
-      'Unexpected type definition node: ' + inspect(astNode as never),
-    );
->>>>>>> Switch to TS syntax (#3090)
   }
 }
 
 const stdTypeMap = keyMap(
-<<<<<<< HEAD
   [...specifiedScalarTypes, ...introspectionTypes],
-=======
-  // @ts-expect-error FIXME
-  specifiedScalarTypes.concat(introspectionTypes),
->>>>>>> add fixme and type assertions
   (type) => type.name,
 );
 

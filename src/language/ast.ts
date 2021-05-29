@@ -9,67 +9,27 @@ export class Location {
   /**
    * The character offset at which this Node begins.
    */
-<<<<<<< HEAD
-<<<<<<< HEAD
   readonly start: number;
-=======
-  +start: number;
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
-=======
-  readonly start: number;
->>>>>>> Switch to TS syntax (#3090)
 
   /**
    * The character offset at which this Node ends.
    */
-<<<<<<< HEAD
-<<<<<<< HEAD
   readonly end: number;
-=======
-  +end: number;
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
-=======
-  readonly end: number;
->>>>>>> Switch to TS syntax (#3090)
 
   /**
    * The Token at which this Node begins.
    */
-<<<<<<< HEAD
-<<<<<<< HEAD
   readonly startToken: Token;
-=======
-  +startToken: Token;
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
-=======
-  readonly startToken: Token;
->>>>>>> Switch to TS syntax (#3090)
 
   /**
    * The Token at which this Node ends.
    */
-<<<<<<< HEAD
-<<<<<<< HEAD
   readonly endToken: Token;
-=======
-  +endToken: Token;
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
-=======
-  readonly endToken: Token;
->>>>>>> Switch to TS syntax (#3090)
 
   /**
    * The Source document the AST represents.
    */
-<<<<<<< HEAD
-<<<<<<< HEAD
   readonly source: Source;
-=======
-  +source: Source;
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
-=======
-  readonly source: Source;
->>>>>>> Switch to TS syntax (#3090)
 
   constructor(startToken: Token, endToken: Token, source: Source) {
     this.start = startToken.start;
@@ -92,60 +52,26 @@ export class Token {
   /**
    * The kind of Token.
    */
-<<<<<<< HEAD
-<<<<<<< HEAD
   readonly kind: TokenKindEnum;
-=======
-  +kind: TokenKindEnum;
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
-=======
-  readonly kind: TokenKindEnum;
->>>>>>> Switch to TS syntax (#3090)
 
   /**
    * The character offset at which this Node begins.
    */
-<<<<<<< HEAD
-<<<<<<< HEAD
   readonly start: number;
-=======
-  +start: number;
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
-=======
-  readonly start: number;
->>>>>>> Switch to TS syntax (#3090)
 
   /**
    * The character offset at which this Node ends.
    */
-<<<<<<< HEAD
-<<<<<<< HEAD
   readonly end: number;
-=======
-  +end: number;
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
-=======
-  readonly end: number;
->>>>>>> Switch to TS syntax (#3090)
 
   /**
    * The 1-indexed line number on which this Token appears.
    */
-<<<<<<< HEAD
-<<<<<<< HEAD
   readonly line: number;
-=======
-  +line: number;
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
-=======
-  readonly line: number;
->>>>>>> Switch to TS syntax (#3090)
 
   /**
    * The 1-indexed column number at which this Token begins.
    */
-<<<<<<< HEAD
-<<<<<<< HEAD
   readonly column: number;
 
   /**
@@ -155,43 +81,14 @@ export class Token {
    * convenience in the parser.
    */
   readonly value: string;
-=======
-  +column: number;
-=======
-  readonly column: number;
->>>>>>> Switch to TS syntax (#3090)
-
-  /**
-   * For non-punctuation tokens, represents the interpreted value of the token.
-   */
-<<<<<<< HEAD
-<<<<<<< HEAD
-  +value: string | void;
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
-=======
-  readonly value: string | void;
->>>>>>> Switch to TS syntax (#3090)
-=======
-  readonly value: string | undefined;
->>>>>>> TEMPORARY: Replace `void` with `undefined`
 
   /**
    * Tokens exist as nodes in a double-linked-list amongst all tokens
    * including ignored tokens. <SOF> is always the first node and <EOF>
    * the last.
    */
-<<<<<<< HEAD
-<<<<<<< HEAD
   readonly prev: Token | null;
   readonly next: Token | null;
-=======
-  +prev: Token | null;
-  +next: Token | null;
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
-=======
-  readonly prev: Token | null;
-  readonly next: Token | null;
->>>>>>> Switch to TS syntax (#3090)
 
   constructor(
     kind: TokenKindEnum,
@@ -207,26 +104,14 @@ export class Token {
     this.end = end;
     this.line = line;
     this.column = column;
-<<<<<<< HEAD
     this.value = value as string;
-=======
-    this.value = value;
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
     this.prev = prev;
     this.next = null;
   }
 
   toJSON(): {
     kind: TokenKindEnum;
-<<<<<<< HEAD
-<<<<<<< HEAD
     value?: string;
-=======
-    value: string | void;
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
-=======
-    value: string | undefined;
->>>>>>> TEMPORARY: Replace `void` with `undefined`
     line: number;
     column: number;
   } {
@@ -242,21 +127,8 @@ export class Token {
 /**
  * @internal
  */
-<<<<<<< HEAD
-<<<<<<< HEAD
 export function isNode(maybeNode: any): maybeNode is ASTNode {
   return typeof maybeNode?.kind === 'string';
-=======
-export function isNode(maybeNode: mixed): boolean %checks {
-=======
-export function isNode(maybeNode: unknown): maybeNode is ASTNode {
-<<<<<<< HEAD
->>>>>>> Switch to TS syntax (#3090)
-  return maybeNode != null && typeof maybeNode.kind === 'string';
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
-=======
-  return maybeNode != null && typeof (maybeNode as any).kind === 'string';
->>>>>>> feat: typecast to ensure type safety
 }
 
 /**
@@ -310,11 +182,7 @@ export type ASTNode =
 /**
  * Utility type listing all nodes indexed by their kind.
  */
-<<<<<<< HEAD
 export interface ASTKindToNode {
-=======
-export type ASTKindToNode = {
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
   Name: NameNode;
   Document: DocumentNode;
   OperationDefinition: OperationDefinitionNode;
@@ -358,7 +226,6 @@ export type ASTKindToNode = {
   UnionTypeExtension: UnionTypeExtensionNode;
   EnumTypeExtension: EnumTypeExtensionNode;
   InputObjectTypeExtension: InputObjectTypeExtensionNode;
-<<<<<<< HEAD
 }
 
 /** Name */
@@ -376,25 +243,6 @@ export interface DocumentNode {
   readonly loc?: Location;
   readonly definitions: ReadonlyArray<DefinitionNode>;
 }
-=======
-};
-
-// Name
-
-export type NameNode = {
-  readonly kind: 'Name';
-  readonly loc?: Location;
-  readonly value: string;
-};
-
-// Document
-
-export type DocumentNode = {
-  readonly kind: 'Document';
-  readonly loc?: Location;
-  readonly definitions: ReadonlyArray<DefinitionNode>;
-};
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
 
 export type DefinitionNode =
   | ExecutableDefinitionNode
@@ -405,7 +253,6 @@ export type ExecutableDefinitionNode =
   | OperationDefinitionNode
   | FragmentDefinitionNode;
 
-<<<<<<< HEAD
 export interface OperationDefinitionNode {
   readonly kind: 'OperationDefinition';
   readonly loc?: Location;
@@ -449,6 +296,7 @@ export interface FieldNode {
   readonly arguments?: ReadonlyArray<ArgumentNode>;
   readonly directives?: ReadonlyArray<DirectiveNode>;
   readonly selectionSet?: SelectionSetNode;
+  readonly required?: RequiredStatus;
 }
 
 export interface ArgumentNode {
@@ -494,99 +342,6 @@ export interface FragmentDefinitionNode {
 }
 
 /** Values */
-=======
-export type OperationDefinitionNode = {
-  readonly kind: 'OperationDefinition';
-  readonly loc?: Location;
-  readonly operation: OperationTypeNode;
-  readonly name?: NameNode;
-  readonly variableDefinitions?: ReadonlyArray<VariableDefinitionNode>;
-  readonly directives?: ReadonlyArray<DirectiveNode>;
-  readonly selectionSet: SelectionSetNode;
-};
-
-export type OperationTypeNode = 'query' | 'mutation' | 'subscription';
-
-export type VariableDefinitionNode = {
-  readonly kind: 'VariableDefinition';
-  readonly loc?: Location;
-  readonly variable: VariableNode;
-  readonly type: TypeNode;
-  readonly defaultValue?: ConstValueNode;
-  readonly directives?: ReadonlyArray<ConstDirectiveNode>;
-};
-
-export type VariableNode = {
-  readonly kind: 'Variable';
-  readonly loc?: Location;
-  readonly name: NameNode;
-};
-
-export type SelectionSetNode = {
-  kind: 'SelectionSet';
-  loc?: Location;
-  selections: ReadonlyArray<SelectionNode>;
-};
-
-export type SelectionNode = FieldNode | FragmentSpreadNode | InlineFragmentNode;
-
-export type RequiredStatus = 'required' | 'optional' | 'unset';
-
-export type FieldNode = {
-  readonly kind: 'Field';
-  readonly loc?: Location;
-  readonly alias?: NameNode;
-  readonly name: NameNode;
-  readonly arguments?: ReadonlyArray<ArgumentNode>;
-  readonly directives?: ReadonlyArray<DirectiveNode>;
-  readonly selectionSet?: SelectionSetNode;
-  readonly required?: RequiredStatus;
-};
-
-export type ArgumentNode = {
-  readonly kind: 'Argument';
-  readonly loc?: Location;
-  readonly name: NameNode;
-  readonly value: ValueNode;
-};
-
-export type ConstArgumentNode = {
-  readonly kind: 'Argument';
-  readonly loc?: Location;
-  readonly name: NameNode;
-  readonly value: ConstValueNode;
-};
-
-// Fragments
-
-export type FragmentSpreadNode = {
-  readonly kind: 'FragmentSpread';
-  readonly loc?: Location;
-  readonly name: NameNode;
-  readonly directives?: ReadonlyArray<DirectiveNode>;
-};
-
-export type InlineFragmentNode = {
-  readonly kind: 'InlineFragment';
-  readonly loc?: Location;
-  readonly typeCondition?: NamedTypeNode;
-  readonly directives?: ReadonlyArray<DirectiveNode>;
-  readonly selectionSet: SelectionSetNode;
-};
-
-export type FragmentDefinitionNode = {
-  readonly kind: 'FragmentDefinition';
-  readonly loc?: Location;
-  readonly name: NameNode;
-  // Note: fragment variable definitions are deprecated and will removed in v17.0.0
-  readonly variableDefinitions?: ReadonlyArray<VariableDefinitionNode>;
-  readonly typeCondition: NamedTypeNode;
-  readonly directives?: ReadonlyArray<DirectiveNode>;
-  readonly selectionSet: SelectionSetNode;
-};
-
-// Values
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
 
 export type ValueNode =
   | VariableNode
@@ -609,7 +364,6 @@ export type ConstValueNode =
   | ConstListValueNode
   | ConstObjectValueNode;
 
-<<<<<<< HEAD
 export interface IntValueNode {
   readonly kind: 'IntValue';
   readonly loc?: Location;
@@ -723,128 +477,12 @@ export interface NonNullTypeNode {
 }
 
 /** Type System Definition */
-=======
-export type IntValueNode = {
-  readonly kind: 'IntValue';
-  readonly loc?: Location;
-  readonly value: string;
-};
-
-export type FloatValueNode = {
-  readonly kind: 'FloatValue';
-  readonly loc?: Location;
-  readonly value: string;
-};
-
-export type StringValueNode = {
-  readonly kind: 'StringValue';
-  readonly loc?: Location;
-  readonly value: string;
-  readonly block?: boolean;
-};
-
-export type BooleanValueNode = {
-  readonly kind: 'BooleanValue';
-  readonly loc?: Location;
-  readonly value: boolean;
-};
-
-export type NullValueNode = {
-  readonly kind: 'NullValue';
-  readonly loc?: Location;
-};
-
-export type EnumValueNode = {
-  readonly kind: 'EnumValue';
-  readonly loc?: Location;
-  readonly value: string;
-};
-
-export type ListValueNode = {
-  readonly kind: 'ListValue';
-  readonly loc?: Location;
-  readonly values: ReadonlyArray<ValueNode>;
-};
-
-export type ConstListValueNode = {
-  readonly kind: 'ListValue';
-  readonly loc?: Location;
-  readonly values: ReadonlyArray<ConstValueNode>;
-};
-
-export type ObjectValueNode = {
-  readonly kind: 'ObjectValue';
-  readonly loc?: Location;
-  readonly fields: ReadonlyArray<ObjectFieldNode>;
-};
-
-export type ConstObjectValueNode = {
-  readonly kind: 'ObjectValue';
-  readonly loc?: Location;
-  readonly fields: ReadonlyArray<ConstObjectFieldNode>;
-};
-
-export type ObjectFieldNode = {
-  readonly kind: 'ObjectField';
-  readonly loc?: Location;
-  readonly name: NameNode;
-  readonly value: ValueNode;
-};
-
-export type ConstObjectFieldNode = {
-  readonly kind: 'ObjectField';
-  readonly loc?: Location;
-  readonly name: NameNode;
-  readonly value: ConstValueNode;
-};
-
-// Directives
-
-export type DirectiveNode = {
-  readonly kind: 'Directive';
-  readonly loc?: Location;
-  readonly name: NameNode;
-  readonly arguments?: ReadonlyArray<ArgumentNode>;
-};
-
-export type ConstDirectiveNode = {
-  readonly kind: 'Directive';
-  readonly loc?: Location;
-  readonly name: NameNode;
-  readonly arguments?: ReadonlyArray<ConstArgumentNode>;
-};
-
-// Type Reference
-
-export type TypeNode = NamedTypeNode | ListTypeNode | NonNullTypeNode;
-
-export type NamedTypeNode = {
-  readonly kind: 'NamedType';
-  readonly loc?: Location;
-  readonly name: NameNode;
-};
-
-export type ListTypeNode = {
-  readonly kind: 'ListType';
-  readonly loc?: Location;
-  readonly type: TypeNode;
-};
-
-export type NonNullTypeNode = {
-  readonly kind: 'NonNullType';
-  readonly loc?: Location;
-  readonly type: NamedTypeNode | ListTypeNode;
-};
-
-// Type System Definition
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
 
 export type TypeSystemDefinitionNode =
   | SchemaDefinitionNode
   | TypeDefinitionNode
   | DirectiveDefinitionNode;
 
-<<<<<<< HEAD
 export interface SchemaDefinitionNode {
   readonly kind: 'SchemaDefinition';
   readonly loc?: Location;
@@ -861,24 +499,6 @@ export interface OperationTypeDefinitionNode {
 }
 
 /** Type Definition */
-=======
-export type SchemaDefinitionNode = {
-  readonly kind: 'SchemaDefinition';
-  readonly loc?: Location;
-  readonly description?: StringValueNode;
-  readonly directives?: ReadonlyArray<ConstDirectiveNode>;
-  readonly operationTypes: ReadonlyArray<OperationTypeDefinitionNode>;
-};
-
-export type OperationTypeDefinitionNode = {
-  readonly kind: 'OperationTypeDefinition';
-  readonly loc?: Location;
-  readonly operation: OperationTypeNode;
-  readonly type: NamedTypeNode;
-};
-
-// Type Definition
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
 
 export type TypeDefinitionNode =
   | ScalarTypeDefinitionNode
@@ -888,7 +508,6 @@ export type TypeDefinitionNode =
   | EnumTypeDefinitionNode
   | InputObjectTypeDefinitionNode;
 
-<<<<<<< HEAD
 export interface ScalarTypeDefinitionNode {
   readonly kind: 'ScalarTypeDefinition';
   readonly loc?: Location;
@@ -996,115 +615,6 @@ export interface SchemaExtensionNode {
 }
 
 /** Type Extensions */
-=======
-export type ScalarTypeDefinitionNode = {
-  readonly kind: 'ScalarTypeDefinition';
-  readonly loc?: Location;
-  readonly description?: StringValueNode;
-  readonly name: NameNode;
-  readonly directives?: ReadonlyArray<ConstDirectiveNode>;
-};
-
-export type ObjectTypeDefinitionNode = {
-  readonly kind: 'ObjectTypeDefinition';
-  readonly loc?: Location;
-  readonly description?: StringValueNode;
-  readonly name: NameNode;
-  readonly interfaces?: ReadonlyArray<NamedTypeNode>;
-  readonly directives?: ReadonlyArray<ConstDirectiveNode>;
-  readonly fields?: ReadonlyArray<FieldDefinitionNode>;
-};
-
-export type FieldDefinitionNode = {
-  readonly kind: 'FieldDefinition';
-  readonly loc?: Location;
-  readonly description?: StringValueNode;
-  readonly name: NameNode;
-  readonly arguments?: ReadonlyArray<InputValueDefinitionNode>;
-  readonly type: TypeNode;
-  readonly directives?: ReadonlyArray<ConstDirectiveNode>;
-};
-
-export type InputValueDefinitionNode = {
-  readonly kind: 'InputValueDefinition';
-  readonly loc?: Location;
-  readonly description?: StringValueNode;
-  readonly name: NameNode;
-  readonly type: TypeNode;
-  readonly defaultValue?: ConstValueNode;
-  readonly directives?: ReadonlyArray<ConstDirectiveNode>;
-};
-
-export type InterfaceTypeDefinitionNode = {
-  readonly loc?: Location;
-  readonly kind: 'InterfaceTypeDefinition';
-  readonly description?: StringValueNode;
-  readonly name: NameNode;
-  readonly interfaces?: ReadonlyArray<NamedTypeNode>;
-  readonly directives?: ReadonlyArray<ConstDirectiveNode>;
-  readonly fields?: ReadonlyArray<FieldDefinitionNode>;
-};
-
-export type UnionTypeDefinitionNode = {
-  readonly kind: 'UnionTypeDefinition';
-  readonly loc?: Location;
-  readonly description?: StringValueNode;
-  readonly name: NameNode;
-  readonly directives?: ReadonlyArray<ConstDirectiveNode>;
-  readonly types?: ReadonlyArray<NamedTypeNode>;
-};
-
-export type EnumTypeDefinitionNode = {
-  readonly kind: 'EnumTypeDefinition';
-  readonly loc?: Location;
-  readonly description?: StringValueNode;
-  readonly name: NameNode;
-  readonly directives?: ReadonlyArray<ConstDirectiveNode>;
-  readonly values?: ReadonlyArray<EnumValueDefinitionNode>;
-};
-
-export type EnumValueDefinitionNode = {
-  readonly kind: 'EnumValueDefinition';
-  readonly loc?: Location;
-  readonly description?: StringValueNode;
-  readonly name: NameNode;
-  readonly directives?: ReadonlyArray<ConstDirectiveNode>;
-};
-
-export type InputObjectTypeDefinitionNode = {
-  readonly kind: 'InputObjectTypeDefinition';
-  readonly loc?: Location;
-  readonly description?: StringValueNode;
-  readonly name: NameNode;
-  readonly directives?: ReadonlyArray<ConstDirectiveNode>;
-  readonly fields?: ReadonlyArray<InputValueDefinitionNode>;
-};
-
-// Directive Definitions
-
-export type DirectiveDefinitionNode = {
-  readonly kind: 'DirectiveDefinition';
-  readonly loc?: Location;
-  readonly description?: StringValueNode;
-  readonly name: NameNode;
-  readonly arguments?: ReadonlyArray<InputValueDefinitionNode>;
-  readonly repeatable: boolean;
-  readonly locations: ReadonlyArray<NameNode>;
-};
-
-// Type System Extensions
-
-export type TypeSystemExtensionNode = SchemaExtensionNode | TypeExtensionNode;
-
-export type SchemaExtensionNode = {
-  readonly kind: 'SchemaExtension';
-  readonly loc?: Location;
-  readonly directives?: ReadonlyArray<ConstDirectiveNode>;
-  readonly operationTypes?: ReadonlyArray<OperationTypeDefinitionNode>;
-};
-
-// Type Extensions
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
 
 export type TypeExtensionNode =
   | ScalarTypeExtensionNode
@@ -1114,7 +624,6 @@ export type TypeExtensionNode =
   | EnumTypeExtensionNode
   | InputObjectTypeExtensionNode;
 
-<<<<<<< HEAD
 export interface ScalarTypeExtensionNode {
   readonly kind: 'ScalarTypeExtension';
   readonly loc?: Location;
@@ -1163,53 +672,3 @@ export interface InputObjectTypeExtensionNode {
   readonly directives?: ReadonlyArray<ConstDirectiveNode>;
   readonly fields?: ReadonlyArray<InputValueDefinitionNode>;
 }
-=======
-export type ScalarTypeExtensionNode = {
-  readonly kind: 'ScalarTypeExtension';
-  readonly loc?: Location;
-  readonly name: NameNode;
-  readonly directives?: ReadonlyArray<ConstDirectiveNode>;
-};
-
-export type ObjectTypeExtensionNode = {
-  readonly kind: 'ObjectTypeExtension';
-  readonly loc?: Location;
-  readonly name: NameNode;
-  readonly interfaces?: ReadonlyArray<NamedTypeNode>;
-  readonly directives?: ReadonlyArray<ConstDirectiveNode>;
-  readonly fields?: ReadonlyArray<FieldDefinitionNode>;
-};
-
-export type InterfaceTypeExtensionNode = {
-  readonly kind: 'InterfaceTypeExtension';
-  readonly loc?: Location;
-  readonly name: NameNode;
-  readonly interfaces?: ReadonlyArray<NamedTypeNode>;
-  readonly directives?: ReadonlyArray<ConstDirectiveNode>;
-  readonly fields?: ReadonlyArray<FieldDefinitionNode>;
-};
-
-export type UnionTypeExtensionNode = {
-  readonly kind: 'UnionTypeExtension';
-  readonly loc?: Location;
-  readonly name: NameNode;
-  readonly directives?: ReadonlyArray<ConstDirectiveNode>;
-  readonly types?: ReadonlyArray<NamedTypeNode>;
-};
-
-export type EnumTypeExtensionNode = {
-  readonly kind: 'EnumTypeExtension';
-  readonly loc?: Location;
-  readonly name: NameNode;
-  readonly directives?: ReadonlyArray<ConstDirectiveNode>;
-  readonly values?: ReadonlyArray<EnumValueDefinitionNode>;
-};
-
-export type InputObjectTypeExtensionNode = {
-  readonly kind: 'InputObjectTypeExtension';
-  readonly loc?: Location;
-  readonly name: NameNode;
-  readonly directives?: ReadonlyArray<ConstDirectiveNode>;
-  readonly fields?: ReadonlyArray<InputValueDefinitionNode>;
-};
->>>>>>> Migrate to TS: rename `.js` to `.ts` and fix everything in latter PRs (#3088)
