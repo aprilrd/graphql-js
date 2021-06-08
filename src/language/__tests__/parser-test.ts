@@ -255,6 +255,16 @@ describe('Parser', () => {
     ).to.throw();
   });
 
+  it('parses required within fragment', () => {
+    expect(() =>
+      parse(`
+      fragment MyFragment on Query {
+        field!
+      }
+    `),
+    ).to.not.throw();
+  });
+
   it('creates ast', () => {
     const result = parse(dedent`
       {
