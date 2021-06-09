@@ -39,7 +39,6 @@ import type {
   GraphQLResolveInfo,
   GraphQLTypeResolver,
   GraphQLList,
-  getNullableType,
 } from '../type/definition';
 import { assertValidSchema } from '../type/validate';
 import {
@@ -52,7 +51,6 @@ import {
   GraphQLSkipDirective,
 } from '../type/directives';
 import {
-  GraphQLNonNull,
   isObjectType,
   isAbstractType,
   isLeafType,
@@ -63,12 +61,13 @@ import {
 import { typeFromAST } from '../utilities/typeFromAST';
 import { getOperationRootType } from '../utilities/getOperationRootType';
 
+import { modifiedOutputType } from '../utilities/applyRequiredStatus';
+
 import {
   getVariableValues,
   getArgumentValues,
   getDirectiveValues,
 } from './values';
-import { modifiedOutputType } from '../utilities/applyRequiredStatus';
 
 /**
  * Terminology

@@ -1221,7 +1221,7 @@ describe('Execute: Handles basic execution tasks', () => {
     expect(possibleTypes).to.deep.equal([fooObject]);
   });
 
-  it('bubbles null up to nearest nullable parent', async () => {
+  it('bubbles null up to nearest nullable parent', () => {
     const schema = new GraphQLSchema({
       query: new GraphQLObjectType({
         name: 'Query',

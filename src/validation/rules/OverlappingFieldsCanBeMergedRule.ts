@@ -10,7 +10,6 @@ import type {
   FieldNode,
   ArgumentNode,
   FragmentDefinitionNode,
-  RequiredStatus,
 } from '../../language/ast';
 import { Kind } from '../../language/kinds';
 import { print } from '../../language/printer';
@@ -19,10 +18,6 @@ import {
   GraphQLNamedType,
   GraphQLOutputType,
   GraphQLField,
-  GraphQLNonNull,
-  getNullableType,
-} from '../../type/definition';
-import {
   getNamedType,
   isNonNullType,
   isLeafType,
