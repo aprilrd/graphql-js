@@ -14,10 +14,13 @@ import type {
 import { Kind } from '../../language/kinds';
 import { print } from '../../language/printer';
 
-import {
+import type {
   GraphQLNamedType,
   GraphQLOutputType,
   GraphQLField,
+} from '../../type/definition';
+
+import {
   getNamedType,
   isNonNullType,
   isLeafType,
