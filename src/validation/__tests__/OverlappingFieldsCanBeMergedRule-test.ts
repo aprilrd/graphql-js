@@ -254,7 +254,7 @@ describe('Validate: Overlapping fields can be merged', () => {
     `);
   });
 
-  it('disallows different nullability status even the types are mutual execlusive', () => {
+  it('disallows different nullability status even if the types are mutual exclusive', () => {
     expectErrors(`
       fragment conflictingNullability on Pet {
         ... on Dog {

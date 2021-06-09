@@ -1307,7 +1307,7 @@ describe('Execute: Handles basic execution tasks', () => {
       ],
     });
 
-    const singleNonNullOnNoNnullValueDocument = parse(`
+    const singleNonNullOnNonNullValueDocument = parse(`
       query {
         food {
           calories!
@@ -1316,7 +1316,7 @@ describe('Execute: Handles basic execution tasks', () => {
     `);
     const singleNonNullOnNonNullValueResult = executeSync({
       schema,
-      document: singleNonNullOnNoNnullValueDocument,
+      document: singleNonNullOnNonNullValueDocument,
     });
 
     expect(singleNonNullOnNonNullValueResult).to.deep.equal({
