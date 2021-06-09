@@ -62,6 +62,7 @@ import type {
   UnionTypeExtensionNode,
   EnumTypeExtensionNode,
   InputObjectTypeExtensionNode,
+  RequiredStatus,
 } from './ast';
 import { Kind } from './kinds';
 import { Location } from './ast';
@@ -390,7 +391,7 @@ export class Parser {
       name = nameOrAlias;
     }
 
-    let required;
+    let required: RequiredStatus;
     if (this.expectOptionalToken(TokenKind.BANG)) {
       required = 'required'
     } else if (this.expectOptionalToken(TokenKind.QUESTION_MARK)) {
