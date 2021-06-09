@@ -836,7 +836,8 @@ describe('Validate: Overlapping fields can be merged', () => {
         `,
       ).to.deep.equal([
         {
-          message: 'Fields "deepBox" conflict because subfields "unrelatedField" conflict because they return conflicting types "String" and "String!". Use different aliases on the fields to fetch both if this was intentional.',
+          message:
+            'Fields "deepBox" conflict because subfields "unrelatedField" conflict because they return conflicting types "String" and "String!". Use different aliases on the fields to fetch both if this was intentional.',
           locations: [
             { line: 5, column: 17 },
             { line: 6, column: 19 },

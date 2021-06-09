@@ -6,9 +6,7 @@
       "request": "launch",
       "name": "Mocha Tests",
       "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
-      "args": [
-        "src/execution/__tests__/executor-test.ts"
-      ],
+      "args": ["src/execution/__tests__/executor-test.ts"],
       "internalConsoleOptions": "openOnSessionStart",
       "skipFiles": ["<node_internals>/**"]
     }

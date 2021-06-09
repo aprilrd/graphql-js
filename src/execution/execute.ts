@@ -602,7 +602,7 @@ function resolveField(
     return;
   }
 
-  const returnType = modifiedOutputType(fieldDef.type, fieldNodes[0].required)
+  const returnType = modifiedOutputType(fieldDef.type, fieldNodes[0].required);
 
   const resolveFn = fieldDef.resolve ?? exeContext.fieldResolver;
 

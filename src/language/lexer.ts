@@ -205,7 +205,14 @@ function readToken(lexer: Lexer, prev: Token): Token {
       case 57: //  9
         return readNumber(source, pos, code, line, col, prev);
       case 63: //  ?
-        return new Token(TokenKind.QUESTION_MARK, pos, pos + 1, line, col, prev);
+        return new Token(
+          TokenKind.QUESTION_MARK,
+          pos,
+          pos + 1,
+          line,
+          col,
+          prev,
+        );
       case 65: //  A
       case 66: //  B
       case 67: //  C

@@ -1238,8 +1238,8 @@ describe('Execute: Handles basic execution tasks', () => {
               return {
                 name: null,
                 calories: 10,
-              }
-            }
+              };
+            },
           },
         },
       }),
@@ -1267,7 +1267,10 @@ describe('Execute: Handles basic execution tasks', () => {
         }
       }
     `);
-    const singleNonnullOnNullValueResult = executeSync({ schema, document: singleNonnullOnNullValueDocument });
+    const singleNonnullOnNullValueResult = executeSync({
+      schema,
+      document: singleNonnullOnNullValueDocument,
+    });
 
     expect(singleNonnullOnNullValueResult).to.deep.equal({
       data: { food: null },
@@ -1288,7 +1291,10 @@ describe('Execute: Handles basic execution tasks', () => {
         }
       }
     `);
-    const bothNonnullOnNullValueResult = executeSync({ schema, document: bothNonnullOnNullValueDocument });
+    const bothNonnullOnNullValueResult = executeSync({
+      schema,
+      document: bothNonnullOnNullValueDocument,
+    });
 
     expect(bothNonnullOnNullValueResult).to.deep.equal({
       data: { food: null },
@@ -1308,7 +1314,10 @@ describe('Execute: Handles basic execution tasks', () => {
         }
       }
     `);
-    const singleNonnullOnNonnullValueResult = executeSync({ schema, document: singleNonnullOnNonnullValueDocument });
+    const singleNonnullOnNonnullValueResult = executeSync({
+      schema,
+      document: singleNonnullOnNonnullValueDocument,
+    });
 
     expect(singleNonnullOnNonnullValueResult).to.deep.equal({
       data: { food: { calories: 10 } },
@@ -1321,7 +1330,10 @@ describe('Execute: Handles basic execution tasks', () => {
         }
       }
     `);
-    const nonnullAliasOnNullValueResult = executeSync({ schema, document: nonnullAliasOnNullValueDocument });
+    const nonnullAliasOnNullValueResult = executeSync({
+      schema,
+      document: nonnullAliasOnNullValueDocument,
+    });
 
     expect(nonnullAliasOnNullValueResult).to.deep.equal({
       data: { food: null },
@@ -1343,7 +1355,10 @@ describe('Execute: Handles basic execution tasks', () => {
         }
       }
     `);
-    const nonnullInFragmentResult = executeSync({ schema, document: nonnullInFragmentDocument });
+    const nonnullInFragmentResult = executeSync({
+      schema,
+      document: nonnullInFragmentDocument,
+    });
 
     expect(nonnullInFragmentResult).to.deep.equal({
       data: { food: null },

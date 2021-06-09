@@ -349,7 +349,7 @@ export class Parser {
   /**
    * SelectionSet : { Selection+ }
    */
-  parseSelectionSet(): SelectionSetNode {   
+  parseSelectionSet(): SelectionSetNode {
     return this.node<SelectionSetNode>(this._lexer.token, {
       kind: Kind.SELECTION_SET,
       selections: this.many(
@@ -393,11 +393,11 @@ export class Parser {
 
     let required: RequiredStatus;
     if (this.expectOptionalToken(TokenKind.BANG)) {
-      required = 'required'
+      required = 'required';
     } else if (this.expectOptionalToken(TokenKind.QUESTION_MARK)) {
-      required = 'optional'
+      required = 'optional';
     } else {
-      required = 'unset'
+      required = 'unset';
     }
 
     return this.node<FieldNode>(start, {

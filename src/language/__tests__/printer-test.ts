@@ -12,7 +12,7 @@ describe('Printer: Query document', () => {
     const ast = {
       kind: 'Field',
       name: { kind: 'Name', value: 'foo' },
-      required: 'unset'
+      required: 'unset',
     } as const;
     expect(print(ast)).to.equal('foo');
   });
