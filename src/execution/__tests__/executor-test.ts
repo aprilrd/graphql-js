@@ -1220,4 +1220,140 @@ describe('Execute: Handles basic execution tasks', () => {
     expect(result).to.deep.equal({ data: { foo: { bar: 'bar' } } });
     expect(possibleTypes).to.deep.equal([fooObject]);
   });
+
+  it('bubbles null up to nearest nullable parent', async () => {
+    const schema = new GraphQLSchema({
+      query: new GraphQLObjectType({
+        name: 'Query',
+        fields: {
+          food: {
+            type: new GraphQLObjectType({
+              name: 'Food',
+              fields: {
+                name: { type: GraphQLString },
+                calories: { type: GraphQLInt },
+              },
+            }),
+            resolve() {
+              return {
+                name: null,
+                calories: 10,
+              }
+            }
+          },
+        },
+      }),
+    });
+
+    const plainDocument = parse(`
+      query {
+        food {
+          name
+          calories
+        }
+      }
+    `);
+    const plainResult = executeSync({ schema, document: plainDocument });
+
+    expect(plainResult).to.deep.equal({
+      data: { food: { name: null, calories: 10 } },
+    });
+
+    const singleNonnullOnNullValueDocument = parse(`
+      query {
+        food {
+          name!
+          calories
+        }
+      }
+    `);
+    const singleNonnullOnNullValueResult = executeSync({ schema, document: singleNonnullOnNullValueDocument });
+
+    expect(singleNonnullOnNullValueResult).to.deep.equal({
+      data: { food: null },
+      errors: [
+        {
+          locations: [{ column: 11, line: 4 }],
+          message: 'Cannot return null for non-nullable field Food.name.',
+          path: ['food', 'name'],
+        },
+      ],
+    });
+
+    const bothNonnullOnNullValueDocument = parse(`
+      query {
+        food {
+          name!
+          calories!
+        }
+      }
+    `);
+    const bothNonnullOnNullValueResult = executeSync({ schema, document: bothNonnullOnNullValueDocument });
+
+    expect(bothNonnullOnNullValueResult).to.deep.equal({
+      data: { food: null },
+      errors: [
+        {
+          locations: [{ column: 11, line: 4 }],
+          message: 'Cannot return null for non-nullable field Food.name.',
+          path: ['food', 'name'],
+        },
+      ],
+    });
+
+    const singleNonnullOnNonnullValueDocument = parse(`
+      query {
+        food {
+          calories!
+        }
+      }
+    `);
+    const singleNonnullOnNonnullValueResult = executeSync({ schema, document: singleNonnullOnNonnullValueDocument });
+
+    expect(singleNonnullOnNonnullValueResult).to.deep.equal({
+      data: { food: { calories: 10 } },
+    });
+
+    const nonnullAliasOnNullValueDocument = parse(`
+      query {
+        food {
+          theNameOfTheFood: name!
+        }
+      }
+    `);
+    const nonnullAliasOnNullValueResult = executeSync({ schema, document: nonnullAliasOnNullValueDocument });
+
+    expect(nonnullAliasOnNullValueResult).to.deep.equal({
+      data: { food: null },
+      errors: [
+        {
+          locations: [{ column: 11, line: 4 }],
+          message: 'Cannot return null for non-nullable field Food.name.',
+          path: ['food', 'theNameOfTheFood'],
+        },
+      ],
+    });
+
+    const nonnullInFragmentDocument = parse(`
+      query {
+        food {
+          ... on Food {
+            name!
+          }
+        }
+      }
+    `);
+    const nonnullInFragmentResult = executeSync({ schema, document: nonnullInFragmentDocument });
+
+    expect(nonnullInFragmentResult).to.deep.equal({
+      data: { food: null },
+      errors: [
+        {
+          locations: [{ column: 13, line: 5 }],
+          message: 'Cannot return null for non-nullable field Food.name.',
+          path: ['food', 'name'],
+        },
+      ],
+    });
+  });
 });
