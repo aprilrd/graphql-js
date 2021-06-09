@@ -1259,7 +1259,7 @@ describe('Execute: Handles basic execution tasks', () => {
       data: { food: { name: null, calories: 10 } },
     });
 
-    const singleNonnullOnNullValueDocument = parse(`
+    const singleNonNullOnNullValueDocument = parse(`
       query {
         food {
           name!
@@ -1267,12 +1267,12 @@ describe('Execute: Handles basic execution tasks', () => {
         }
       }
     `);
-    const singleNonnullOnNullValueResult = executeSync({
+    const singleNonNullOnNullValueResult = executeSync({
       schema,
-      document: singleNonnullOnNullValueDocument,
+      document: singleNonNullOnNullValueDocument,
     });
 
-    expect(singleNonnullOnNullValueResult).to.deep.equal({
+    expect(singleNonNullOnNullValueResult).to.deep.equal({
       data: { food: null },
       errors: [
         {
@@ -1283,7 +1283,7 @@ describe('Execute: Handles basic execution tasks', () => {
       ],
     });
 
-    const bothNonnullOnNullValueDocument = parse(`
+    const bothNonNullOnNullValueDocument = parse(`
       query {
         food {
           name!
@@ -1291,12 +1291,12 @@ describe('Execute: Handles basic execution tasks', () => {
         }
       }
     `);
-    const bothNonnullOnNullValueResult = executeSync({
+    const bothNonNullOnNullValueResult = executeSync({
       schema,
-      document: bothNonnullOnNullValueDocument,
+      document: bothNonNullOnNullValueDocument,
     });
 
-    expect(bothNonnullOnNullValueResult).to.deep.equal({
+    expect(bothNonNullOnNullValueResult).to.deep.equal({
       data: { food: null },
       errors: [
         {
@@ -1307,35 +1307,35 @@ describe('Execute: Handles basic execution tasks', () => {
       ],
     });
 
-    const singleNonnullOnNonnullValueDocument = parse(`
+    const singleNonNullOnNoNnullValueDocument = parse(`
       query {
         food {
           calories!
         }
       }
     `);
-    const singleNonnullOnNonnullValueResult = executeSync({
+    const singleNonNullOnNonNullValueResult = executeSync({
       schema,
-      document: singleNonnullOnNonnullValueDocument,
+      document: singleNonNullOnNoNnullValueDocument,
     });
 
-    expect(singleNonnullOnNonnullValueResult).to.deep.equal({
+    expect(singleNonNullOnNonNullValueResult).to.deep.equal({
       data: { food: { calories: 10 } },
     });
 
-    const nonnullAliasOnNullValueDocument = parse(`
+    const nonNullAliasOnNullValueDocument = parse(`
       query {
         food {
           theNameOfTheFood: name!
         }
       }
     `);
-    const nonnullAliasOnNullValueResult = executeSync({
+    const nonNullAliasOnNullValueResult = executeSync({
       schema,
-      document: nonnullAliasOnNullValueDocument,
+      document: nonNullAliasOnNullValueDocument,
     });
 
-    expect(nonnullAliasOnNullValueResult).to.deep.equal({
+    expect(nonNullAliasOnNullValueResult).to.deep.equal({
       data: { food: null },
       errors: [
         {
@@ -1346,7 +1346,7 @@ describe('Execute: Handles basic execution tasks', () => {
       ],
     });
 
-    const nonnullInFragmentDocument = parse(`
+    const nonNullInFragmentDocument = parse(`
       query {
         food {
           ... on Food {
@@ -1355,12 +1355,12 @@ describe('Execute: Handles basic execution tasks', () => {
         }
       }
     `);
-    const nonnullInFragmentResult = executeSync({
+    const nonNullInFragmentResult = executeSync({
       schema,
-      document: nonnullInFragmentDocument,
+      document: nonNullInFragmentDocument,
     });
 
-    expect(nonnullInFragmentResult).to.deep.equal({
+    expect(nonNullInFragmentResult).to.deep.equal({
       data: { food: null },
       errors: [
         {
