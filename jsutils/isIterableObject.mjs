@@ -7,19 +7,17 @@
  * TypedArray, etc. but excludes string literals.
  *
  * @example
- *
+ * ```ts
  * isIterableObject([ 1, 2, 3 ]) // true
  * isIterableObject(new Map()) // true
  * isIterableObject('ABC') // false
  * isIterableObject({ key: 'value' }) // false
  * isIterableObject({ length: 1, 0: 'Alpha' }) // false
+ * ```
  */
-// eslint-disable-next-line no-redeclare
 export function isIterableObject(maybeIterable) {
   return (
     typeof maybeIterable === 'object' &&
-    typeof (maybeIterable === null || maybeIterable === void 0
-      ? void 0
-      : maybeIterable[Symbol.iterator]) === 'function'
+    typeof maybeIterable?.[Symbol.iterator] === 'function'
   );
 }

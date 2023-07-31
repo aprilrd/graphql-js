@@ -1,21 +1,25 @@
-import { Maybe } from '../jsutils/Maybe';
-import { ObjMap } from '../jsutils/ObjMap';
-
-import { GraphQLError } from '../error/GraphQLError';
-import {
-  FieldNode,
+import type { Maybe } from '../jsutils/Maybe.js';
+import type { ObjMap } from '../jsutils/ObjMap.js';
+import { GraphQLError } from '../error/GraphQLError.js';
+import type {
   DirectiveNode,
+  FieldNode,
   VariableDefinitionNode,
-} from '../language/ast';
-
-import { GraphQLDirective } from '../type/directives';
-import { GraphQLSchema } from '../type/schema';
-import { GraphQLField } from '../type/definition';
-
+} from '../language/ast.js';
+import type { GraphQLField } from '../type/definition.js';
+import type { GraphQLDirective } from '../type/directives.js';
+import type { GraphQLSchema } from '../type/schema.js';
 type CoercedVariableValues =
-  | { errors: ReadonlyArray<GraphQLError>; coerced?: never }
-  | { errors?: never; coerced: { [key: string]: unknown } };
-
+  | {
+      errors: ReadonlyArray<GraphQLError>;
+      coerced?: never;
+    }
+  | {
+      coerced: {
+        [variable: string]: unknown;
+      };
+      errors?: never;
+    };
 /**
  * Prepares an object map of variableValues of the correct type based on the
  * provided variable definitions and arbitrary input. If the input cannot be
@@ -25,13 +29,16 @@ type CoercedVariableValues =
  * exposed to user code. Care should be taken to not pull values from the
  * Object prototype.
  */
-export function getVariableValues(
+export declare function getVariableValues(
   schema: GraphQLSchema,
   varDefNodes: ReadonlyArray<VariableDefinitionNode>,
-  inputs: { [key: string]: unknown },
-  options?: { maxErrors?: number },
+  inputs: {
+    readonly [variable: string]: unknown;
+  },
+  options?: {
+    maxErrors?: number;
+  },
 ): CoercedVariableValues;
-
 /**
  * Prepares an object map of argument values given a list of argument
  * definitions and list of argument AST nodes.
@@ -40,12 +47,13 @@ export function getVariableValues(
  * exposed to user code. Care should be taken to not pull values from the
  * Object prototype.
  */
-export function getArgumentValues(
+export declare function getArgumentValues(
   def: GraphQLField<unknown, unknown> | GraphQLDirective,
   node: FieldNode | DirectiveNode,
   variableValues?: Maybe<ObjMap<unknown>>,
-): { [key: string]: unknown };
-
+): {
+  [argument: string]: unknown;
+};
 /**
  * Prepares an object map of argument values given a directive definition
  * and a AST node which may contain directives. Optionally also accepts a map
@@ -57,10 +65,15 @@ export function getArgumentValues(
  * exposed to user code. Care should be taken to not pull values from the
  * Object prototype.
  */
-export function getDirectiveValues(
+export declare function getDirectiveValues(
   directiveDef: GraphQLDirective,
   node: {
-    readonly directives?: ReadonlyArray<DirectiveNode>;
+    readonly directives?: ReadonlyArray<DirectiveNode> | undefined;
   },
   variableValues?: Maybe<ObjMap<unknown>>,
-): undefined | { [key: string]: unknown };
+):
+  | undefined
+  | {
+      [argument: string]: unknown;
+    };
+export {};

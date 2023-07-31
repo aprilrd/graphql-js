@@ -1,10 +1,11 @@
-import { Maybe } from './jsutils/Maybe';
-
-import { Source } from './language/source';
-import { GraphQLSchema } from './type/schema';
-import { GraphQLFieldResolver, GraphQLTypeResolver } from './type/definition';
-import { ExecutionResult } from './execution/execute';
-
+import type { Maybe } from './jsutils/Maybe.js';
+import type { Source } from './language/source.js';
+import type {
+  GraphQLFieldResolver,
+  GraphQLTypeResolver,
+} from './type/definition.js';
+import type { GraphQLSchema } from './type/schema.js';
+import type { ExecutionResult } from './execution/execute.js';
 /**
  * This is the primary entry point function for fulfilling GraphQL operations
  * by parsing, validating, and executing a GraphQL document along side a
@@ -13,6 +14,8 @@ import { ExecutionResult } from './execution/execute';
  * More sophisticated GraphQL servers, such as those which persist queries,
  * may wish to separate the validation and execution phases to a static time
  * tooling step, and a server runtime step.
+ *
+ * This function does not support incremental delivery (`@defer` and `@stream`).
  *
  * Accepts either an object with named arguments, or individual arguments:
  *
@@ -49,18 +52,18 @@ export interface GraphQLArgs {
   source: string | Source;
   rootValue?: unknown;
   contextValue?: unknown;
-  variableValues?: Maybe<{ [key: string]: unknown }>;
+  variableValues?: Maybe<{
+    readonly [variable: string]: unknown;
+  }>;
   operationName?: Maybe<string>;
   fieldResolver?: Maybe<GraphQLFieldResolver<any, any>>;
   typeResolver?: Maybe<GraphQLTypeResolver<any, any>>;
 }
-
-export function graphql(args: GraphQLArgs): Promise<ExecutionResult>;
-
+export declare function graphql(args: GraphQLArgs): Promise<ExecutionResult>;
 /**
  * The graphqlSync function also fulfills GraphQL operations by parsing,
  * validating, and executing a GraphQL document along side a GraphQL schema.
  * However, it guarantees to complete synchronously (or throw an error) assuming
  * that all field resolvers are also synchronous.
  */
-export function graphqlSync(args: GraphQLArgs): ExecutionResult;
+export declare function graphqlSync(args: GraphQLArgs): ExecutionResult;

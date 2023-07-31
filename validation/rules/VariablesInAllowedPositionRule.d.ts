@@ -1,9 +1,12 @@
-import { ASTVisitor } from '../../language/visitor';
-import { ValidationContext } from '../ValidationContext';
-
+import type { ASTVisitor } from '../../language/visitor.js';
+import type { ValidationContext } from '../ValidationContext.js';
 /**
- * Variables passed to field arguments conform to type
+ * Variables in allowed position
+ *
+ * Variable usages must be compatible with the arguments they are passed to.
+ *
+ * See https://spec.graphql.org/draft/#sec-All-Variable-Usages-are-Allowed
  */
-export function VariablesInAllowedPositionRule(
+export declare function VariablesInAllowedPositionRule(
   context: ValidationContext,
 ): ASTVisitor;

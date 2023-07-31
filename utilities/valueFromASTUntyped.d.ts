@@ -1,8 +1,6 @@
-import { Maybe } from '../jsutils/Maybe';
-import { ObjMap } from '../jsutils/ObjMap';
-
-import { ValueNode } from '../language/ast';
-
+import type { Maybe } from '../jsutils/Maybe.js';
+import type { ObjMap } from '../jsutils/ObjMap.js';
+import type { ValueNode } from '../language/ast.js';
 /**
  * Produces a JavaScript value given a GraphQL Value AST.
  *
@@ -19,7 +17,7 @@ import { ValueNode } from '../language/ast';
  * | Null                 | null             |
  *
  */
-export function valueFromASTUntyped(
+export declare function valueFromASTUntyped(
   valueNode: ValueNode,
   variables?: Maybe<ObjMap<unknown>>,
 ): unknown;
